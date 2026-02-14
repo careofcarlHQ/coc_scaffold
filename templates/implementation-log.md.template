@@ -1,0 +1,113 @@
+# Implementation Log — Phase {N}
+
+Use one copy of this log per phase.
+
+## Metadata
+
+- Phase: {N}
+- Date started: {date}
+- Owner: {name}
+- Scope: {description}
+
+---
+
+## Stage 0 — Foundation Lock
+
+- Status: not-started / in-progress / done / blocked
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result: pass / fail
+
+## Stage 1 — Project Skeleton
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 2 — Core Data Layer
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 3 — Primary API
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 4 — Supporting Features
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 5 — Background Processing
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 6 — Business Rules and Policy
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 7 — Output and Reporting
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 8 — Operational Reliability
+
+- Status:
+- Work completed:
+- Decisions made:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 9 — Pilot Trial
+
+- Status:
+- Work completed:
+- Tasks executed:
+  - Task A:
+  - Task B:
+  - Task C:
+- Blockers:
+- Evidence:
+- Acceptance gate result:
+
+## Stage 10 — Phase Sign-Off
+
+- Status:
+- Metrics captured:
+- Gaps for next phase:
+- Process improvements:
+- Final sign-off: pass / fail

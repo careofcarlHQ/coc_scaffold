@@ -1,0 +1,49 @@
+# AGENTS.md — {PROJECT_NAME}
+
+## Mission
+{One-sentence description of what this project does.}
+
+## Source of Truth (read in this order)
+0. Read agent instructions: this file
+1. `spec/PROCESS_INDEX.md`
+2. `spec/{project}-PRD.md`
+3. `spec/phase-1-implementation-checklist.md` (current phase)
+4. `spec/implementation-architecture.md`
+5. `spec/api-contract.md`
+6. `spec/data-model.md`
+
+## Non-Negotiable Constraints
+- {Constraint 1 — e.g., "Human final approval is mandatory before merge"}
+- {Constraint 2 — e.g., "No secrets committed to repository"}
+- {Constraint 3 — e.g., "Every stage must produce required handoff artifacts"}
+
+## Execution Order
+
+### Phase 1 ({description})
+Implement in checklist order:
+- Stage 0 → Stage 10 in `spec/phase-1-implementation-checklist.md`
+- Do not skip acceptance gates
+- Log progress in `spec/implementation-log.md`
+
+## Required Deliverables Per Stage
+- Updated code
+- Updated docs (if behavior/process changed)
+- Acceptance gate evidence
+- Risk/rollback note
+- Open questions
+
+## Coding Rules
+- Keep changes minimal and scoped
+- Prefer deterministic checks (tests/lint/build) over assumptions
+- No hidden behavior, no silent retries beyond policy
+- {Add project-specific rules here}
+
+## Safety
+- Use `.env` files for local config (never commit secrets)
+- Halt and escalate for: security changes, data model risk, external API uncertainty
+- {Add project-specific safety rules}
+
+## Done Criteria
+
+### Phase 1
+Phase 1 is done only when all Stage 10 criteria in `spec/phase-1-implementation-checklist.md` are satisfied.

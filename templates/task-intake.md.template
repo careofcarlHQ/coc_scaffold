@@ -1,0 +1,59 @@
+# Task Intake Template
+
+Copy this block for each new unit of work.
+
+## Intake Metadata
+
+- Task ID:
+- Date:
+- Owner:
+- Target repo:
+- Target branch:
+- Change class: docs / test / feature / integration / security / migration
+- Risk tier: low / medium / high
+
+## Problem Statement
+
+{What problem are we solving?}
+
+## Desired Outcome
+
+{What should be true after this work is complete?}
+
+## Constraints
+
+- Technical:
+- Business:
+- Time:
+
+## Acceptance Criteria
+
+- AC-1:
+- AC-2:
+- AC-3:
+
+## Out of Scope
+
+- OOS-1:
+- OOS-2:
+
+## Risk Notes
+
+- Known risks:
+- Unknowns:
+
+## Validation Requirements
+
+- Build/lint/tests required:
+- Manual checks required:
+
+## Escalation Pre-Check
+
+- [ ] Security/auth touched
+- [ ] Data model or migration touched
+- [ ] External API contract uncertainty
+
+## Human Decision Needed Before Execution?
+
+- yes / no
+- If yes, specify:

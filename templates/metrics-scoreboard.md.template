@@ -1,0 +1,35 @@
+# Metrics Scoreboard — Week of {date}
+
+## Delivery
+
+- Tasks completed:
+- Median lead time (intent → done):
+- No-manual-edit rate (%):
+
+## Quality
+
+- Test pass rate (%):
+- Post-completion regressions:
+- Reverts / hotfixes:
+
+## Escalations
+
+- Total:
+- By type:
+  - Security/auth:
+  - Data/migration:
+  - External API:
+  - Cost:
+- Average resolution time:
+
+## Process Compliance
+
+- Tasks with complete evidence (%):
+- Acceptance criteria coverage (%):
+- Gate violations:
+
+## Notes
+
+- Biggest bottleneck this week:
+- Process changes applied:
+- Next week focus:

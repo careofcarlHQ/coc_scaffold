@@ -1,0 +1,137 @@
+# Phase {N} Implementation Checklist
+
+Purpose: executable build order with objective acceptance gates.
+
+Scope: {what this phase covers}
+
+Tracking template: `implementation-log.md`
+
+## Exit Definition (Phase {N} Complete)
+
+Phase {N} is complete only when:
+
+1. {Exit criterion 1}
+2. {Exit criterion 2}
+3. {Exit criterion 3}
+4. All acceptance gates below are met
+
+---
+
+## Stage 0 — Foundation Lock
+
+- [ ] Confirm stack and contracts from specs
+- [ ] Confirm operational policies
+- [ ] No unresolved architectural decisions
+
+Acceptance gate:
+
+- [ ] All team members aligned on approach
+- [ ] All referenced spec documents exist
+
+## Stage 1 — Project Skeleton
+
+- [ ] Create folder structure per architecture spec
+- [ ] Add dependency management and runtime config
+- [ ] Add health endpoint
+
+Acceptance gate:
+
+- [ ] Process starts locally and health check returns ok
+
+## Stage 2 — Core Data Layer
+
+- [ ] Implement schema from data model spec
+- [ ] Create baseline migration
+- [ ] Add constraints, indexes, and validation
+
+Acceptance gate:
+
+- [ ] Fresh DB bootstrap + migration succeeds from zero
+- [ ] Invalid data is rejected
+
+## Stage 3 — Primary API
+
+- [ ] Implement main resource CRUD endpoints
+- [ ] Implement state transitions (if applicable)
+- [ ] Implement audit logging
+
+Acceptance gate:
+
+- [ ] Can create resources and operate on them via API
+- [ ] Invalid operations return appropriate errors
+
+## Stage 4 — Supporting Features
+
+- [ ] Implement secondary endpoints
+- [ ] Implement cross-resource business rules
+- [ ] Implement error handling for edge cases
+
+Acceptance gate:
+
+- [ ] Supporting features enforce their constraints
+- [ ] Error cases handled and tested
+
+## Stage 5 — Background Processing
+
+- [ ] Implement job/task queue (if applicable)
+- [ ] Implement worker/processor
+- [ ] Implement retry and failure handling
+
+Acceptance gate:
+
+- [ ] Background jobs execute reliably
+- [ ] Failures handled per policy
+
+## Stage 6 — Business Rules and Policy
+
+- [ ] Implement domain-specific validation rules
+- [ ] Implement access control or authorization
+- [ ] Implement rate limiting or cost controls (if applicable)
+
+Acceptance gate:
+
+- [ ] Policy violations are caught and blocked at runtime
+
+## Stage 7 — Output and Reporting
+
+- [ ] Implement output generation (reports, exports, evidence)
+- [ ] Implement notification or integration hooks
+
+Acceptance gate:
+
+- [ ] System produces expected outputs for completed work
+
+## Stage 8 — Operational Reliability
+
+- [ ] Validate local development setup
+- [ ] Validate startup/shutdown behavior
+- [ ] Validate recovery from crashes
+
+Acceptance gate:
+
+- [ ] System restarts cleanly without data corruption
+
+## Stage 9 — Pilot Trial
+
+Run real work through the system:
+
+- [ ] Task A: {low complexity}
+- [ ] Task B: {medium complexity}
+- [ ] Task C: {higher complexity with edge cases}
+
+Acceptance gate:
+
+- [ ] All tasks complete with expected results
+- [ ] Edge cases handled correctly
+
+## Stage 10 — Phase Sign-Off
+
+- [ ] Metrics captured
+- [ ] Remaining gaps documented for next phase
+- [ ] Process improvements identified
+
+Final sign-off criteria:
+
+- [ ] System runs end-to-end without ad-hoc decisions
+- [ ] All acceptance gates above are met
+- [ ] Ready to begin Phase {N+1} or operate in production

@@ -1,0 +1,72 @@
+# Evidence Package Template
+
+## A) Compact Checklist (Fast Approval)
+
+- [ ] Task contract / acceptance criteria defined
+- [ ] All acceptance criteria mapped to changes
+- [ ] Review completed (approve / changes requested)
+- [ ] Validation evidence attached
+- [ ] Tests pass
+- [ ] Escalations resolved or N/A
+- [ ] Rollback documented
+
+### Snapshot
+
+- Task ID:
+- Repo:
+- Branch:
+- Change class:
+- Risk tier:
+
+---
+
+## B) Detailed Evidence
+
+### 1) Task Contract
+
+- Objective:
+- Constraints:
+- Non-goals:
+- Acceptance criteria:
+
+### 2) Changed-File Map
+
+| File | Why changed | AC link |
+|------|-------------|---------|
+|      |             |         |
+
+### 3) Validation Results
+
+| Command | Purpose | Result | Notes |
+|---------|---------|--------|-------|
+|         |         |        |       |
+
+### 4) Review Report
+
+- Decision: approve / request_changes
+- Findings:
+- Fixes applied:
+- Residual risk:
+
+### 5) Risk and Rollback
+
+- Primary risk:
+- Blast radius:
+- Rollback steps:
+
+### 6) Escalation Log
+
+- Escalation required: yes / no
+- If yes:
+  - Trigger type:
+  - Resolution:
+
+### 7) Open Questions
+
+- Q1:
+- Q2:
+
+### 8) Recommendation
+
+- Action: merge / hold
+- Reasoning:

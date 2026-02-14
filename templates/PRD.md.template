@@ -1,0 +1,86 @@
+# PRD — {Project Name}
+
+Owner: {name}
+Status: Draft
+Last updated: {date}
+
+---
+
+## 1. Summary
+
+{One paragraph describing what this project does and why it matters.}
+
+---
+
+## 2. Problem Statement
+
+{What problem are we solving? What is the current state and what's wrong with it?}
+
+---
+
+## 3. Goals ({timeframe})
+
+- {Goal 1 — measurable}
+- {Goal 2 — measurable}
+- {Goal 3 — measurable}
+
+---
+
+## 4. Non-Goals
+
+- {Non-goal 1 — explicitly excluded}
+- {Non-goal 2 — explicitly excluded}
+
+---
+
+## 5. Target Architecture
+
+### 5.1 Components / Services
+
+1. {Component 1} — {responsibility}
+2. {Component 2} — {responsibility}
+
+### 5.2 Technology Stack
+
+- Language/Runtime: {e.g., Python 3.11+}
+- Framework: {e.g., FastAPI}
+- Database: {e.g., PostgreSQL}
+- Queue: {e.g., Postgres-backed}
+
+---
+
+## 6. Scope Boundaries
+
+### In scope (Phase 1)
+- {Feature/capability 1}
+- {Feature/capability 2}
+
+### Out of scope (Phase 1)
+- {Deferred item 1}
+- {Deferred item 2}
+
+---
+
+## 7. Constraints
+
+- {Technical constraint}
+- {Business constraint}
+- {Time constraint}
+
+---
+
+## 8. Risk Model
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+| {Risk 1} | low/med/high | low/med/high | {How to prevent or handle} |
+| {Risk 2} | low/med/high | low/med/high | {How to prevent or handle} |
+
+---
+
+## 9. Success Criteria
+
+Phase 1 is successful when:
+- {Criterion 1 — objective and testable}
+- {Criterion 2 — objective and testable}
+- {Criterion 3 — objective and testable}

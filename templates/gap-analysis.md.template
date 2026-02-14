@@ -1,0 +1,66 @@
+# Build Readiness Gap Analysis
+
+Date: {date}
+Scope reviewed: {what was audited}
+
+## Verdict
+
+{One-paragraph assessment: is the project implementation-ready? What's missing?}
+
+## What is already covered
+
+- {Covered area 1}
+- {Covered area 2}
+- {Covered area 3}
+
+## Missing Items (P0 = required to start building)
+
+### P0-1: {Gap title}
+
+Missing:
+- {What's missing}
+
+Needed output:
+- {Document or artifact name}
+
+### P0-2: {Gap title}
+
+Missing:
+- {What's missing}
+
+Needed output:
+- {Document or artifact name}
+
+### P0-3: {Gap title}
+
+Missing:
+- {What's missing}
+
+Needed output:
+- {Document or artifact name}
+
+## Missing Items (P1 = needed for reliable operations)
+
+### P1-1: {Gap title}
+
+Missing:
+- {What's missing}
+
+Needed output:
+- {Document or artifact name}
+
+### P1-2: {Gap title}
+
+Missing:
+- {What's missing}
+
+Needed output:
+- {Document or artifact name}
+
+## Action Plan
+
+| Priority | Gap | Owner | Target Date |
+|----------|-----|-------|-------------|
+| P0 | {Gap 1} | {who} | {when} |
+| P0 | {Gap 2} | {who} | {when} |
+| P1 | {Gap 3} | {who} | {when} |

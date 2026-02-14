@@ -1,0 +1,37 @@
+# {Project Name} Process Index (Start Here)
+
+If you have no existing context, read this index in order.
+
+## 0. Core Policy
+
+0. Read agent instructions: ../AGENTS.md
+1. Read PRD: {project}-PRD.md
+2. Read architecture: implementation-architecture.md
+3. Read engineering rules: engineering-best-practices.md
+
+## 1. Build Execution Path
+
+### Phase 1 ({description})
+1. Implement in order: phase-1-implementation-checklist.md
+2. Track progress with: implementation-log.md
+
+## 2. Build Specs
+
+1. Implementation architecture: implementation-architecture.md
+2. API contract: api-contract.md
+3. Data model: data-model.md
+4. Local bootstrap: bootstrap-local.md
+5. Env baseline: ../.env.example
+
+## 3. Policies (if applicable)
+
+1. Cost control: cost-control.md
+2. Guardrails: guardrails-policy.md
+3. Escalation: escalation-policy.md
+
+## 4. Templates
+
+1. Task intake: task-intake-template.md
+2. Evidence package: evidence-template.md
+3. Implementation log: implementation-log.md
+4. Metrics scoreboard: metrics-scoreboard.md
