@@ -24,6 +24,8 @@ Keep AGENTS.md under 150 lines. It is a **table of contents** pointing to deeper
 One-sentence description of what this project does.
 
 ## Source of Truth (read in this order)
+0. Read agent instructions: this file
+   `spec/bootstrap-local.md`
 1. `spec/PROCESS_INDEX.md`
 2. `spec/phase-N-implementation-checklist.md` (current phase)
 3. `spec/implementation-architecture.md`

@@ -1,0 +1,115 @@
+# Bootstrap Local — {PROJECT_NAME}
+
+> **Last verified: {DATE}** on {OS}, Python {VERSION}, {PACKAGE_MANAGER}
+
+## Prerequisites
+
+- Python 3.11+
+- {Package manager: Poetry / pip / uv}
+- Docker Desktop (for PostgreSQL container)
+- {Additional runtimes, e.g., Node.js ≥ 18 for frontend}
+- Git
+
+## Quick Start
+
+### 1 — Start database
+
+```powershell
+docker compose up -d db
+```
+
+Verify: `docker compose ps` — db should show "running (healthy)".
+
+### 2 — Activate virtual environment
+
+```powershell
+{poetry shell / source .venv/bin/activate / uv venv && source .venv/bin/activate}
+```
+
+### 3 — Run database migrations
+
+```powershell
+python -m alembic upgrade head
+```
+
+{Note: If the project uses separate sync/async DB URLs, document which one Alembic uses here.}
+
+### 4 — Start the backend
+
+```powershell
+python -m uvicorn app.main:app --reload --port {PORT}
+```
+
+Verify:
+
+```powershell
+# PowerShell:
+Invoke-RestMethod http://localhost:{PORT}/healthz
+# Bash:
+curl http://localhost:{PORT}/healthz
+```
+
+### 5 — Start the frontend (if applicable)
+
+```powershell
+cd {frontend-dir}
+npm install   # first time only
+npm run dev
+```
+
+## Shutdown
+
+```powershell
+# Stop app processes: Ctrl+C in each terminal
+# Stop database:
+docker compose stop db
+# Remove entirely (keeps data):
+docker compose down
+# Remove entirely (destroys data):
+docker compose down -v
+```
+
+## Restart (repeat startup)
+
+```powershell
+docker compose up -d db
+{activate venv command}
+python -m alembic upgrade head
+python -m uvicorn app.main:app --reload --port {PORT}
+```
+
+## Database Reset
+
+```powershell
+python -m alembic downgrade base
+python -m alembic upgrade head
+```
+
+## Environment Variables
+
+The `.env` file in the project root must contain:
+
+| Variable | Required | Example | Description |
+|----------|----------|---------|-------------|
+| `DATABASE_URL` | Yes | `postgresql+asyncpg://user:pass@localhost:5432/dbname` | Async DB connection (FastAPI) |
+| `SYNC_DATABASE_URL` | Yes | `postgresql+psycopg://user:pass@localhost:5432/dbname` | Sync DB connection (Alembic) |
+| `APP_SECRET_KEY` | Yes | `dev-secret-key` | API auth token |
+| {Additional vars} | | | |
+
+## Port Map
+
+| Service | Port | Notes |
+|---------|------|-------|
+| PostgreSQL (Docker) | {5432/5433} | {Reason if non-standard} |
+| Backend API | {8000/8001} | |
+| Frontend (dev) | {5173} | {If applicable} |
+
+## Common Issues
+
+| Problem | Solution |
+|---------|----------|
+| DB connection refused | Is Docker running? `docker compose up -d db` |
+| Module not found | Run `{package install command}` inside the project |
+| Alembic fails to connect | Check `SYNC_DATABASE_URL` in `.env` |
+| Port already in use | Kill the old process or choose a different port |
+| Docker not running | Start Docker Desktop, wait for ready |
