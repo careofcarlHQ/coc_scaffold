@@ -67,6 +67,19 @@ The framework is being applied to itself with durable tracking artifacts in:
 - [self-application/testing-retrofit/testing-checklist.md](self-application/testing-retrofit/testing-checklist.md)
 - [self-application/solo-copilot-process.md](self-application/solo-copilot-process.md)
 
+## Solo + Copilot merge automation
+
+For this repository, merge automation is standardized via:
+
+- [AGENTS.md](AGENTS.md)
+- [scripts/solo-merge-pr.ps1](scripts/solo-merge-pr.ps1)
+
+When asked to merge a PR (for example: "Merga PR#3"), run:
+
+- `./scripts/solo-merge-pr.ps1 -PullNumber <PR_NUMBER>`
+
+This flow temporarily enables solo mode, merges, restores team mode, verifies branch protection, then syncs local `main` and cleans up the local feature branch.
+
 ## Shared principles
 
 All scaffolds share the same core values:

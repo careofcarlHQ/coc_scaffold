@@ -44,6 +44,16 @@ Implement in checklist order:
 - Halt and escalate for: security changes, data model risk, external API uncertainty
 - {Add project-specific safety rules}
 
+## Merge Command Contract (solo + copilot)
+When asked to merge a PR (for example: "Merga PR#12"), run:
+- `./scripts/solo-merge-pr.ps1 -PullNumber <PR_NUMBER>`
+
+Before running merge automation:
+- Ensure required CI checks are green
+- Ensure `GITHUB_TOKEN` exists in environment or `.env.local`
+
+Never push directly to `main`; always use feature branch + PR flow.
+
 ## Done Criteria
 
 ### Phase 1
