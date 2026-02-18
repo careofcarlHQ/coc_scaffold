@@ -2,6 +2,17 @@
 
 Reusable frameworks for agent-first software development — covering the full lifecycle from building something new to handling production emergencies.
 
+## Repository layout
+
+- Framework scaffolds (core content):
+	- `greenfield/`, `repo-documentation/`, `refactoring/`, `feature-addition/`, `bug-investigation/`, `testing-retrofit/`, `migration/`, `incident-response/`, `spike/`
+- Repository automation:
+	- `scripts/` and `AGENTS.md`
+- Validation harness:
+	- `tests/`, `.github/workflows/`, `.coveragerc`
+- Internal self-application artifacts:
+	- `meta/self-application/`
+
 ## Scaffolds
 
 ### Core scaffolds
@@ -63,9 +74,9 @@ incident-response/ ──→ testing-retrofit/  Post-mortem: need test coverage
 
 The framework is being applied to itself with durable tracking artifacts in:
 
-- [self-application/README.md](self-application/README.md)
-- [self-application/testing-retrofit/testing-checklist.md](self-application/testing-retrofit/testing-checklist.md)
-- [self-application/solo-copilot-process.md](self-application/solo-copilot-process.md)
+- [meta/self-application/README.md](meta/self-application/README.md)
+- [meta/self-application/testing-retrofit/testing-checklist.md](meta/self-application/testing-retrofit/testing-checklist.md)
+- [meta/self-application/solo-copilot-process.md](meta/self-application/solo-copilot-process.md)
 
 ## Solo + Copilot merge automation
 
