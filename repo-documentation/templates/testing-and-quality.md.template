@@ -1,0 +1,227 @@
+# Testing & Quality — {Project Name}
+
+> **Repo**: `{org}/{repo}`
+> **Generated**: {date}
+> **Verified**: ☐ Not yet verified
+
+---
+
+## 1. Testing Overview  ⚡ Requires execution
+
+<!-- Run the extraction commands at the bottom of this file to fill this table.
+     Mark any values you cannot verify as [UNVERIFIED]. -->
+
+| Dimension           | Value                                          |
+| ------------------- | ---------------------------------------------- |
+| Test framework      | {e.g., pytest, Jest, Go testing}               |
+| Coverage tool       | {e.g., coverage.py, c8, Istanbul}              |
+| CI test runner      | {e.g., GitHub Actions, Render build}           |
+| Current coverage    | {line %} lines · {branch %} branches           |
+| Test count          | {n} tests ({n} unit · {n} integration · {n} e2e) |
+| Avg. suite runtime  | {seconds}                                      |
+
+---
+
+## 2. Test Organisation
+
+```
+tests/
+├── conftest.py              # Shared fixtures
+├── unit/                    # Fast, isolated tests
+│   ├── test_models.py
+│   └── test_services.py
+├── integration/             # Tests hitting DB/Redis/external
+│   ├── test_api_endpoints.py
+│   └── test_ingestion.py
+├── e2e/                     # Full workflow tests
+└── fixtures/                # Shared test data
+    ├── sample_events.json
+    └── factory.py
+```
+
+> Describe the actual layout. If there is no clear separation, note that.
+
+---
+
+## 3. How to Run Tests
+
+### Full suite
+```bash
+{command to run all tests, e.g. pytest}
+```
+
+### Subset / single file
+```bash
+{command to run a single test file}
+{command to run tests matching a keyword}
+```
+
+### With coverage
+```bash
+{command to generate coverage report}
+```
+
+### Watch mode (if available)
+```bash
+{command for watch mode}
+```
+
+---
+
+## 4. Test Configuration
+
+| Setting              | Location                        | Value / Notes                    |
+| -------------------- | ------------------------------- | -------------------------------- |
+| Config file          | {e.g., pyproject.toml [tool.pytest]} | —                            |
+| Test root            | {e.g., tests/}                  | —                                |
+| Markers / tags       | {list custom markers}           | {purpose of each}                |
+| Fixtures location    | {e.g., conftest.py}             | {scope: session/function/etc.}   |
+| Environment overrides| {e.g., .env.test}               | {what changes from prod}         |
+
+---
+
+## 5. Fixture & Factory Patterns
+
+### Database fixtures
+{Describe how tests get a database — in-memory, test container, shared fixture, transactional rollback?}
+
+### External service mocks
+| Service              | Mocking approach                          | Location                   |
+| -------------------- | ----------------------------------------- | -------------------------- |
+| {e.g., Meta CAPI}    | {e.g., responses library, httpx mock}     | {e.g., conftest.py:L42}   |
+| {e.g., Redis}        | {e.g., fakeredis}                         | {e.g., conftest.py:L58}   |
+
+### Factory functions
+{Describe any factory patterns used to generate test data — factory_boy, custom builders, JSON fixtures.}
+
+---
+
+## 6. Test Patterns in Use
+
+| Pattern                          | Used? | Example / Location              |
+| -------------------------------- | ----- | ------------------------------- |
+| Unit tests (isolated logic)      | {Y/N} | {file:line}                     |
+| Integration tests (DB/API)       | {Y/N} | {file:line}                     |
+| End-to-end / workflow tests      | {Y/N} | {file:line}                     |
+| Parametrised tests               | {Y/N} | {file:line}                     |
+| Snapshot / golden-file tests     | {Y/N} | {file:line}                     |
+| Property-based tests             | {Y/N} | {file:line}                     |
+| Approval tests                   | {Y/N} | {file:line}                     |
+| Contract tests (API schema)      | {Y/N} | {file:line}                     |
+| Performance / load tests         | {Y/N} | {file:line}                     |
+| Security / fuzzing tests         | {Y/N} | {file:line}                     |
+
+---
+
+## 7. Coverage Analysis  ⚡ Requires execution
+
+<!-- Run: pytest --cov=app --cov-report=term-missing  (or equivalent)
+     If you cannot run the tests, mark all values [UNVERIFIED] and note why. -->
+
+### Coverage by module
+
+| Module / Directory     | Line coverage | Branch coverage | Notes               |
+| ---------------------- | ------------- | --------------- | -------------------- |
+| {app/api/}             | {%}           | {%}             | {well-tested}        |
+| {app/services/}        | {%}           | {%}             | {critical, needs ↑}  |
+| {app/ingestion/}       | {%}           | {%}             |                      |
+| {app/jobs/}            | {%}           | {%}             |                      |
+
+### Uncovered critical paths
+
+| Path / Function                 | Risk level | Why it matters                       |
+| ------------------------------- | ---------- | ------------------------------------ |
+| {e.g., dispatch/meta.py:send}   | 🔴 High    | {Production money flow, no tests}    |
+| {e.g., jobs/backfill.py}        | 🟡 Medium  | {Batch operation, tested manually}   |
+
+---
+
+## 8. CI / CD Test Integration
+
+| Stage               | What runs                        | Blocking? | Timeout    |
+| -------------------- | -------------------------------- | --------- | ---------- |
+| PR check             | {e.g., full pytest suite}        | {Yes/No}  | {minutes}  |
+| Pre-deploy           | {e.g., subset + lint}            | {Yes/No}  | {minutes}  |
+| Post-deploy          | {e.g., smoke tests}              | {Yes/No}  | {minutes}  |
+| Scheduled            | {e.g., nightly full suite}       | N/A       | {minutes}  |
+
+### Flaky test policy
+{How are flaky tests handled? Quarantined? Re-run? Ignored?}
+
+---
+
+## 9. Quality Tooling
+
+| Tool                 | Purpose               | Config location           | CI integrated? |
+| -------------------- | --------------------- | ------------------------- | -------------- |
+| {e.g., ruff}         | Linting               | {pyproject.toml}          | {Yes/No}       |
+| {e.g., mypy}         | Type checking         | {pyproject.toml}          | {Yes/No}       |
+| {e.g., black}        | Formatting            | {pyproject.toml}          | {Yes/No}       |
+| {e.g., bandit}       | Security scanning     | {.bandit}                 | {Yes/No}       |
+| {e.g., pre-commit}   | Git hooks             | {.pre-commit-config.yaml} | N/A            |
+
+---
+
+## 10. Known Test Gaps & Tech Debt
+
+| Gap                                  | Priority | Effort | Ticket    |
+| ------------------------------------ | -------- | ------ | --------- |
+| {e.g., No integration tests for Redis job queue} | P0   | {h}    | {link}    |
+| {e.g., Dispatch error paths untested}            | P1   | {h}    | {link}    |
+| {e.g., No load tests for ingestion webhook}      | P2   | {h}    | —         |
+
+---
+
+## 11. Testing Conventions (REQUIRED)
+
+<!-- Even if informal, document the patterns the team follows.
+     If no conventions exist, write: "No formal conventions. [TODO] Establish naming and assertion standards." -->
+
+### Naming
+```
+test_{module}_{function}_{scenario}_{expected_result}
+# Example: test_order_service_create_duplicate_sku_raises_conflict
+```
+
+### Assertion style
+{e.g., plain assert, pytest.raises, custom matchers}
+
+### Test data management
+{How is test data created, cleaned up, and isolated between tests?}
+
+---
+
+## Extraction Commands
+
+```bash
+# Find test framework and config
+grep -r "tool.pytest\|jest.config\|mocha" pyproject.toml package.json 2>/dev/null
+
+# Count tests
+pytest --collect-only -q 2>/dev/null | tail -1
+# or: grep -r "def test_\|it(" tests/ --include="*.py" --include="*.ts" | wc -l
+
+# Get coverage
+pytest --cov=app --cov-report=term-missing 2>/dev/null | tail -20
+
+# Find fixtures
+grep -rn "def.*fixture\|@pytest.fixture" tests/ conftest.py 2>/dev/null
+
+# Find mocks
+grep -rn "mock\|patch\|MagicMock\|responses\.\|httpx_mock\|fakeredis" tests/ 2>/dev/null
+
+# Find markers
+grep -rn "@pytest.mark\." tests/ 2>/dev/null | sed 's/.*@pytest.mark.//' | sort -u
+
+# Check for flaky markers
+grep -rn "flaky\|xfail\|skip" tests/ 2>/dev/null
+```
+
+---
+
+## Related Documents (REQUIRED)
+
+- [Codebase Onboarding](codebase-onboarding.md) — how to run tests during setup
+- [Architecture Overview](architecture-overview.md) — what components need testing
+- [Service Map](service-map.md) — which modules have tests and which don't
+- [Deployment & Infrastructure](deployment-and-infra.md) — CI/CD test stages

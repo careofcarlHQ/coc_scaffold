@@ -1,0 +1,155 @@
+# Phase {N} Refactoring Checklist — {PROJECT_NAME}
+
+Purpose: executable refactoring stages with safety gates.
+
+Scope: {what this phase covers}
+
+Tracking: `refactor/refactoring-log.md`
+
+## Phase 0 — Test Infrastructure (Complete Before Phase 1)
+
+- [ ] `pytest --co` discovers tests without errors
+- [ ] DB fixtures / test clients work (trivial test passes)
+- [ ] CI/CD pipeline runs tests and reports results
+- [ ] Assessment tools installed: `radon`, `pytest-cov`, linter, type checker
+- [ ] `./refactor/verify-baseline.ps1` runs without script errors
+
+Phase 0 gate: All infrastructure checks pass. Proceed to Phase 1.
+
+---
+
+## Exit Definition (Phase {N} Complete)
+
+Phase {N} is complete only when:
+
+1. {Exit criterion 1 — e.g., "All target modules ≤ 200 lines"}
+2. {Exit criterion 2 — e.g., "Zero circular dependencies in refactored area"}
+3. {Exit criterion 3 — e.g., "Test coverage ≥ 80% on all refactored modules"}
+4. All safety gates below are passed
+
+---
+
+## Target: {target_name}
+
+### Stage 0 — Pre-flight
+
+- [ ] All existing tests pass (baseline green)
+- [ ] Baseline metrics recorded
+- [ ] Migration map reviewed and confirmed
+- [ ] No unresolved architectural decisions for this target
+
+Safety gate:
+- [ ] CI green
+- [ ] Metrics snapshot saved to refactoring log
+
+### Stage 1 — Characterize
+
+- [ ] Read target code and document all public APIs
+- [ ] List all callers of the target code
+- [ ] Document side effects (DB, API, file I/O)
+- [ ] Document configuration dependencies
+
+Safety gate:
+- [ ] Characterization documented in refactoring log
+- [ ] No code changes made yet
+
+### Stage 2 — Protect
+
+- [ ] Verify characterization test coverage on target
+- [ ] Write missing characterization tests
+- [ ] Run full test suite — green
+
+Safety gate:
+- [ ] Target-specific coverage ≥ {N}%
+- [ ] All tests pass
+
+### Stage 3 — Prepare
+
+- [ ] Create new module files (empty shells / interfaces)
+- [ ] Create new test files for new structure
+- [ ] No code moved yet
+
+Safety gate:
+- [ ] New structure exists alongside old
+- [ ] All tests still pass (no code moved)
+
+### Stage 4 — Migrate
+
+- [ ] Move code to new location per migration map
+- [ ] Add re-exports in old location (strangler fig)
+- [ ] Update imports in moved code
+
+Safety gate:
+- [ ] Code exists in new location
+- [ ] Old location delegates to new
+- [ ] All tests pass
+
+### Stage 5 — Redirect
+
+- [ ] Update caller 1 to use new location → tests pass
+- [ ] Update caller 2 to use new location → tests pass
+- [ ] Update caller N to use new location → tests pass
+- [ ] Zero-callers verification completed:
+  - [ ] `grep -rn "from {old} import" {source_root}/` → empty
+  - [ ] `grep -rn "import {old}" {source_root}/` → empty
+  - [ ] `grep -rn "{old}" tests/` → empty
+  - [ ] `grep -rn "{old}" scripts/ *.ini *.cfg *.toml *.yaml` → empty
+  - [ ] `grep -rn "{old}" .github/ Dockerfile docker-compose.yml` → empty
+
+Safety gate:
+- [ ] All callers use new location
+- [ ] All tests pass
+
+### Stage 6 — Verify
+
+- [ ] Full test suite passes
+- [ ] Coverage ≥ baseline
+- [ ] No new lint or type errors
+- [ ] Key user flows smoke-tested
+
+Safety gate:
+- [ ] Validation report produced (before/after metrics)
+
+### Stage 7 — Clean Up
+
+- [ ] Delete old code / pass-through shims
+- [ ] Remove dead imports
+- [ ] Remove any temporary scaffolding
+
+Safety gate:
+- [ ] Old code deleted
+- [ ] All tests pass
+- [ ] No dead imports remain
+
+### Stage 8 — Document
+
+- [ ] Migration map entry marked complete
+- [ ] Architecture docs updated
+- [ ] Module descriptions updated
+- [ ] AGENTS.md current state updated
+
+Safety gate:
+- [ ] No doc references old structure
+
+### Stage 9 — Measure
+
+- [ ] Record after-metrics in refactoring log
+- [ ] Compare to baseline: improvement confirmed
+
+Safety gate:
+- [ ] Metrics show improvement on target dimensions
+
+### Stage 10 — Sign-off
+
+- [ ] All stages passed
+- [ ] PR merged to main
+- [ ] Refactoring log entry complete
+
+Safety gate:
+- [ ] Target complete, logged, and merged
+
+---
+
+## Target: {next_target_name}
+
+{Repeat stages 0–10 for each target in this phase}

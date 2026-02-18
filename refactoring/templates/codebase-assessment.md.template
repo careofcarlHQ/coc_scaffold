@@ -1,0 +1,134 @@
+# Codebase Assessment — {PROJECT_NAME}
+
+Date: {date}
+Assessed by: {human / agent}
+Scope: {what was assessed — e.g., "app/ directory, ~15,000 lines of Python"}
+
+## Verdict
+
+{One-paragraph assessment: overall code health, severity of structural issues, recommended scope of refactoring.}
+
+---
+
+## Complexity Metrics
+
+### File-level
+
+| File | Lines | Max Function | Avg Complexity | Issues |
+|------|-------|-------------|----------------|--------|
+| {file} | {n} | {n} lines | {n} | {description} |
+
+Files over 300 lines: {count}
+Files over 500 lines: {count}
+
+### Function-level
+
+| File | Function | Lines | Complexity | Note |
+|------|----------|-------|-----------|------|
+| {file} | {function} | {n} | {n} | {note} |
+
+Functions over 50 lines: {count}
+Functions with CC > 10: {count}
+
+### Duplication
+
+Estimated duplication: {n}%
+
+| Duplicate block | Locations | Lines |
+|----------------|-----------|-------|
+| {description} | {file1}, {file2}, ... | {n} |
+
+---
+
+## Dependency Analysis
+
+### Circular dependencies
+
+| Cycle | Modules involved |
+|-------|-----------------|
+| {n} | {module_a} ↔ {module_b} |
+
+### High-coupling modules (imported by > 10 others)
+
+| Module | Importer count |
+|--------|---------------|
+| {module} | {n} |
+
+### High-fan-out modules (imports > 5 internal modules)
+
+| Module | Import count |
+|--------|-------------|
+| {module} | {n} |
+
+### Layering violations
+
+| Violation | From (layer) | To (layer) |
+|-----------|-------------|-----------|
+| {description} | {lower_layer} imports {higher_layer} | {details} |
+
+---
+
+## Change Hotspots (last 6 months)
+
+| Rank | File | Changes | Complexity | Churn × Complexity |
+|------|------|---------|-----------|-------------------|
+| 1 | {file} | {n} | {n} | {score} |
+| 2 | {file} | {n} | {n} | {score} |
+| 3 | {file} | {n} | {n} | {score} |
+
+---
+
+## Test Coverage
+
+Overall coverage: {n}%
+Test suite runtime: {n} seconds
+
+### Per-module coverage
+
+| Module | Coverage | Test count | Note |
+|--------|----------|-----------|------|
+| {module} | {n}% | {n} | {note} |
+
+Modules below 50%: {count}
+Modules at 0%: {count}
+
+---
+
+## Code Smells
+
+- [ ] Long parameter lists: {count found}
+- [ ] God modules (> 5 responsibilities): {count found}
+- [ ] Dead code: {count found}
+- [ ] Magic numbers/strings: {severity}
+- [ ] Primitive obsession: {severity}
+- [ ] Feature envy: {severity}
+
+---
+
+## Health Scorecard
+
+| Dimension | Score (1–5) | Notes |
+|-----------|-------------|-------|
+| Complexity | {n} | {notes} |
+| Coupling | {n} | {notes} |
+| Coverage | {n} | {notes} |
+| Duplication | {n} | {notes} |
+| Naming | {n} | {notes} |
+| Layering | {n} | {notes} |
+
+## Top Refactoring Targets
+
+| Rank | Target | Problem | Impact | Frequency | Score |
+|------|--------|---------|--------|-----------|-------|
+| 1 | {target} | {problem} | {1-3} | {1-3} | {score} |
+| 2 | {target} | {problem} | {1-3} | {1-3} | {score} |
+| 3 | {target} | {problem} | {1-3} | {1-3} | {score} |
+| 4 | {target} | {problem} | {1-3} | {1-3} | {score} |
+| 5 | {target} | {problem} | {1-3} | {1-3} | {score} |
+
+## Recommendation
+
+Overall code health: {good / acceptable / needs work / critical}
+Recommended scope: {targeted / moderate / broad}
+Estimated phases: {n}
+Prerequisites before refactoring: {list}

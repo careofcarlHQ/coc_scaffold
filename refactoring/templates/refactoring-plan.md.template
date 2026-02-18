@@ -1,0 +1,141 @@
+# Refactoring Plan — {PROJECT_NAME}
+
+Date: {date}
+Based on: `refactor/codebase-assessment.md` ({assessment_date})
+
+## Scope and Motivation
+
+### Problem statement
+{What structural problem are we solving? Why now?}
+
+### Target state
+{What does "better" look like, concretely and measurably?}
+
+### Out of scope
+- {What we're NOT changing}
+- {Behavior changes — those are feature work}
+- {Areas below the refactoring threshold}
+
+### Expected benefit
+- {Faster development in X area because...}
+- {Fewer bugs because...}
+- {Easier onboarding because...}
+
+---
+
+## Phases Overview
+
+| Phase | Focus | Targets | Estimated effort | Status |
+|-------|-------|---------|-----------------|--------|
+| Phase 1 | Safety net — characterization tests | {targets} | {n} days | not-started |
+| Phase 2 | Core restructuring | {targets} | {n} days | not-started |
+| Phase 3 | Secondary cleanup (optional) | {targets} | {n} days | not-started |
+
+---
+
+## Phase 1 — Safety Net
+
+### Goal
+Build test coverage to make Phase 2 safe.
+
+### Targets requiring tests
+
+| Target | Current coverage | Required coverage | Tests to write |
+|--------|-----------------|-------------------|---------------|
+| {module} | {n}% | 80% | {description} |
+
+### Stopping criteria
+- [ ] Coverage on all Phase 2 targets ≥ 80%
+- [ ] Test suite has 3 consecutive green runs (no flakes)
+- [ ] Baseline metrics recorded
+
+---
+
+## Phase 2 — Core Restructuring
+
+### Targets (in dependency order)
+
+#### Target 1: {name}
+
+**Problem**: {what's wrong, with metrics}
+**Pattern**: {named refactoring pattern}
+**Migration map**: see `refactor/migration-map.md` → Target 1
+
+Stopping criteria:
+- [ ] {specific metric target}
+- [ ] {specific structural goal}
+
+#### Target 2: {name}
+
+**Problem**: {what's wrong, with metrics}
+**Pattern**: {named refactoring pattern}
+**Migration map**: see `refactor/migration-map.md` → Target 2
+
+Stopping criteria:
+- [ ] {specific metric target}
+- [ ] {specific structural goal}
+
+#### Target 3: {name}
+
+**Problem**: {what's wrong, with metrics}
+**Pattern**: {named refactoring pattern}
+**Migration map**: see `refactor/migration-map.md` → Target 3
+
+Stopping criteria:
+- [ ] {specific metric target}
+- [ ] {specific structural goal}
+
+### Phase 2 exit criteria
+- [ ] All target-level stopping criteria met
+- [ ] All tests pass
+- [ ] Coverage ≥ baseline
+- [ ] Complexity decreased on all targets
+- [ ] Zero new circular dependencies
+
+---
+
+## Phase 3 — Secondary Cleanup (optional)
+
+Proceed only if Phase 2 completed within budget and team agrees.
+
+### Potential targets
+
+| Target | Priority | Pattern | Effort |
+|--------|----------|---------|--------|
+| {target} | P2 | {pattern} | {estimate} |
+
+### Decision gate
+Re-evaluate after Phase 2: ship, continue, or revisit later?
+
+---
+
+## Dependency Order
+
+```
+{Phase 1 targets} → {Phase 2, Target 1} → {Phase 2, Target 2} → ...
+```
+
+Rationale: {why this order}
+
+---
+
+## Risk Register
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+| {risk} | Low/Medium/High | Low/Medium/High | {mitigation} |
+
+---
+
+## Rollback Strategy
+
+| Target | Rollback trigger | Rollback method |
+|--------|-----------------|-----------------|
+| {target} | {when to rollback} | `git revert {commit/PR}` |
+
+---
+
+## Open Questions
+
+- [ ] {question needing human decision}
+- [ ] {question needing investigation}

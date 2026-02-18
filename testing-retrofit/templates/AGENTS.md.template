@@ -1,0 +1,38 @@
+# AGENTS.md — Testing Retrofit: {Module/Phase}
+
+## What we're testing
+{One sentence: what module or phase this session covers.}
+
+## Current phase
+Phase {N} — {Characterization / Unit Tests / Integration Tests / CI Gates}
+
+## Read these files (in order)
+1. `AGENTS.md` (project-level rules)
+2. `testing/coverage-baseline.md` (where we started)
+3. `testing/risk-priority-map.md` (what matters most)
+4. `testing/test-pattern-catalog.md` (how to write tests here)
+5. `tests/conftest.py` (available fixtures)
+
+## Scope for this session
+Test these modules:
+- `{module_path_1}` — {what to focus on}
+- `{module_path_2}` — {what to focus on}
+
+Do NOT test:
+- {modules out of scope}
+- {types of tests not in current phase}
+
+## Test rules
+- One assertion per test (roughly)
+- Use existing fixtures, don't create data inline
+- Name: `test_{action}_{condition}_{expected_result}`
+- Mark with `@pytest.mark.{unit/integration/characterization}`
+- No test may depend on another test
+- {unit only}: No database, no network, no filesystem
+- {integration only}: Use test database, clean up after
+
+## When done
+1. Run: `pytest tests/{type}/test_{module}.py -v` — all pass
+2. Run: `pytest --cov={module_path}` — coverage ≥ {N}%
+3. Run: `pytest tests/ -v` — full suite, no regressions
+4. Report: tests added, coverage achieved, issues found

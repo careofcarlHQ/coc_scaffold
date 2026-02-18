@@ -12,50 +12,37 @@
 
 ## Quick Start
 
-### 1 — Start database
+Ensure Docker Desktop is running, then:
 
 ```powershell
-docker compose up -d db
+.\start-dev.ps1
 ```
 
-Verify: `docker compose ps` — db should show "running (healthy)".
+The script handles: DB startup, migrations, backend/frontend startup, and reliable restarts.
 
-### 2 — Activate virtual environment
+First time only — install dependencies before running the script:
 
 ```powershell
-{poetry shell / source .venv/bin/activate / uv venv && source .venv/bin/activate}
+{poetry install / pip install -r requirements.txt / uv sync}
+cd {frontend-dir}; npm install; cd ..
 ```
 
-### 3 — Run database migrations
+Verify after startup:
 
 ```powershell
-python -m alembic upgrade head
-```
-
-{Note: If the project uses separate sync/async DB URLs, document which one Alembic uses here.}
-
-### 4 — Start the backend
-
-```powershell
-python -m uvicorn app.main:app --reload --port {PORT}
-```
-
-Verify:
-
-```powershell
-# PowerShell:
 Invoke-RestMethod http://localhost:{PORT}/healthz
-# Bash:
-curl http://localhost:{PORT}/healthz
 ```
 
-### 5 — Start the frontend (if applicable)
+### What the script does
 
-```powershell
-cd {frontend-dir}
-npm install   # first time only
-npm run dev
-```
+1. Stops stale backend process trees (e.g., `uvicorn --reload` parent/child chain)
+2. Kills any process blocking API/frontend ports
+3. Starts Postgres via Docker Compose, waits for healthy
+4. Runs Alembic migrations
+5. Opens backend API in a new terminal window
+6. Opens frontend dev server in a new terminal window (if applicable)
+
+See `start-dev.ps1` in the project root for the full implementation.
 
 ## Shutdown
 
@@ -72,10 +59,7 @@ docker compose down -v
 ## Restart (repeat startup)
 
 ```powershell
-docker compose up -d db
-{activate venv command}
-python -m alembic upgrade head
-python -m uvicorn app.main:app --reload --port {PORT}
+.\start-dev.ps1
 ```
 
 ## Database Reset
@@ -111,5 +95,5 @@ The `.env` file in the project root must contain:
 | DB connection refused | Is Docker running? `docker compose up -d db` |
 | Module not found | Run `{package install command}` inside the project |
 | Alembic fails to connect | Check `SYNC_DATABASE_URL` in `.env` |
-| Port already in use | Kill the old process or choose a different port |
+| Port already in use | Re-run `./start-dev.ps1` (it should clear stale process trees and free ports) |
 | Docker not running | Start Docker Desktop, wait for ready |

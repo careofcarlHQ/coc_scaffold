@@ -1,0 +1,80 @@
+# Incident Report — {Incident ID}
+
+## Status: {Active / Mitigated / Resolved / Closed}
+## Severity: SEV{N}
+## Started: {timestamp}
+## Detected: {timestamp}
+## Mitigated: {timestamp}
+## Resolved: {timestamp}
+
+---
+
+## Summary
+{One paragraph: what's broken, who's affected, current state.}
+
+---
+
+## Symptoms
+- {Symptom 1: what users see}
+- {Symptom 2: what logs show}
+- {Symptom 3: what monitoring shows}
+
+## Scope
+- Users affected: {all / subset / description}
+- Endpoints affected: {list}
+- Services affected: {list}
+- Data impact: {none / at risk / corrupted}
+
+---
+
+## Timeline
+
+| Time | Event |
+|------|-------|
+| {HH:MM} | {First error logged / detected / etc.} |
+| {HH:MM} | {Triage started} |
+| {HH:MM} | {Classified as SEVN} |
+| {HH:MM} | {Mitigation action taken} |
+| {HH:MM} | {Mitigation confirmed / failed} |
+| {HH:MM} | {Root cause identified} |
+| {HH:MM} | {Fix deployed} |
+| {HH:MM} | {Incident resolved} |
+
+---
+
+## Triage
+
+### Recent changes
+| Change type | When | What | Relevant? |
+|------------|------|------|-----------|
+| Deploy | {time} | {description} | {yes/no} |
+| Migration | {time} | {description} | {yes/no} |
+| Config | {time} | {description} | {yes/no} |
+
+### Initial assessment
+- Error message: `{exact error}`
+- First occurrence: {timestamp}
+- Correlates with deploy: {yes/no}
+- Getting worse: {yes/no}
+
+### Response decision: {Rollback / Hotfix / Toggle / Scale / Investigate}
+
+---
+
+## Mitigation
+See mitigation log: `incidents/{incident-id}-mitigation.md`
+
+Result: {Successful — users unblocked / Failed — trying alternative}
+
+---
+
+## Root Cause
+{Description of root cause, filled in during diagnosis phase.}
+
+---
+
+## Fix
+- Fix PR/commit: {link}
+- Regression test: {test name}
+- Deployed: {timestamp}
+- Verified: {yes/no}

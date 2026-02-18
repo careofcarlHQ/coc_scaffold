@@ -1,0 +1,108 @@
+#!/usr/bin/env pwsh
+# Start {PROJECT_NAME} development environment
+# DB (Docker) + migrations + backend API + frontend
+
+$ErrorActionPreference = "Stop"
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$envFile = Join-Path $scriptDir ".env"
+
+function Get-EnvValue {
+    param(
+        [string]$Path,
+        [string]$Key,
+        [string]$DefaultValue = ""
+    )
+
+    if (-not (Test-Path $Path)) { return $DefaultValue }
+    $line = Get-Content $Path | Where-Object { $_ -match "^$Key=" } | Select-Object -First 1
+    if (-not $line) { return $DefaultValue }
+    return ($line -split "=", 2)[1].Trim()
+}
+
+function Stop-ProcessTree {
+    param([int]$RootPid)
+    try {
+        cmd /c "taskkill /PID $RootPid /T /F >nul 2>nul" | Out-Null
+    } catch {
+        Stop-Process -Id $RootPid -Force -ErrorAction SilentlyContinue
+    }
+}
+
+# --- Configure these for your project ---
+$apiPort = 8000           # Backend API port
+$frontendPort = 5173      # Frontend dev server port (set to 0 if no frontend)
+$dbContainerName = "{project}-db-1"  # Docker Compose container name
+$frontendDir = "admin-ui" # Set to $null if no frontend
+# -----------------------------------------
+
+# Resolve Python from Poetry venv
+$venv = & poetry env info --path 2>$null
+$python = Join-Path $venv "Scripts\python.exe"
+
+if (-not (Test-Path $python)) {
+    Write-Host "Poetry venv not found. Run 'poetry install' first." -ForegroundColor Red
+    exit 1
+}
+
+# 1. Kill existing instances
+$uvicornProcs = Get-CimInstance Win32_Process |
+    Where-Object {
+        $_.CommandLine -and
+        $_.CommandLine -match "uvicorn app\.main:app" -and
+        $_.CommandLine -match "--port $apiPort"
+    }
+
+foreach ($proc in $uvicornProcs) {
+    Write-Host "Stopping uvicorn process tree PID $($proc.ProcessId)..." -ForegroundColor Yellow
+    Stop-ProcessTree -RootPid $proc.ProcessId
+}
+
+$portsToFree = @($apiPort)
+if ($frontendPort -gt 0) { $portsToFree += $frontendPort }
+foreach ($port in $portsToFree) {
+    $conn = Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue
+    if ($conn) {
+        $procId = ($conn | Select-Object -First 1).OwningProcess
+        Write-Host "Port $port in use by PID $procId - killing..." -ForegroundColor Yellow
+        Stop-ProcessTree -RootPid $procId
+    }
+}
+Start-Sleep -Seconds 1
+
+# 2. Database
+Write-Host "Starting database..." -ForegroundColor Cyan
+docker compose up -d db
+$timeout = 30
+for ($i = 0; $i -lt $timeout; $i++) {
+    $health = (docker inspect --format='{{.State.Health.Status}}' $dbContainerName 2>$null)
+    if ($health -eq "healthy") { break }
+    Start-Sleep -Seconds 1
+}
+if ($health -ne "healthy") {
+    Write-Host "DB did not become healthy in ${timeout}s" -ForegroundColor Red
+    exit 1
+}
+Write-Host "DB healthy." -ForegroundColor Green
+
+# 2. Migrations
+Write-Host "Running migrations..." -ForegroundColor Cyan
+& $python -m alembic upgrade head
+Write-Host "Migrations done." -ForegroundColor Green
+
+# 4. Backend API
+Write-Host "Starting API on port $apiPort..." -ForegroundColor Cyan
+$openaiModelDefault = Get-EnvValue -Path $envFile -Key "OPENAI_MODEL_DEFAULT" -DefaultValue "gpt-5.2"
+$openaiModelReanalysis = Get-EnvValue -Path $envFile -Key "OPENAI_MODEL_REANALYSIS" -DefaultValue $openaiModelDefault
+$apiCommand = "`$env:OPENAI_MODEL_DEFAULT='$openaiModelDefault'; `$env:OPENAI_MODEL_REANALYSIS='$openaiModelReanalysis'; cd '$scriptDir'; & '$python' -m uvicorn app.main:app --reload --port $apiPort"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", $apiCommand -WindowStyle Normal
+Start-Sleep -Seconds 3
+
+# 5. Frontend (if applicable)
+if ($frontendDir) {
+    Write-Host "Starting frontend..." -ForegroundColor Cyan
+    Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$scriptDir\$frontendDir'; npm run dev" -WindowStyle Normal
+}
+
+Write-Host ""
+Write-Host "All services starting." -ForegroundColor Green
+Write-Host "Ctrl+C in each window to stop. 'docker compose stop db' to stop DB." -ForegroundColor Gray

@@ -1,0 +1,68 @@
+# Current State Snapshot — {Project Name}
+
+## Date: {date}
+## Captured by: {who}
+
+---
+
+## Language & Runtime
+- Language: {e.g., Python}
+- Version: {e.g., 3.11.7}
+- Runtime: {e.g., CPython}
+- Package manager: {e.g., Poetry 1.7.1}
+
+## Framework & Key Dependencies
+| Package | Version | Role |
+|---------|---------|------|
+| {framework} | {version} | Web framework |
+| {ORM} | {version} | Data layer |
+| {other} | {version} | {role} |
+
+Full dependency list: `migration/baseline-requirements.txt`
+
+## Database
+- Engine: {e.g., PostgreSQL 16.1}
+- Hosting: {e.g., Render managed database}
+- Tables: {count}
+- Data size: {GB}
+- Migration tool: {e.g., Alembic}
+- Current migration head: {revision}
+- Migration count: {N}
+- Backup strategy: {description}
+
+## Infrastructure
+- Platform: {e.g., Render}
+- Service type: {web service / worker / cron / static}
+- Region: {region}
+- Plan: {plan name}
+- Custom domain: {yes/no}
+- SSL: {auto/custom}
+
+## Configuration
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| {VAR_NAME} | {yes/no} | {description} |
+
+## External Integrations
+| Service | Type | API version | Auth |
+|---------|------|-------------|------|
+| {service} | {REST/webhook/SDK} | {version} | {method} |
+
+## Consumers
+| Consumer | Protocol | Notes |
+|----------|----------|-------|
+| {client} | {REST/webhook} | {constraints} |
+
+## Test Baseline
+- Test count: {N}
+- Results: {passed} passed, {failed} failed, {skipped} skipped
+- Coverage: {N}%
+- Build time: {seconds}
+- CI/CD: {tool}
+
+## Performance Baseline
+| Metric | Value |
+|--------|-------|
+| Avg response time | {ms} |
+| P99 response time | {ms} |
+| Memory usage | {MB} |

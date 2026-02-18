@@ -1,0 +1,70 @@
+# Compatibility Gap Map — {Migration Name}
+
+## Date: {date}
+
+---
+
+## Summary
+| Category | Gaps found | Low risk | Medium risk | High risk |
+|----------|-----------|----------|-------------|-----------|
+| Dependencies | {N} | {N} | {N} | {N} |
+| Code | {N} | {N} | {N} | {N} |
+| Database | {N} | {N} | {N} | {N} |
+| Configuration | {N} | {N} | {N} | {N} |
+| Infrastructure | {N} | {N} | {N} | {N} |
+| Consumers | {N} | {N} | {N} | {N} |
+| **Total** | **{N}** | **{N}** | **{N}** | **{N}** |
+
+---
+
+## Dependencies
+
+| Gap | Description | Files affected | Risk | Effort | Depends on | Stage |
+|-----|-------------|---------------|------|--------|------------|-------|
+| D1 | {description} | {files} | {low/med/high} | {hours} | {none/other gap} | {N} |
+| D2 | {description} | {files} | {risk} | {hours} | {dependency} | {N} |
+
+## Code
+
+| Gap | Description | Files affected | Risk | Effort | Depends on | Stage |
+|-----|-------------|---------------|------|--------|------------|-------|
+| C1 | {description} | {files} | {risk} | {hours} | {dependency} | {N} |
+
+## Database
+
+| Gap | Description | Tables affected | Risk | Effort | Depends on | Stage |
+|-----|-------------|----------------|------|--------|------------|-------|
+| DB1 | {description} | {tables} | {risk} | {hours} | {dependency} | {N} |
+
+## Configuration
+
+| Gap | Description | Variables | Risk | Effort | Depends on | Stage |
+|-----|-------------|----------|------|--------|------------|-------|
+| CF1 | {description} | {vars} | {risk} | {hours} | {dependency} | {N} |
+
+## Infrastructure
+
+| Gap | Description | Components | Risk | Effort | Depends on | Stage |
+|-----|-------------|-----------|------|--------|------------|-------|
+| I1 | {description} | {components} | {risk} | {hours} | {dependency} | {N} |
+
+## Consumers
+
+| Gap | Description | Consumers affected | Risk | Effort | Depends on | Stage |
+|-----|-------------|-------------------|------|--------|------------|-------|
+| X1 | {description} | {consumers} | {risk} | {hours} | {dependency} | {N} |
+
+---
+
+## Dependency Graph
+
+```
+{Gap A} → {Gap B} → {Gap D}
+                  → {Gap E}
+{Gap C} → {Gap D}
+```
+
+## Unassigned Gaps
+| Gap | Reason |
+|-----|--------|
+| {none or list gaps without a stage assignment and why} |

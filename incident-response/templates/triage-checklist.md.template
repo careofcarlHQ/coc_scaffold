@@ -1,0 +1,63 @@
+# Triage Checklist — {Incident ID}
+
+## Time: {timestamp}
+
+---
+
+## Quick Assessment (complete in < 10 minutes)
+
+### What's broken?
+- [ ] Identified affected endpoint(s): {list}
+- [ ] Error message captured: `{error}`
+- [ ] Error location identified: {file:line or "unknown"}
+
+### How many users affected?
+- [ ] All users
+- [ ] Significant portion ({estimate}%)
+- [ ] Small subset ({description})
+- [ ] Edge case ({specific condition})
+
+### What changed recently?
+- [ ] Code deployed in last 24h: {yes — when / no}
+- [ ] Database migration ran: {yes — when / no}
+- [ ] Config changed: {yes — what / no}
+- [ ] Dependency updated: {yes — what / no}
+- [ ] Infrastructure change: {yes — what / no}
+- [ ] Nothing obvious
+
+### Is it getting worse?
+- [ ] Error rate increasing
+- [ ] Error rate stable
+- [ ] Error rate decreasing
+- [ ] Data being corrupted → **STOP WRITES NOW**
+
+---
+
+## Severity Classification
+
+- [ ] **SEV1** — Service down or core broken for ALL users
+- [ ] **SEV2** — Core functionality degraded for significant users
+- [ ] **SEV3** — Non-core broken, or core broken for small subset
+- [ ] **SEV4** — Cosmetic / minor / easy workaround
+
+## Scope
+
+| Dimension | Assessment |
+|-----------|-----------|
+| Services | {affected} |
+| Endpoints | {affected} |
+| Users | {scope} |
+| Data | {at risk?} |
+| Revenue | {impact?} |
+
+## Response Decision
+
+- [ ] **Rollback** — recent deploy correlates
+- [ ] **Toggle flag** — feature flagged
+- [ ] **Restart** — service in bad state
+- [ ] **Scale up** — overloaded
+- [ ] **Hotfix** — clear problem, clear fix
+- [ ] **Investigate** — cause unclear, mitigate generically
+
+## Assigned severity: SEV{N}
+## Chosen response: {action}

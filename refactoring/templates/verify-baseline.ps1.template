@@ -1,0 +1,93 @@
+#!/usr/bin/env pwsh
+# verify-baseline.ps1 — Run the full validation suite and confirm stability.
+#
+# Usage:
+#   ./refactor/verify-baseline.ps1              # Run once (quick check)
+#   ./refactor/verify-baseline.ps1 -Stability   # Run 3 times to detect flaky tests
+#
+# This script is the single source of truth for "is the baseline green?"
+# Run it before starting any refactoring session.
+
+param(
+    [switch]$Stability,      # Run 3 consecutive times to detect flaky tests
+    [string]$SourceRoot = "{source_root}",
+    [string]$OutputDir  = "refactor"
+)
+
+$ErrorActionPreference = "Stop"
+$timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+
+function Write-Status($icon, $msg) { Write-Host "$icon $msg" }
+
+# --- Test suite ---
+Write-Status "🧪" "Running test suite..."
+$testResult = & pytest $SourceRoot --tb=short -q 2>&1
+$testExitCode = $LASTEXITCODE
+if ($testExitCode -ne 0) {
+    Write-Status "❌" "Tests FAILED. Baseline is NOT green."
+    Write-Output $testResult
+    exit 1
+}
+Write-Status "✅" "Tests passed."
+
+# --- Coverage ---
+Write-Status "📊" "Running coverage..."
+$covResult = & pytest $SourceRoot --cov=$SourceRoot --cov-report=term-missing -q 2>&1
+Write-Output $covResult | Out-File "$OutputDir/baseline-coverage-$timestamp.txt"
+Write-Status "✅" "Coverage report saved."
+
+# --- Lint ---
+Write-Status "🔍" "Running linter..."
+$lintResult = & {lint_command} 2>&1
+$lintExit = $LASTEXITCODE
+if ($lintExit -ne 0) {
+    Write-Status "⚠️" "Lint issues found (non-blocking for baseline, but fix before refactoring)."
+}
+else {
+    Write-Status "✅" "Lint clean."
+}
+
+# --- Type check ---
+Write-Status "🏷️" "Running type checker..."
+$typeResult = & {typecheck_command} 2>&1
+$typeExit = $LASTEXITCODE
+if ($typeExit -ne 0) {
+    Write-Status "⚠️" "Type errors found (non-blocking for baseline, but note them)."
+}
+else {
+    Write-Status "✅" "Type check clean."
+}
+
+# --- Stability check (3 consecutive runs) ---
+if ($Stability) {
+    Write-Status "🔁" "Stability check: running tests 3 consecutive times..."
+    $allPassed = $true
+    for ($i = 1; $i -le 3; $i++) {
+        Write-Status "🧪" "  Run $i/3..."
+        & pytest $SourceRoot --tb=short -q 2>&1 | Out-Null
+        if ($LASTEXITCODE -ne 0) {
+            Write-Status "❌" "  Run $i FAILED — flaky test detected."
+            $allPassed = $false
+            break
+        }
+        Write-Status "✅" "  Run $i passed."
+    }
+    if ($allPassed) {
+        Write-Status "✅" "Stability check passed (3/3 green)."
+    }
+    else {
+        Write-Status "❌" "Stability check FAILED. Fix flaky tests before refactoring."
+        exit 1
+    }
+}
+
+# --- Summary ---
+Write-Host ""
+Write-Host "========================================="
+Write-Host " BASELINE VERIFICATION COMPLETE"
+Write-Host " Timestamp: $timestamp"
+Write-Host " Tests: PASS"
+Write-Host " Lint: $(if ($lintExit -eq 0) {'PASS'} else {'WARN'})"
+Write-Host " Types: $(if ($typeExit -eq 0) {'PASS'} else {'WARN'})"
+if ($Stability) { Write-Host " Stability: PASS (3/3)" }
+Write-Host "========================================="

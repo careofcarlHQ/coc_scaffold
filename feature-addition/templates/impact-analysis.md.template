@@ -1,0 +1,127 @@
+# Impact Analysis — {Feature Name}
+
+## Feature Summary
+{One paragraph: what is being added and why.}
+
+## Database Layer
+
+### New tables
+| Table | Purpose |
+|-------|---------|
+| {table_name} | {description} |
+
+### Modified tables
+| Table | Change | Risk |
+|-------|--------|------|
+| {table_name} | {column added / constraint changed / etc.} | {low/med/high} |
+
+### Queried tables (unchanged)
+| Table | Query pattern | Performance risk |
+|-------|---------------|-----------------|
+| {table_name} | {new query type} | {low/med/high} |
+
+### Migration safety
+- [ ] Can run without downtime
+- [ ] Is reversible
+- [ ] Handles existing data correctly
+
+## Service Layer
+
+### New functions
+| Module | Function | Purpose |
+|--------|----------|---------|
+| {module} | {function_name} | {description} |
+
+### Modified functions
+| Module | Function | Change | Callers affected |
+|--------|----------|--------|-----------------|
+| {module} | {function_name} | {description} | {list callers} |
+
+### External dependencies
+| Service | Interaction | Failure mode |
+|---------|-------------|-------------|
+| {service} | {API call / webhook / etc.} | {timeout / retry / etc.} |
+
+## API Layer
+
+### New endpoints
+| Method | Path | Auth | Purpose |
+|--------|------|------|---------|
+| {GET/POST/...} | {/api/v1/...} | {required/optional} | {description} |
+
+### Modified endpoints
+| Method | Path | Change | Backward compatible? |
+|--------|------|--------|---------------------|
+| {method} | {path} | {description} | {yes/no — if no, migration plan?} |
+
+### Unchanged endpoints at risk
+| Endpoint | Risk | Reason |
+|----------|------|--------|
+| {endpoint} | {low/med/high} | {why it might be affected} |
+
+## UI Layer
+
+### New pages/components
+| Component | Purpose |
+|-----------|---------|
+| {component} | {description} |
+
+### Modified pages/components
+| Component | Change |
+|-----------|--------|
+| {component} | {description} |
+
+## Background Jobs
+
+### New jobs
+| Job | Trigger | Purpose |
+|-----|---------|---------|
+| {job_name} | {cron / event / manual} | {description} |
+
+### Modified jobs
+| Job | Change |
+|-----|--------|
+| {job_name} | {description} |
+
+## Tests
+
+### Existing tests covering affected code
+| Test file | Tests | Status |
+|-----------|-------|--------|
+| {test_file} | {N tests} | {passing / failing / unknown} |
+
+### New tests needed
+| Layer | Test | Priority |
+|-------|------|----------|
+| {database/service/API/UI} | {test description} | {P0/P1} |
+
+## Configuration
+
+### New environment variables
+| Variable | Required | Default | Purpose |
+|----------|----------|---------|---------|
+| {VAR_NAME} | {yes/no} | {default or N/A} | {description} |
+
+## Impact Summary
+
+- **Database**: {N} new tables, {M} modified tables
+- **Services**: {N} new functions, {M} modified functions
+- **Endpoints**: {N} new endpoints, {M} modified endpoints
+- **UI**: {N} new components, {M} modified components
+- **Jobs**: {N} new jobs, {M} modified jobs
+- **Tests**: {N} existing tests affected, {M} new tests needed
+- **Config**: {N} new env vars
+
+### Risk Assessment
+- **Blast radius**: small / medium / large
+- **Backward compatibility**: preserved / breaking (with migration plan)
+- **Estimated implementation time**: {X hours/days}
+- **Rollback complexity**: simple / moderate / complex
+
+### Red Flags
+- [ ] Modifies more than 5 existing modules
+- [ ] Requires breaking API changes
+- [ ] Modifies shared utility code
+- [ ] Requires large data backfill
+- [ ] Affects auth logic
+- [ ] Low test coverage on affected code (< 50%)

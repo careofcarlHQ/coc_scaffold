@@ -1,0 +1,151 @@
+# Deployment & Infrastructure — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{deployment config files, e.g., render.yaml, docker-compose.yml, Dockerfile}`
+
+## Overview
+
+<!-- One paragraph: where does this system run, how does it get there -->
+
+## Environments
+
+| Environment | Purpose | URL | Notes |
+|-------------|---------|-----|-------|
+| Local | Development | http://localhost:{port} | Docker Compose |
+| Staging | Pre-production testing | | [UNVERIFIED] |
+| Production | Live system | | |
+
+## Infrastructure Components
+
+### Compute
+
+| Service | Platform | Config file | Notes |
+|---------|----------|-------------|-------|
+| Web API | | | |
+| Worker | | | |
+| Cron jobs | | | |
+
+### Data Stores
+
+| Store | Type | Platform | Connection var | Notes |
+|-------|------|----------|---------------|-------|
+| Primary DB | | | `DATABASE_URL` | |
+| Cache/Queue | | | `REDIS_URL` | |
+
+### External Services
+
+| Service | Purpose | Config vars | Notes |
+|---------|---------|-------------|-------|
+| | | | |
+
+## Deployment Process
+
+### How to deploy
+
+<!-- Step-by-step deployment process -->
+
+1. <!-- Step 1 -->
+2. <!-- Step 2 -->
+3. <!-- Step 3 -->
+
+### How to rollback
+
+1. <!-- Step 1 -->
+2. <!-- Step 2 -->
+
+### Deployment triggers
+
+<!-- What triggers a deployment? git push, manual, CI pipeline? -->
+
+- Push to `{branch}` triggers: <!-- ... -->
+- Manual deployment: <!-- ... -->
+
+## Build Process
+
+```bash
+# Build command
+{build_command}
+
+# Start command
+{start_command}
+```
+
+## Database Management
+
+### Run migrations
+```bash
+{migration_command}
+```
+
+### Create a new migration
+```bash
+{create_migration_command}
+```
+
+### Database backup
+<!-- How are backups handled? -->
+
+### Database access
+<!-- How to connect to the database for debugging -->
+```bash
+{db_connection_command}
+```
+
+## Scaling
+
+<!-- How the system scales, if applicable -->
+
+| Component | Scaling model | Current capacity | Notes |
+|-----------|--------------|-----------------|-------|
+| Web | | | |
+| Worker | | | |
+| Database | | | |
+
+## Secret Management
+
+<!-- How secrets are provisioned, rotated, and accessed per environment -->
+
+| Secret | Environments | Source | Rotation |
+|--------|-------------|--------|----------|
+| `DATABASE_URL` | all | <!-- e.g., Render dashboard --> | <!-- e.g., on DB credential rotation --> |
+| `API_KEY` | production | <!-- e.g., Vault, SSM --> | <!-- e.g., quarterly --> |
+
+**Rotation procedure**: <!-- Step-by-step for rotating a secret in production -->
+1. <!-- Step 1 -->
+2. <!-- Step 2 -->
+3. <!-- Redeploy -->
+
+## CI/CD Pipeline
+
+<!-- Describe the full pipeline from commit to production -->
+
+| Stage | Trigger | Tool | Actions | Blocking? |
+|-------|---------|------|---------|-----------|
+| Lint & type-check | PR opened | <!-- e.g., GitHub Actions --> | `{commands}` | Yes |
+| Tests | PR opened | | `{commands}` | Yes |
+| Build | Merge to main | | `{commands}` | Yes |
+| Deploy | Build success | <!-- e.g., Render auto-deploy --> | Auto | — |
+
+<!-- If no CI/CD exists, write: "No CI/CD pipeline configured. Deployment is manual." -->
+
+## Monitoring
+
+- **Metrics**: <!-- Where to find metrics (Prometheus, Grafana, etc.) -->
+- **Logs**: <!-- Where to find logs -->
+- **Alerts**: <!-- What alerting is configured -->
+- **Health check**: <!-- Health check endpoint and expected response -->
+
+## Cost
+
+<!-- If relevant, document the infrastructure cost -->
+
+| Component | Cost | Notes |
+|-----------|------|-------|
+| | | |
+
+## Related Documents (REQUIRED)
+
+- [Architecture Overview](architecture-overview.md) — what gets deployed
+- [Configuration Guide](configuration-guide.md) — env vars for each environment
+- [Operational Runbook](operational-runbook.md) — what to do when deployments fail
+- [Security & Compliance](security-compliance.md) — secret handling and access policies

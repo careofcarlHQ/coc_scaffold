@@ -1,0 +1,81 @@
+# AGENTS.md — {PROJECT_NAME} (Refactoring)
+
+## Mission
+{One-sentence description of the refactoring goal — e.g., "Reduce coupling and complexity in app/services/ to enable safe feature development."}
+
+## Current State
+{One-sentence summary of where the system is NOW — e.g., "Phase 2 in progress, 3 of 6 targets complete."}
+For current metrics, see `refactor/refactoring-log.md` (latest entry) and `refactor/scoreboard.md`.
+Do NOT embed specific numbers here — they go stale. The log is the source of truth.
+
+## Target State
+{Measurable end state — e.g., "Service files ≤ 200 lines, zero circular dependencies, avg complexity < 8, coverage ≥ 80% on refactored modules."}
+
+## Source of Truth (read in this order)
+0. Read agent instructions: this file
+1. `refactor/refactoring-log.md` — **read last 3 entries first for session resumption**
+2. `refactor/refactoring-plan.md`
+3. `refactor/migration-map.md`
+4. `refactor/phase-{N}-checklist.md` (current phase)
+5. `refactor/codebase-assessment.md`
+6. Existing architecture and API docs
+
+## Resumption Protocol (New Session / New Agent)
+If you are starting fresh or picking up from a previous session:
+1. Read `refactor/refactoring-log.md` — last 3 entries tell you what was done and what's next
+2. Read the "Current Phase" section below to confirm the active target and stage
+3. Run `pytest -x` to verify CI is green before making any changes
+4. Check git log for the last refactoring commit to confirm the log matches reality
+5. **Do not re-read or re-assess code that was already characterized** — trust the log
+
+## Non-Negotiable Constraints
+- **Never change behavior** — refactoring changes structure, not functionality
+- **Tests must pass** — if tests fail and you can't explain why within one change, revert
+- **One pattern per PR** — each PR applies exactly one named refactoring pattern
+- **No mixed changes** — never combine refactoring with features, bugfixes, or config changes
+- **Coverage must not decrease** — if coverage drops, add tests before proceeding
+- **Log all discovered bugs** — if you find a bug during refactoring, log it; don't fix it
+- **Follow the migration map** — don't make ad-hoc structural decisions
+
+## Current Phase
+
+### Phase {N} — {description}
+Implement in checklist order:
+- Follow stages in `refactor/phase-{N}-checklist.md`
+- Do not skip safety gates
+- Log progress in `refactor/refactoring-log.md`
+
+Current target: {module/file being refactored}
+Current stage: {N} — {stage name}
+
+## Required Deliverables Per Stage
+- Updated code (one named pattern applied)
+- Tests passing (zero new failures)
+- Validation report (before/after metrics)
+- Migration map entry marked complete
+- Refactoring log entry
+- Any discovered bugs logged (not fixed)
+
+## Refactoring Rules
+- Keep changes minimal — one refactoring pattern per PR
+- Run `pytest -x` after every code change
+- Run `{linter} && {type_checker}` before committing
+- Use strangler fig: keep old code as pass-through until all callers redirect
+- Delete old code only when zero callers remain
+
+## Safety
+- Halt and revert if tests fail unexpectedly
+- Halt and escalate if behavior change is needed (log as separate task)
+- Halt and ask if migration map entry is ambiguous
+- Never delete code that still has callers
+- {Add project-specific safety rules}
+
+## Done Criteria
+
+### Phase {N}
+Phase {N} is done only when:
+1. All targets in the phase pass their quality gates
+2. All migration map entries are satisfied
+3. Before/after metrics show improvement
+4. Documentation updated to reflect new structure
+5. No pending rollbacks or unresolved issues

@@ -1,0 +1,66 @@
+# Coverage Report — {Project Name}
+
+## Report date: {date}
+## Report period: {start date} — {end date}
+
+---
+
+## Coverage Summary
+
+| Metric | Start of period | End of period | Delta |
+|--------|----------------|--------------|-------|
+| Overall coverage | {N}% | {N}% | +{N}% |
+| Total tests | {N} | {N} | +{N} |
+| Coverage floor | {N}% | {N}% | +{N}% |
+
+---
+
+## Coverage by Module
+
+| Module | Previous | Current | Delta | Target | Tests |
+|--------|----------|---------|-------|--------|-------|
+| {module 1} | {N}% | {N}% | +{N}% | {N}% | {N} |
+| {module 2} | {N}% | {N}% | +{N}% | {N}% | {N} |
+
+## Modules Still Below Target
+
+| Module | Current | Target | Gap | Priority |
+|--------|---------|--------|-----|----------|
+| {module} | {N}% | {N}% | {N}% | {high/med/low} |
+
+## New Tests This Period
+
+| Date | Module | Tests added | Type | Coverage impact |
+|------|--------|-----------|------|----------------|
+| {date} | {module} | {N} | {unit/int} | +{N}% |
+
+---
+
+## Test Health
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| Pass rate | {N}% | {ok / warning / critical} |
+| Flaky tests | {N} | {ok / warning} |
+| Skipped tests | {N} | {ok / warning} |
+| Suite duration | {N}s | {ok / warning} |
+
+---
+
+## Trend
+
+```
+Coverage over time:
+{date 1}: ████████░░░░░░░░░░░░  {N}%
+{date 2}: ██████████░░░░░░░░░░  {N}%
+{date 3}: ████████████░░░░░░░░  {N}%
+{date 4}: ██████████████░░░░░░  {N}%
+```
+
+---
+
+## Next Actions
+
+1. {Next priority module to test}
+2. {Fix flaky tests if any}
+3. {Ratchet coverage floor if eligible}

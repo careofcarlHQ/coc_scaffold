@@ -1,0 +1,174 @@
+# Decision Log — {Project Name}
+
+> **Repo**: `{org}/{repo}`
+> **Generated**: {date}
+> **Verified**: ☐ Not yet verified
+>
+> This log captures **discovered** architectural and design decisions found in an
+> existing codebase. Unlike forward-looking ADRs (Architecture Decision Records),
+> these entries are reconstructed from code evidence, commit history, and team
+> knowledge. Each entry answers: *"Why is it done this way?"*
+
+---
+
+## How to Use This Log
+
+1. **When you discover a non-obvious design choice** — add an entry.
+2. **Status values**: `discovered` → `confirmed` (validated with author/team) → `superseded` (replaced by a newer decision).
+3. **Evidence is required** — every entry must cite code, commits, or conversations.
+4. **Number sequentially** — `DEC-001`, `DEC-002`, etc.
+
+---
+
+## Decision Index
+
+| ID       | Title                                    | Status      | Area          | Date discovered |
+| -------- | ---------------------------------------- | ----------- | ------------- | --------------- |
+| DEC-001  | {Short decision title}                   | {status}    | {area}        | {date}          |
+| DEC-002  | {Short decision title}                   | {status}    | {area}        | {date}          |
+
+---
+
+## DEC-001: {Decision Title}
+
+| Field              | Value                                            |
+| ------------------ | ------------------------------------------------ |
+| **Status**         | `discovered` · `confirmed` · `superseded`        |
+| **Area**           | {e.g., Architecture, Data Model, API, Deployment, Security} |
+| **Date discovered**| {YYYY-MM-DD}                                     |
+| **Discovered by**  | {person or agent}                                 |
+| **Original author**| {if known, else "unknown"}                       |
+
+### Context
+
+{What problem or constraint led to this decision? Describe what you observe in the
+code and what situation it seems to address.}
+
+### Decision
+
+{What was decided. Be specific and concrete.}
+
+### Evidence
+
+| Source                        | Detail                                         |
+| ----------------------------- | ---------------------------------------------- |
+| Code                          | `{file}:{line}` — {what it shows}              |
+| Commit                        | `{sha}` — {commit message / what changed}      |
+| Comment / docstring           | `{file}:{line}` — {quote}                      |
+| Config                        | `{file}` — {relevant setting}                  |
+| Conversation                  | {who said what, when}                           |
+
+### Alternatives Considered  👤 [ASK]
+
+<!-- If no alternatives found in git history, comments, or code:
+     Write: "No alternatives found in code or comments. [ASK original author]" -->
+
+| Alternative              | Why rejected (if known)                         |
+| ------------------------ | ----------------------------------------------- |
+| {Alternative A}          | {reason}                                        |
+| {Alternative B}          | {reason or "[ASK]"}                              |
+
+### Consequences
+
+**Positive:**
+- {benefit 1}
+- {benefit 2}
+
+**Negative / trade-offs:**
+- {trade-off 1}
+- {trade-off 2}
+
+**Constraints this creates:**
+- {constraint — things that must remain true because of this decision}
+
+### Open Questions  👤 [ASK]
+
+- [ ] {Any unresolved question about this decision}
+- [ ] {Was this intentional or accidental?}
+- [ ] <!-- Always include at least 1 open question. If truly none, write:
+           "No open questions — decision is well-documented and confirmed." -->
+
+---
+
+## DEC-002: {Decision Title}
+
+{Copy the DEC-001 structure above for each additional decision.}
+
+---
+
+## Discovery Patterns
+
+> Use these patterns to find decisions worth documenting.
+
+### Code patterns that signal decisions
+
+```bash
+# "Why" comments — someone explaining a choice
+grep -rn "# why\|# reason\|# because\|# note:\|# hack\|# workaround\|# todo" app/ --include="*.py"
+
+# Disabled or commented-out code — something was tried and abandoned
+grep -rn "# DISABLED\|# OFF\|# was:\|# old:" app/ --include="*.py"
+
+# Explicit version pins — someone chose a specific version for a reason
+grep -E "==|~=" pyproject.toml requirements.txt 2>/dev/null
+
+# Feature flags or toggles
+grep -rn "FEATURE_\|ENABLE_\|USE_\|DISABLE_\|FF_" app/ --include="*.py"
+
+# Custom exceptions — someone modelled specific error cases
+grep -rn "class.*Exception\|class.*Error" app/ --include="*.py"
+
+# Retry / circuit-breaker patterns — resilience decisions
+grep -rn "retry\|backoff\|circuit\|fallback\|timeout" app/ --include="*.py"
+
+# Database choices — why certain indexes, constraints, or column types
+grep -rn "Index(\|UniqueConstraint\|CheckConstraint" app/ --include="*.py"
+```
+
+### Git archaeology
+
+```bash
+# Large commits that changed architecture
+git log --oneline --shortstat | awk '/files? changed/ {if ($1+0 > 20) print prev" "$0} {prev=$0}'
+
+# Commits mentioning "refactor", "migrate", "switch", "replace"
+git log --oneline --grep="refactor\|migrate\|switch\|replace\|rewrite" -20
+
+# File rename history — reveals structural decisions
+git log --oneline --diff-filter=R --summary | head -40
+
+# Who introduced key files
+git log --oneline --diff-filter=A -- "app/core/*" "app/dispatch/*"
+
+# When dependencies were added
+git log --oneline -p -- pyproject.toml | grep "^+.*=" | head -20
+```
+
+---
+
+## Common Decision Categories
+
+Use these as prompts when auditing a codebase:
+
+| Category             | Questions to ask                                              |
+| -------------------- | ------------------------------------------------------------- |
+| **Language/Runtime**  | Why this language? Why this Python/Node version?              |
+| **Framework**         | Why FastAPI over Django/Flask? Why React over Vue?            |
+| **Database**          | Why Postgres? Why this schema design? Why these indexes?      |
+| **Caching**           | Why Redis? What invalidation strategy?                        |
+| **Auth**              | Why this auth method? Why these permission boundaries?        |
+| **API design**        | Why REST over GraphQL? Why this versioning strategy?          |
+| **Async patterns**    | Why async? Why this task queue? Why this job scheduler?       |
+| **Deployment**        | Why this host? Why this container strategy? Why these limits? |
+| **Monitoring**        | Why these metrics? Why this alerting threshold?               |
+| **Error handling**    | Why this retry strategy? Why these error categories?          |
+| **Third-party deps**  | Why this library over alternatives? Why pinned to this version?|
+| **Code structure**    | Why this module layout? Why this separation of concerns?      |
+
+---
+
+## Related Documents (REQUIRED)
+
+- [Architecture Overview](architecture-overview.md) — decisions shape the architecture
+- [Dependency Inventory](dependency-inventory.md) — why each dependency was chosen
+- [Business Logic](business-logic.md) — decisions that encode business rules

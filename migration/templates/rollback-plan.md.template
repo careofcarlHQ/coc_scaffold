@@ -1,0 +1,72 @@
+# Rollback Plan — {Migration Name}
+
+## Date: {date}
+
+---
+
+## Global Rollback (abandon migration entirely)
+
+### Trigger
+Execute full rollback if:
+- Data integrity issue discovered
+- Critical functionality broken with no fix path
+- Abort criteria met (see target-state-definition.md)
+
+### Steps
+1. {Step 1: e.g., Switch traffic back to old system}
+2. {Step 2: e.g., Restore database from pre-migration backup}
+3. {Step 3: e.g., Revert code to pre-migration state}
+4. {Step 4: e.g., Verify full functionality on old system}
+
+### Time estimate: {minutes/hours}
+
+---
+
+## Per-Stage Rollback
+
+### Stage 1 — {Name}
+
+**Rollback trigger**: {condition}
+**Steps**:
+1. {Step 1}
+2. {Step 2}
+
+**Data impact**: {none / data preserved / data needs cleanup}
+**Time estimate**: {minutes}
+**Tested**: yes / no — {date tested}
+
+---
+
+### Stage 2 — {Name}
+
+**Rollback trigger**: {condition}
+**Steps**:
+1. {Step 1}
+2. {Step 2}
+
+**Data impact**: {impact}
+**Time estimate**: {minutes}
+**Tested**: yes / no — {date}
+
+---
+
+### Stage N — Cutover
+
+**Rollback trigger**: {condition — e.g., error rate > 2x baseline within 24h}
+**Steps**:
+1. {Step 1: e.g., Route traffic to old system}
+2. {Step 2: e.g., Verify old system functional}
+
+**Data impact**: {how to handle data created on new system after cutover}
+**Time estimate**: {minutes}
+**Tested**: yes / no — {date}
+
+---
+
+## Rollback verification log
+
+| Stage | Rollback tested | Date | Result | Notes |
+|-------|----------------|------|--------|-------|
+| 1 | {yes/no} | {date} | {pass/fail} | {notes} |
+| 2 | {yes/no} | {date} | {pass/fail} | {notes} |
+| N | {yes/no} | {date} | {pass/fail} | {notes} |

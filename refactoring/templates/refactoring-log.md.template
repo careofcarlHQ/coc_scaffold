@@ -1,0 +1,88 @@
+# Refactoring Log — {PROJECT_NAME}
+
+Purpose: track progress, decisions, and metrics for each refactoring target.
+
+---
+
+## Phase {N} — {phase_description}
+
+Started: {date}
+Completed: {date or "in progress"}
+
+### Baseline Metrics (recorded at Phase start)
+
+| Metric | Value |
+|--------|-------|
+| Total tests | {n} |
+| Test coverage | {n}% |
+| Avg cyclomatic complexity | {n} |
+| Circular dependencies | {n} |
+| Files over 300 lines | {n} |
+
+---
+
+### Target: {target_name}
+
+**Pattern**: {named refactoring pattern}
+**Status**: not-started / characterizing / protected / migrating / verifying / done / rolled-back
+
+#### Stage progress
+
+| Stage | Status | Date | Notes |
+|-------|--------|------|-------|
+| 0 — Pre-flight | {status} | {date} | {notes} |
+| 1 — Characterize | {status} | {date} | {notes} |
+| 2 — Protect | {status} | {date} | {notes} |
+| 3 — Prepare | {status} | {date} | {notes} |
+| 4 — Migrate | {status} | {date} | {notes} |
+| 5 — Redirect | {status} | {date} | {notes} |
+| 6 — Verify | {status} | {date} | {notes} |
+| 7 — Clean up | {status} | {date} | {notes} |
+| 8 — Document | {status} | {date} | {notes} |
+| 9 — Measure | {status} | {date} | {notes} |
+| 10 — Sign-off | {status} | {date} | {notes} |
+
+#### Characterization notes
+
+{What was learned about the code during Stage 1:}
+- Public functions: {list}
+- Callers: {list}
+- Side effects: {list}
+- Configuration dependencies: {list}
+
+#### Metrics
+
+| Metric | Before | After | Δ |
+|--------|--------|-------|---|
+| Lines of code | {n} | {n} | {n} |
+| Max function length | {n} | {n} | {n} |
+| Avg complexity | {n} | {n} | {n} |
+| Max complexity | {n} | {n} | {n} |
+| Importers | {n} | {n} | {n} |
+| Test coverage | {n}% | {n}% | {n}% |
+
+#### Decisions made
+
+- {Decision 1: what was decided, why, by whom}
+- {Decision 2: ...}
+
+#### Bugs discovered (not fixed)
+
+- [ ] {Bug 1: description, file, line — to be fixed in separate task}
+- [ ] {Bug 2: ...}
+
+#### Rollback history
+
+- {Date: reason, action taken, outcome}
+
+#### PRs
+
+| PR | Pattern | Status |
+|----|---------|--------|
+| #{n} | {pattern} | merged / reverted |
+
+---
+
+### Target: {next_target_name}
+
+{Repeat the above structure for each target}

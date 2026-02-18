@@ -16,6 +16,7 @@ Use this checklist to bootstrap a new project from zero using the agent-first sc
 ```
 project-root/
 ├── AGENTS.md
+├── start-dev.ps1
 ├── spec/
 │   └── PROCESS_INDEX.md
 ├── .env.example
@@ -24,6 +25,8 @@ project-root/
 ```
 
 - [ ] Create AGENTS.md (use [templates/AGENTS.md.template](templates/AGENTS.md.template))
+- [ ] Create start-dev.ps1 (use [templates/start-dev.ps1.template](templates/start-dev.ps1.template))
+  - [ ] Confirm script stops stale API process trees (not only port-based kill)
 - [ ] Create spec/ directory
 - [ ] Create spec/PROCESS_INDEX.md (use [templates/PROCESS_INDEX.md.template](templates/PROCESS_INDEX.md.template))
 - [ ] Create .env.example with required environment variables
@@ -103,6 +106,7 @@ Write in dependency order:
 Project kickoff is complete when:
 
 - [ ] AGENTS.md exists and points to all key docs
+- [ ] start-dev.ps1 performs reliable restart (stale backend process-tree cleanup + port cleanup)
 - [ ] PRD defines clear scope and non-goals
 - [ ] Gap analysis is complete with no unaddressed P0 gaps
 - [ ] All P0 spec documents exist

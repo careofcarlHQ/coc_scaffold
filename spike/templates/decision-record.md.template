@@ -1,0 +1,56 @@
+# Decision Record — {Spike Name}
+
+## Date: {date}
+## Decision: {Go / No-go / Pivot / Expand}
+
+---
+
+## Summary
+{One paragraph: what was explored, what was decided, and why.}
+
+---
+
+## Criteria Evaluation
+
+| Criterion | Met? | Evidence |
+|-----------|------|---------|
+| {Success criterion 1 from charter} | Yes / No / Partial | {reference from findings} |
+| {Success criterion 2} | Yes / No / Partial | {reference} |
+| {Success criterion 3} | Yes / No / Partial | {reference} |
+
+---
+
+## Rationale
+{2-3 sentences: why this decision, given the evidence.}
+
+## Conditions for Revisiting
+This decision should be revisited if:
+- {Condition 1: e.g., "The library releases v2 with the missing feature"}
+- {Condition 2: e.g., "Our traffic grows beyond X requests/sec"}
+- {Condition 3: e.g., "The current approach becomes unmaintainable"}
+
+---
+
+## Next Actions
+
+### If Go:
+- [ ] Use {scaffold name} scaffold to implement
+- [ ] Scope: {what the first implementation phase covers}
+- [ ] Timeline: {when to start}
+- [ ] Reference: `spikes/{name}/findings.md` for effort estimate
+
+### If No-go:
+- [ ] Archive findings at `spikes/{name}/`
+- [ ] Alternative approach: {what to do instead}
+- [ ] Communicate decision: {who needs to know}
+
+### If Pivot:
+- [ ] New spike question: {refined question}
+- [ ] What changed: {what we learned that changes the question}
+- [ ] New charter: {link or instructions}
+
+### If Expand:
+- [ ] Follow-up spike question: {more focused question}
+- [ ] What's known: {what this spike established}
+- [ ] What's unknown: {what the follow-up needs to answer}
+- [ ] Additional time needed: {estimate}

@@ -1,0 +1,54 @@
+# Root Cause Analysis — {Bug Title}
+
+## Date: {date}
+## Investigator: {who}
+## Bug severity: {critical / high / medium / low}
+
+---
+
+## Root Cause Statement
+{One paragraph: what is the actual underlying cause of the bug.}
+
+## Causal Chain
+```
+{Root cause}
+  → {Intermediate effect 1}
+    → {Intermediate effect 2}
+      → {Visible symptom}
+```
+
+## Trigger Conditions
+For the bug to occur, ALL of these must be true:
+1. {Condition 1}
+2. {Condition 2}
+3. {Condition 3}
+
+## Scope Assessment
+- Records/users affected: {count or estimate}
+- Environments affected: {production / staging / local / all}
+- Duration: {since when has this been possible}
+- Discovered via: {user report / monitoring / testing / code review}
+
+## Code Location
+- **Primary location**: {file:line}
+- **Contributing code**: {other files involved}
+- **Data involved**: {tables, columns, records}
+
+## Sibling Bugs
+| Location | Same pattern? | Risk | Action |
+|----------|--------------|------|--------|
+| {file:line} | {yes/similar} | {low/med/high} | {fix now / log for later} |
+
+## Why This Happened
+{Brief analysis: was this a design gap, missing test, migration oversight, etc.?}
+
+## Prevention Recommendations
+| Recommendation | Type | Effort | Prevents |
+|----------------|------|--------|----------|
+| {recommendation 1} | {test / lint / type / architecture} | {small/med/large} | {this bug / class of bugs} |
+| {recommendation 2} | {type} | {effort} | {scope} |
+
+## References
+- Symptom capture: `bugfix/symptom-capture.md`
+- Hypothesis log: `bugfix/hypothesis-log.md`
+- Fix spec: `bugfix/fix-spec.md`

@@ -1,0 +1,92 @@
+# AGENTS.md — {project_name}
+
+## Mission
+<!-- One sentence: what does this system do? -->
+
+## Repository Map (read in this order)
+1. This file — agent orientation
+2. `docs/architecture-overview.md` — system shape and components
+3. `docs/service-map.md` — module responsibilities
+4. `docs/api-surface.md` — all endpoints and commands
+5. `docs/data-model.md` — database schema and state machines
+6. `docs/configuration-guide.md` — environment variables
+7. `docs/codebase-onboarding.md` — how to run locally
+<!-- Add or remove entries to match your actual docs -->
+
+## System Architecture (quick reference)
+<!-- 3-5 lines describing:
+- What processes run (web, worker, cron, etc.)
+- How they communicate (shared DB, queue, HTTP, etc.)
+- Where they're deployed (cloud provider, platform, etc.)
+-->
+
+## Key Modules
+<!-- List every top-level package/module -->
+| Module | Purpose | Key files |
+|--------|---------|-----------|
+| | | |
+| | | |
+| | | |
+
+## Non-Negotiable Constraints (REQUIRED)
+
+<!-- List at least 3 constraints. These are things that, if violated, break the
+     system, create compliance risk, or cause data loss. -->
+
+- <!-- e.g., "All personal identifiers must be hashed before storage" -->
+- <!-- e.g., "Database changes require an Alembic migration — never modify DB directly" -->
+- <!-- e.g., "Never store raw PII in event tables" -->
+- Put all temporary/debug/one-off scripts in the `temp/` folder
+- Do not place temporary debug scripts in `scripts/` or source package directories
+
+## Coding Conventions
+- <!-- Formatting tool and rules (e.g., "black, line length 100") -->
+- <!-- Import conventions -->
+- <!-- Error handling patterns -->
+- <!-- Testing expectations -->
+
+## Common Tasks
+<!-- Document the pattern for the 3-5 most frequent changes -->
+
+### How to add a new API endpoint
+1. <!-- Step 1 -->
+2. <!-- Step 2 -->
+3. <!-- Step 3 -->
+
+### How to add a database migration
+1. <!-- Step 1 -->
+2. <!-- Step 2 -->
+3. <!-- Step 3 -->
+
+### How to run tests
+```bash
+# command to run tests
+```
+
+## Key Files (Start Here)
+
+<!-- List 5-10 files that a new agent should read first to understand the system -->
+
+| File | Why it matters |
+|------|----------------|
+| `{entry_point}` | Application entry point — see all routers, middleware, startup |
+| `{config_file}` | All configuration — every env var defined here |
+| `{models_file}` | All data models — the data layer |
+| | |
+| | |
+
+## Known Gotchas
+- <!-- Things that aren't obvious from the code -->
+- <!-- Historical decisions that might seem wrong but are intentional -->
+- <!-- Areas of tech debt to be aware of -->
+
+## Safety Guardrails (REQUIRED)
+
+<!-- List at least 3 safety items. These protect against data loss, security
+     breaches, and compliance violations. -->
+
+- **Secrets policy**: Secrets are configured via <!-- .env / environment variables / vault -->
+- **Never commit**: <!-- .env, API keys, tokens, FERNET_KEY, etc. -->
+- **Never store raw**: <!-- raw PII, unencrypted credentials, etc. -->
+- **Escalate to a human if**: <!-- unclear architecture decisions, security concerns, data migrations -->
+- **Operations that can cause data loss**: <!-- queue clearing, TTL cleanup, migration rollbacks -->

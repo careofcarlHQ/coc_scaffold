@@ -1,0 +1,106 @@
+# Architecture Overview — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: (primary directories and config files used to write this)
+
+## What This System Does
+
+<!-- One paragraph: what problem does it solve, who uses it, what's the business context -->
+
+## System Diagram
+
+```
+<!-- Text-based diagram showing the main components and data flow.
+     Keep it simple — show processes, data stores, and external services.
+
+     Example:
+     ┌──────────┐     ┌──────────┐     ┌──────────┐     ┌─────────────┐
+     │ External  │────▶│  Web     │────▶│ Database │────▶│  Worker     │
+     │ Source    │     │  API     │     │ (PG)     │     │  Process    │
+     └──────────┘     └──────────┘     └──────────┘     └─────────────┘
+                                            │
+                                            ▼
+                                       ┌──────────┐
+                                       │  Redis   │
+                                       │  Cache   │
+                                       └──────────┘
+-->
+```
+
+## Tech Stack
+
+| Layer | Technology | Version | Why |
+|-------|-----------|---------|-----|
+| Language | | | |
+| Framework | | | |
+| Database | | | |
+| Cache/Queue | | | |
+| Deployment | | | |
+
+## Runtime Processes
+
+### Process 1 — {name}
+- **Entry point**: `{path}`
+- **Role**: <!-- What it does -->
+- **Scaling**: <!-- How many instances, scaling rules -->
+
+### Process 2 — {name}
+- **Entry point**: `{path}`
+- **Role**: <!-- What it does -->
+- **Scaling**: <!-- How many instances, scaling rules -->
+
+<!-- Add more processes as needed -->
+
+## Data Flow
+
+<!-- Describe the primary data flow through the system.
+     Use numbered steps for the happy path. -->
+
+1. <!-- Step 1: Data enters the system via... -->
+2. <!-- Step 2: It's validated and stored in... -->
+3. <!-- Step 3: The worker picks it up and... -->
+4. <!-- Step 4: Results are sent to... -->
+
+## Inter-Process Communication
+
+| From | To | Mechanism | Purpose |
+|------|----|-----------|---------|
+| | | | |
+| | | | |
+
+## Security Model
+
+- **Authentication**: <!-- How users/services authenticate -->
+- **Authorization**: <!-- How access is controlled -->
+- **Secrets management**: <!-- How secrets are stored and accessed -->
+
+## Non-Goals / Boundaries
+
+<!-- What this system explicitly does NOT do. This prevents scope creep and
+     helps agents understand boundaries.
+     List at least 3. Consider: scaling limits, unsupported use cases,
+     data not handled, SLAs not guaranteed, integrations deliberately excluded. -->
+
+- This system does not <!-- ... -->
+- This system does not <!-- ... -->
+- This system does not <!-- ... -->
+
+## Key Architectural Patterns
+
+<!-- Document recurring design patterns found in the codebase.
+     These help agents understand the "house style" and make consistent changes. -->
+
+| Pattern | Where used | Description |
+|---------|-----------|-------------|
+| <!-- e.g., Repository pattern --> | <!-- files --> | <!-- brief explanation --> |
+| <!-- e.g., Handler registry --> | <!-- files --> | <!-- brief explanation --> |
+| <!-- e.g., Dual-backed queue --> | <!-- files --> | <!-- brief explanation --> |
+
+## Related Documents (REQUIRED)
+
+<!-- List at least 3 related documents. Agents and humans use this for navigation. -->
+
+- [Service Map](service-map.md) — detailed module inventory
+- [API Surface](api-surface.md) — all endpoints
+- [Data Model](data-model.md) — database schema
+- [Deployment & Infrastructure](deployment-and-infra.md) — where it runs

@@ -1,0 +1,208 @@
+# Security & Compliance — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: code inspection, deployment config, team knowledge
+
+## Overview
+
+<!-- One paragraph: what security model does this system use?
+     e.g., "Server-to-server integration with API key authentication.
+     No end-user authentication. PII is handled transiently during event processing." -->
+
+## Authentication & Authorization  🤖 Agent-extractable
+
+### Auth Model
+
+<!-- Search: grep -rn "auth\|token\|api_key\|Bearer\|JWT\|OAuth" app/ --include="*.py" -->
+
+| Aspect | Value |
+|--------|-------|
+| Auth type | <!-- e.g., API key, JWT, OAuth2, none --> |
+| Where enforced | `{file}:{line}` |
+| Token/key source | <!-- e.g., header `X-API-Key`, Bearer token --> |
+| Session model | <!-- e.g., stateless JWT, server session, N/A --> |
+
+### API Key / Credential Management
+
+| Credential | Used for | Stored in | Rotation procedure |
+|------------|----------|-----------|-------------------|
+| | | <!-- e.g., env var `META_ACCESS_TOKEN` --> | <!-- how to rotate --> |
+| | | | |
+
+### Authorization Rules
+
+<!-- Who can access what? -->
+
+| Resource / Action | Required permission | Enforcement location |
+|-------------------|-------------------|---------------------|
+| | | `{file}:{line}` |
+| | | |
+
+## PII Handling  👤 [ASK] — data classification needs human verification
+
+### Data Classification
+
+<!-- What data does the system process, and how sensitive is it? -->
+
+| Data type | Classification | Where processed | Where stored | Retention |
+|-----------|---------------|-----------------|-------------|-----------|
+| <!-- e.g., email --> | PII | `{file}` | <!-- e.g., events table --> | <!-- e.g., 90 days --> |
+| <!-- e.g., order ID --> | Business | | | |
+| <!-- e.g., IP address --> | PII | | | |
+| <!-- e.g., hashed email --> | Pseudonymized PII | | | |
+
+### PII Processing Rules
+
+- **Collection**: <!-- What PII is collected and why -->
+- **Transformation**: <!-- Is PII hashed, anonymized, or pseudonymized? Where? -->
+- **Storage**: <!-- Where is PII stored? Is it encrypted at rest? -->
+- **Transmission**: <!-- How is PII transmitted? TLS? Encrypted payloads? -->
+- **Deletion**: <!-- How is PII deleted on request? -->
+
+## GDPR / Privacy Compliance  👤 [ASK]
+
+### Consent Model
+
+<!-- How does the system handle consent? -->
+
+| Aspect | Value |
+|--------|-------|
+| Consent required? | <!-- Yes/No/N/A (server-to-server) --> |
+| Consent source | <!-- e.g., upstream system, cookie banner, N/A --> |
+| Consent storage | <!-- e.g., consent table, upstream system --> |
+| Consent check location | `{file}:{line}` or N/A |
+
+### Data Subject Rights
+
+| Right | Supported? | How |
+|-------|------------|-----|
+| Right to access | <!-- Yes/No/Partial --> | <!-- procedure --> |
+| Right to deletion | | |
+| Right to rectification | | |
+| Right to portability | | |
+| Right to restrict processing | | |
+
+### Cross-Border Data Transfer
+
+<!-- Does data leave the EU? What mechanisms are in place? -->
+
+| Data flow | From | To | Legal basis |
+|-----------|------|-----|-------------|
+| | | | <!-- e.g., SCCs, adequacy decision, N/A --> |
+
+## Encryption  🤖 Agent-extractable
+
+### In Transit
+
+| Connection | Protocol | Enforced | Notes |
+|-----------|----------|----------|-------|
+| Client → API | HTTPS/TLS | <!-- Yes/No --> | <!-- e.g., enforced by Render --> |
+| API → Database | TLS | | |
+| API → External APIs | HTTPS | | |
+
+### At Rest
+
+| Data store | Encryption | Method | Notes |
+|-----------|-----------|--------|-------|
+| Database | <!-- Yes/No --> | <!-- e.g., AES-256, platform-managed --> | |
+| File storage | | | |
+| Backups | | | |
+
+### Key Management
+
+| Key type | Rotation schedule | Stored in | Last rotated |
+|----------|-----------------|-----------|-------------|
+| Database encryption key | <!-- e.g., managed by platform --> | | [UNVERIFIED] |
+| API keys | <!-- e.g., quarterly --> | | |
+| TLS certificates | <!-- e.g., auto-renewed by Let's Encrypt --> | | |
+
+## Security Controls  🤖 Agent-extractable
+
+### Input Validation
+
+<!-- Search: grep -rn "validate\|sanitize\|escape\|Depends\|Body\|Query" app/ --include="*.py" -->
+
+| Input point | Validation method | Location |
+|-------------|------------------|----------|
+| API request bodies | <!-- e.g., Pydantic models --> | `{file}` |
+| Query parameters | | |
+| Webhook payloads | | |
+
+### Rate Limiting
+
+| Endpoint / scope | Limit | Enforcement | Config |
+|-----------------|-------|-------------|--------|
+| | <!-- e.g., 100 req/min --> | <!-- e.g., middleware, API gateway --> | |
+
+### Dependency Security
+
+| Practice | Implemented? | Tool / Method |
+|----------|-------------|---------------|
+| Dependency vulnerability scanning | <!-- Yes/No --> | <!-- e.g., Dependabot, Snyk --> |
+| License compliance checking | | |
+| Pinned dependency versions | | |
+| Lock file committed | | |
+
+## Security Incident Response  👤 [ASK]
+
+### If a Credential Is Compromised
+
+1. **Immediately** rotate the affected credential
+2. Check access logs for unauthorized use: `{where to check}`
+3. Assess scope: what data could have been accessed?
+4. Notify: <!-- who to notify -->
+5. Document in incident log
+
+### If a Data Breach Is Suspected
+
+1. Contain: <!-- immediate containment steps -->
+2. Assess: <!-- scope assessment -->
+3. Notify: <!-- notification requirements, e.g., GDPR 72-hour rule -->
+4. Remediate: <!-- fix steps -->
+5. Post-mortem: <!-- review process -->
+
+## Compliance Checklist  👤 [ASK]
+
+<!-- Check items relevant to your system. Remove items that don't apply. -->
+
+- [ ] All PII identified and classified
+- [ ] Data retention policies defined and automated
+- [ ] Encryption at rest enabled for all data stores
+- [ ] Encryption in transit (TLS) for all connections
+- [ ] API authentication enforced on all non-public endpoints
+- [ ] Credentials stored in environment variables, never in code
+- [ ] Dependency vulnerability scanning enabled
+- [ ] Access logs available for audit
+- [ ] Data deletion/anonymization process documented
+- [ ] Backup and recovery procedures tested
+- [ ] Security incident response plan documented
+
+## Extraction Commands
+
+```bash
+# Find auth-related code
+grep -rn "auth\|token\|api_key\|Bearer\|JWT\|OAuth\|permission" app/ --include="*.py"
+
+# Find PII handling
+grep -rn "email\|phone\|address\|ip_address\|name\|ssn\|personal" app/ --include="*.py"
+
+# Find encryption usage
+grep -rn "encrypt\|decrypt\|hash\|sha256\|bcrypt\|AES\|hmac" app/ --include="*.py"
+
+# Find input validation
+grep -rn "validate\|sanitize\|escape\|BaseModel\|Body\|Query" app/ --include="*.py"
+
+# Find rate limiting
+grep -rn "rate.limit\|throttle\|RateLimiter\|slowapi" app/ --include="*.py"
+
+# Check for hardcoded secrets (should find NONE)
+grep -rn "password.*=.*['\"]\\|secret.*=.*['\"]\\|token.*=.*['\"]" app/ --include="*.py" | grep -v "test\|example\|TODO"
+```
+
+## Related Documents (REQUIRED)
+
+- [Configuration Guide](configuration-guide.md) — where credentials are configured
+- [Deployment & Infrastructure](deployment-and-infra.md) — secret management and TLS
+- [Data Model](data-model.md) — what data is stored and where
+- [Operational Runbook](operational-runbook.md) — incident response procedures
+- [Observability & Monitoring](observability-monitoring.md) — security-related alerts

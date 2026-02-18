@@ -1,0 +1,103 @@
+# Migration Map — {PROJECT_NAME}
+
+Purpose: precise mapping of old structure → new structure for each refactoring target.
+
+Date: {date}
+Based on: `refactor/refactoring-plan.md`
+
+---
+
+## Target 1: {target_name}
+
+### Pattern: {named refactoring pattern — e.g., "Split God Module"}
+
+### Summary
+{One-paragraph description: what's moving where and why.}
+
+### File mapping
+
+> Anchor to function/class names (`file::function()`), never line numbers. Line numbers go stale after any edit.
+
+| Current location | New location | Pattern | What moves |
+|-----------------|--------------|---------|------------|
+| {file}::{function_or_class} | {new_file} | {pattern} | {description} |
+| {file}::{function_or_class} | {new_file} | {pattern} | {description} |
+| {file}::{function_or_class} | {new_file} | {pattern} | {description} |
+
+### Callers to update
+
+| Caller file | Current import | New import | Status |
+|------------|---------------|-----------|--------|
+| {file} | `from {old} import {symbol}` | `from {new} import {symbol}` | pending / done |
+| {file} | `from {old} import {symbol}` | `from {new} import {symbol}` | pending / done |
+
+### Execution order
+
+1. {First thing to move — least dependencies}
+2. {Second thing to move}
+3. {Third thing to move — most dependencies, moves last}
+
+### Risk assessment
+
+| Move | Risk | Reason | Mitigation |
+|------|------|--------|------------|
+| {description} | Low/Medium/High | {why} | {how to mitigate} |
+
+### Status: not-started / in-progress / complete
+
+---
+
+## Target 2: {target_name}
+
+### Pattern: {named refactoring pattern}
+
+### Summary
+{One-paragraph description.}
+
+### File mapping
+
+| Current location | New location | Pattern | What moves |
+|-----------------|--------------|---------|------------|
+| {file}::{function_or_class} | {new_file} | {pattern} | {description} |
+
+### Callers to update
+
+| Caller file | Current import | New import | Status |
+|------------|---------------|-----------|--------|
+| {file} | {old import} | {new import} | pending / done |
+
+### Execution order
+
+1. {step}
+2. {step}
+
+### Risk assessment
+
+| Move | Risk | Reason | Mitigation |
+|------|------|--------|------------|
+| {description} | {level} | {reason} | {mitigation} |
+
+### Status: not-started / in-progress / complete
+
+---
+
+## Target 3: {target_name}
+
+{Repeat the structure for each target}
+
+---
+
+## Cross-target dependencies
+
+```
+Target 1 → Target 2 (must complete Target 1 before starting Target 2 because ...)
+Target 2 → Target 3 (...)
+```
+
+## Completion tracker
+
+| Target | Pattern | Status | PR |
+|--------|---------|--------|-----|
+| {target 1} | {pattern} | not-started / in-progress / complete | #{n} |
+| {target 2} | {pattern} | not-started / in-progress / complete | #{n} |
+| {target 3} | {pattern} | not-started / in-progress / complete | #{n} |

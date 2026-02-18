@@ -1,0 +1,146 @@
+# API Surface — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{path to API route definitions}`
+
+## Overview
+
+<!-- Brief description of the API: what it serves, who calls it, base URL pattern -->
+
+Base URL: `{base url}`  
+API versioning: `{scheme, e.g., path-based /api/v1/}`  
+
+## Authentication
+
+| Method | Header/Parameter | Required for | Notes |
+|--------|-----------------|--------------|-------|
+| | | | |
+<!-- e.g., API Key | X-Api-Key header | /ingest/* | Required for all ingest endpoints -->
+<!-- e.g., Admin Token | X-Admin-Token header | /admin/* | Required for admin operations -->
+
+## Endpoints
+
+### {Group 1 — e.g., Health / System}
+
+| Method | Path | Purpose | Auth | Status codes |
+|--------|------|---------|------|--------------|
+| GET | /healthz | Health check | None | 200 |
+| | | | | |
+
+### {Group 2 — e.g., Core Resources}
+
+| Method | Path | Purpose | Auth | Status codes |
+|--------|------|---------|------|--------------|
+| | | | | |
+| | | | | |
+
+### {Group 3 — e.g., Admin}
+
+| Method | Path | Purpose | Auth | Status codes |
+|--------|------|---------|------|--------------|
+| | | | | |
+| | | | | |
+
+<!-- Add more groups as needed -->
+
+## Key Endpoint Details (REQUIRED for endpoints with request bodies)
+
+<!-- For EVERY endpoint that accepts a request body, document the JSON schema
+     with field types and required/optional annotations. For complex responses,
+     show the shape. Omitting these makes the docs unusable for API callers. -->
+
+<details>
+<summary>🤖 Extraction commands</summary>
+
+```bash
+# Python / Pydantic
+grep -rn "class.*BaseModel\|class.*Schema" app/schemas/ --include="*.py"
+
+# Find all route handlers with Body() or request model params
+grep -rn "async def\|def " app/api/ --include="*.py" | grep -i "request\|body\|payload"
+
+# Node.js / Express
+grep -rn "body\|req.body\|zod\|z.object" src/routes/ --include="*.ts"
+```
+</details>
+
+### {METHOD} {path}
+
+**Purpose**: <!-- What this endpoint does -->  
+**Auth**: <!-- Required auth -->
+
+**Request**:
+```json
+{
+  "field1": "type (required/optional) — description",
+  "field2": "type (required/optional) — description"
+}
+```
+
+**Response (2xx)**:
+```json
+{
+  "field1": "type — description",
+  "field2": "type — description"
+}
+```
+
+**Error responses**:
+| Status | Condition | Body |
+|--------|-----------|------|
+| 400 | | `{"detail": "..."}` |
+| 401 | | `{"detail": "..."}` |
+| 422 | | `{"detail": "..."}` |
+
+<!-- Repeat for other complex endpoints -->
+
+## CLI Commands
+
+| Command | Purpose | Arguments |
+|---------|---------|-----------|
+| | | |
+| | | |
+
+## Scripts
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| | | |
+| | | |
+
+## Rate Limiting
+
+<!-- Document any rate limiting, if applicable. Include per-destination,
+     per-endpoint, or global limits. -->
+
+## Observability Endpoints
+
+<!-- Document metrics, health, and monitoring endpoints -->
+
+| Endpoint | Purpose | Auth | Format |
+|----------|---------|------|--------|
+| `/healthz` | Liveness check | None | JSON |
+| `/metrics` | Prometheus metrics | <!-- auth --> | Prometheus text |
+| | | | |
+
+### Custom Metrics
+
+<!-- List application-specific metrics exposed (Prometheus counters, gauges, histograms) -->
+
+| Metric name | Type | Labels | Description |
+|-------------|------|--------|-------------|
+| | | | |
+
+## Deprecations
+
+<!-- Document any deprecated endpoints or features -->
+
+## Related Documents (REQUIRED)
+
+<!-- List at least 3 related documents. If you reference concepts from other docs,
+     link them here. Agents and humans use this for navigation. -->
+
+- [Architecture Overview](architecture-overview.md)
+- [Data Model](data-model.md) — schemas referenced by request/response bodies
+- [Configuration Guide](configuration-guide.md) — auth tokens and API keys
+- [Operational Runbook](operational-runbook.md) — endpoint troubleshooting

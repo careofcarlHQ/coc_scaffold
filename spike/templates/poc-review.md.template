@@ -1,0 +1,63 @@
+# Proof of Concept Review — {Spike Name}
+
+## Date: {date}
+## Reviewer: {who}
+
+---
+
+## Prototype Summary
+
+| Aspect | Details |
+|--------|---------|
+| Location | `temp/spike-{name}/` |
+| Language/framework | {what was used} |
+| Lines of code | ~{estimate} |
+| Dependencies added | {list} |
+| Runnable? | {yes — how / no — why} |
+
+---
+
+## What the prototype demonstrates
+
+- {Capability 1: what it proves works}
+- {Capability 2}
+- {Capability 3}
+
+## What the prototype does NOT demonstrate
+
+- {Limitation 1: e.g., "No error handling — will crash on bad input"}
+- {Limitation 2: e.g., "Hardcoded credentials — not suitable for production"}
+- {Limitation 3: e.g., "Only tested with small dataset"}
+
+---
+
+## Code Quality Assessment
+
+This is *spike code* — quality is not the goal. But assess what would need to change for production:
+
+| Aspect | Spike state | Production requirement | Effort |
+|--------|------------|----------------------|--------|
+| Tests | None | Full coverage | {hours} |
+| Error handling | None | Comprehensive | {hours} |
+| Configuration | Hardcoded | Environment-based | {hours} |
+| Security | Minimal | Full (auth, input validation) | {hours} |
+| Logging | Print statements | Structured logging | {hours} |
+| Documentation | None | API docs, README | {hours} |
+
+---
+
+## Reusable Patterns
+
+What from the prototype is worth keeping as a reference?
+
+- [ ] {Pattern 1: e.g., "The Redis connection setup pattern"}
+- [ ] {Pattern 2: e.g., "The pagination approach"}
+- [ ] Nothing — rebuild from scratch
+
+---
+
+## Recommendation
+
+- [ ] **Archive prototype as reference** — useful patterns for implementation
+- [ ] **Discard prototype** — implementation will differ too much
+- [ ] **Extract specific components** — {which ones} are worth preserving

@@ -1,0 +1,38 @@
+# Prevention Backlog
+
+> All action items from all incidents. Track them here until they're done.
+
+## Last reviewed: {date}
+
+---
+
+## Open Action Items
+
+| # | Incident | Action | Category | Priority | Due | Status |
+|---|----------|--------|----------|----------|-----|--------|
+| 1 | {INC-ID} | {specific action} | {test/monitor/code/process} | {P1/P2/P3} | {date} | {todo/in-progress} |
+| 2 | {INC-ID} | {specific action} | {category} | {priority} | {date} | {status} |
+
+---
+
+## Completed Action Items
+
+| # | Incident | Action | Category | Completed | Verified |
+|---|----------|--------|----------|-----------|----------|
+| 1 | {INC-ID} | {action} | {category} | {date} | {yes/no} |
+
+---
+
+## Patterns Identified
+
+| Pattern | Incidents | Root theme | Systemic fix |
+|---------|-----------|-----------|-------------|
+| {e.g., "Deploy breaks endpoint"} | {INC-001, INC-003} | {e.g., "No integration tests"} | {e.g., "Testing retrofit for API layer"} |
+
+---
+
+## Metrics
+
+| Period | Incidents | Action items created | Action items completed | Completion rate |
+|--------|-----------|---------------------|----------------------|----------------|
+| {month} | {N} | {N} | {N} | {N}% |

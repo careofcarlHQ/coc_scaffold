@@ -1,0 +1,64 @@
+# Coverage Baseline — {Project Name}
+
+## Date: {date}
+## Framework: {pytest / unittest / other}
+
+---
+
+## Test Inventory
+
+| Directory | Test files | Test functions | Type | Notes |
+|-----------|-----------|---------------|------|-------|
+| tests/unit/ | {N} | {N} | Unit | {notes} |
+| tests/integration/ | {N} | {N} | Integration | {notes} |
+| tests/ | {N} | {N} | Mixed | {notes} |
+| **Total** | **{N}** | **{N}** | | |
+
+## Test Suite Results
+
+| Metric | Value |
+|--------|-------|
+| Total tests | {N} |
+| Passed | {N} |
+| Failed | {N} |
+| Errors | {N} |
+| Skipped | {N} |
+| Duration | {seconds} |
+| Overall coverage | {N}% |
+
+## Failing Tests
+
+| Test | Error | Notes |
+|------|-------|-------|
+| {test name} | {error} | {probable cause} |
+
+## Module Coverage
+
+| Module | Lines | Covered | Coverage | Has tests? |
+|--------|-------|---------|----------|-----------|
+| {module} | {N} | {N} | {N}% | {yes/no} |
+
+## Modules with Zero Coverage
+
+- {module 1} — {line count} lines, {description of what it does}
+- {module 2} — {line count} lines, {description}
+
+## Test Infrastructure
+
+| Component | Status |
+|-----------|--------|
+| Framework | {pytest X.Y / none} |
+| Configuration | {pyproject.toml / pytest.ini / none} |
+| Coverage tool | {pytest-cov / none} |
+| Fixtures (conftest.py) | {yes / no} |
+| Test database | {strategy / none} |
+| Factory library | {name / none} |
+| CI runs tests | {yes / no} |
+| CI blocks on failure | {yes / no} |
+
+## Summary
+
+- Starting coverage: **{N}%**
+- Modules tested: **{N}** of **{total N}**
+- Modules with zero coverage: **{N}**
+- Test infrastructure readiness: **{ready / needs setup / missing}**

@@ -1,0 +1,65 @@
+# Risk Priority Map — {Project Name}
+
+## Date: {date}
+
+---
+
+## Scoring Method
+
+Risk score = (risk_factor × weight) + ... × change_frequency × (1 - coverage)
+
+### Risk factor weights
+| Factor | Weight |
+|--------|--------|
+| Data integrity | 3x |
+| Auth/authz | 3x |
+| External integrations | 2x |
+| Critical user path | 2x |
+| Complex logic | 1x |
+| Error handling | 1x |
+
+---
+
+## Priority 1 — Critical (test immediately)
+
+| Module | Risk factors | Change freq | Current coverage | Score | Test type |
+|--------|-------------|-------------|-----------------|-------|-----------|
+| {module} | {factors} | {high/med/low} | {N}% | {N} | {char/unit/int} |
+
+## Priority 2 — High (test in next phase)
+
+| Module | Risk factors | Change freq | Current coverage | Score | Test type |
+|--------|-------------|-------------|-----------------|-------|-----------|
+| {module} | {factors} | {freq} | {N}% | {N} | {type} |
+
+## Priority 3 — Medium (test after high-priority)
+
+| Module | Risk factors | Change freq | Current coverage | Score | Test type |
+|--------|-------------|-------------|-----------------|-------|-----------|
+| {module} | {factors} | {freq} | {N}% | {N} | {type} |
+
+## Priority 4 — Low (test as time permits)
+
+| Module | Risk factors | Change freq | Current coverage | Score | Test type |
+|--------|-------------|-------------|-----------------|-------|-----------|
+| {module} | {factors} | {freq} | {N}% | {N} | {type} |
+
+---
+
+## Change Frequency Data
+
+Top 20 most-changed files (last 6 months):
+
+| File | Commits | Authors | Bug fixes |
+|------|---------|---------|-----------|
+| {file} | {N} | {N} | {N} |
+
+---
+
+## Recommended Test Order
+
+1. {module} — {why: highest risk, zero coverage, many changes}
+2. {module} — {why}
+3. {module} — {why}
+4. {module} — {why}
+5. {module} — {why}

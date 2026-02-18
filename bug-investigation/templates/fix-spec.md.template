@@ -1,0 +1,57 @@
+# Fix Spec — {Bug Title}
+
+## Date: {date}
+## Root cause reference: `bugfix/root-cause-analysis.md`
+
+---
+
+## Root Cause (brief)
+{One sentence summarizing the root cause.}
+
+## The Fix
+
+### Code changes
+| File | Change | Lines affected |
+|------|--------|---------------|
+| {file} | {description of change} | {approx lines} |
+
+### Data changes (if any)
+| Table | Change | Records affected |
+|-------|--------|-----------------|
+| {table} | {UPDATE / migration / etc.} | {count} |
+
+### Configuration changes (if any)
+| Setting | Change |
+|---------|--------|
+| {setting} | {old → new} |
+
+## What does NOT change
+- {List things explicitly NOT being modified}
+- {This prevents scope creep during implementation}
+
+## Risk Assessment
+- **Fix complexity**: low / medium / high
+- **Regression risk**: low / medium / high
+- **Data risk**: none / low / medium / high
+- **Rollback complexity**: simple / moderate / complex
+
+## Regression Test
+
+### Test name
+`test_{descriptive_name}`
+
+### Setup
+{What test data/state is needed}
+
+### Steps
+1. {Action}
+2. {Assertion}
+
+### Expected before fix
+{What the test should show before the fix — should FAIL}
+
+### Expected after fix
+{What the test should show after the fix — should PASS}
+
+## Deployment Notes
+{Any special deployment considerations: migration order, feature flags, etc.}

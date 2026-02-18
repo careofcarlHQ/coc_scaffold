@@ -1,0 +1,79 @@
+# Cutover Checklist — {Migration Name}
+
+## Date: {date}
+## Cutover window: {start time} — {end time}
+
+---
+
+## Pre-Cutover Verification
+
+- [ ] All migration stages complete with passing gates
+- [ ] Full test suite passes on migrated state: {N} passed, 0 failed
+- [ ] Performance verified: within {X}% of baseline
+- [ ] All rollback plans tested
+- [ ] Monitoring dashboards ready
+- [ ] Old system on standby (accessible for rollback)
+- [ ] Backup taken: {timestamp of backup}
+- [ ] Communication sent (if applicable)
+
+## Cutover Steps
+
+### Step 1: {Pre-cutover snapshot}
+- [ ] Take final backup of current production state
+- Timestamp: {time}
+- Verified: {yes/no}
+
+### Step 2: {Route to new system}
+- [ ] {Platform-specific step: DNS change / load balancer switch / config update}
+- Applied at: {time}
+- Propagation time: {expected duration}
+
+### Step 3: {Verify new system serving traffic}
+- [ ] Health check: {endpoint} returns 200
+- [ ] Sample API call: {endpoint} returns expected data
+- [ ] UI loads correctly (if applicable)
+- Verified at: {time}
+
+### Step 4: {Monitor}
+- [ ] Error rate: {baseline vs current}
+- [ ] Response time: {baseline vs current}
+- [ ] CPU/memory: {baseline vs current}
+- Check interval: every {N} minutes for first hour
+
+## Post-Cutover Monitoring
+
+### Hour 1 (intensive)
+- [ ] Error rate check at +15min: {result}
+- [ ] Error rate check at +30min: {result}
+- [ ] Error rate check at +60min: {result}
+- [ ] Performance check at +60min: {result}
+
+### Day 1
+- [ ] Error rate still normal: {yes/no}
+- [ ] No user-reported issues: {yes/no}
+- [ ] All integrations functional: {yes/no}
+
+### Day 2–3 (grace period)
+- [ ] Old system still on standby: {yes/no}
+- [ ] No issues requiring rollback: {yes/no}
+- [ ] Ready to decommission old system: {yes/no}
+
+## Rollback Trigger
+
+Execute rollback if ANY:
+- [ ] Error rate > {N}x baseline for > 15 minutes
+- [ ] Critical endpoint returning 500s
+- [ ] Data integrity issue detected
+- [ ] User-facing functionality broken
+
+## Rollback Steps (if needed)
+1. {Step 1}
+2. {Step 2}
+3. {Verify old system restored}
+
+## Cutover Result
+
+- **Status**: success / rolled back / partial
+- **Cutover completed at**: {time}
+- **Issues during cutover**: {none or list}
+- **Old system decommission date**: {date — after grace period}

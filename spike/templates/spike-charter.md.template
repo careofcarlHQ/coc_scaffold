@@ -1,0 +1,58 @@
+# Spike Charter — {Spike Name}
+
+## Date: {date}
+## Time box: {hours/days}
+## Start: {date/time}
+## Deadline: {date/time}
+
+---
+
+## Question
+{The specific, answerable question this spike exists to answer.}
+
+## Context
+{Why this question matters now. What decision depends on the answer.}
+
+## Success Criteria
+- {Criterion 1: measurable condition that means "yes, this works"}
+- {Criterion 2: measurable condition}
+- {Criterion 3: measurable condition}
+
+## Failure Criteria
+- {Criterion 1: condition that means "no, this won't work for us"}
+- {Criterion 2: condition}
+
+## Scope
+
+### In scope
+- {What to explore}
+- {What to prototype}
+- {What to measure}
+
+### Out of scope
+- {What NOT to explore}
+- {What to explicitly ignore}
+
+## Approaches to evaluate
+{If comparing alternatives, list them here:}
+
+| Approach | Description | What to test |
+|----------|------------|-------------|
+| A — {name} | {description} | {what to build/measure} |
+| B — {name} | {description} | {what to build/measure} |
+
+## Evaluation criteria
+{If comparing approaches:}
+
+| Criterion | Weight (1-5) | How to evaluate |
+|-----------|-------------|----------------|
+| {criterion} | {weight} | {method} |
+
+## Resources needed
+- Documentation: {links}
+- Accounts/credentials: {what's needed}
+- Test data: {what's needed}
+- Libraries: {what to install — in spike only}
+
+## Working directory
+`temp/spike-{name}/`

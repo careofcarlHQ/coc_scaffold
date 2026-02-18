@@ -1,50 +1,74 @@
-# Agent-First Project Scaffold
+# Agent-First Development Scaffolds
 
-This directory contains a reusable scaffold specification for building software projects using the agent-first development process pioneered in `coc_agent_process`.
+Reusable frameworks for agent-first software development — covering the full lifecycle from building something new to handling production emergencies.
 
-The methodology was developed over the course of building a multi-agent PR pipeline from zero — starting with process documentation, then layering in specs, implementation checklists, acceptance gates, and operational tooling — all driven by human-agent collaboration.
+## Scaffolds
 
-## Who is this for?
+### Core scaffolds
 
-Any solo developer or small team that wants to:
+| Scaffold | Purpose | Start here |
+|----------|---------|------------|
+| [greenfield/](greenfield/) | Build a new project from scratch using spec-first, agent-driven development | [greenfield/README.md](greenfield/README.md) |
+| [repo-documentation/](repo-documentation/) | Systematically document an existing codebase for humans and agents | [repo-documentation/README.md](repo-documentation/README.md) |
+| [refactoring/](refactoring/) | Systematically refactor an existing codebase with safety gates and behavior preservation | [refactoring/README.md](refactoring/README.md) |
 
-- Build software using AI coding agents as primary implementers
-- Maintain production-grade quality without large teams
-- Move from ad-hoc "chat and paste" coding to structured delivery
-- Scale throughput without scaling headcount
+### Day-to-day scaffolds
 
-## What makes this approach different?
+| Scaffold | Purpose | Start here |
+|----------|---------|------------|
+| [feature-addition/](feature-addition/) | Add a feature to an existing codebase with impact analysis and verification | [feature-addition/README.md](feature-addition/README.md) |
+| [bug-investigation/](bug-investigation/) | Diagnose and fix bugs with hypothesis-driven investigation and regression guards | [bug-investigation/README.md](bug-investigation/README.md) |
+| [testing-retrofit/](testing-retrofit/) | Add meaningful test coverage to an under-tested codebase | [testing-retrofit/README.md](testing-retrofit/README.md) |
 
-1. **Spec-first, code-second** — write the contracts before touching code
-2. **Phased checklists with acceptance gates** — no stage advances without evidence
-3. **Human steers, agent executes** — humans define intent and constraints, agents write code
-4. **Repository is the system of record** — everything the agent needs lives in the repo
-5. **Built-in safety** — escalation policies, cost caps, and merge gates by default
+### Operational scaffolds
 
-## How to use this scaffold
+| Scaffold | Purpose | Start here |
+|----------|---------|------------|
+| [migration/](migration/) | Move between technologies, versions, or platforms with rollback safety | [migration/README.md](migration/README.md) |
+| [incident-response/](incident-response/) | Handle production incidents with structured triage, mitigation, and post-mortems | [incident-response/README.md](incident-response/README.md) |
+| [spike/](spike/) | Time-boxed technical exploration to answer questions before committing to implementation | [spike/README.md](spike/README.md) |
 
-1. Read [00-philosophy.md](00-philosophy.md) to understand the principles
-2. Read [01-process-overview.md](01-process-overview.md) for the end-to-end workflow
-3. Copy files from [templates/](templates/) into your new project
-4. Follow [02-project-kickoff-checklist.md](02-project-kickoff-checklist.md) to bootstrap
-5. Use [03-spec-writing-guide.md](03-spec-writing-guide.md) to write your specs
-6. Build using [04-phased-implementation-guide.md](04-phased-implementation-guide.md)
-7. Operate using [05-operational-cadence.md](05-operational-cadence.md)
+## Which scaffold do I need?
 
-## Document Index
+```
+"I need to build something new"              → greenfield/
+"I need to understand existing code"         → repo-documentation/
+"I need to reshape existing code"            → refactoring/
+"I need to add a feature"                    → feature-addition/
+"Something is broken and I need to fix it"   → bug-investigation/
+"I need to add tests to untested code"       → testing-retrofit/
+"I need to change technologies/versions"     → migration/
+"Production is on fire RIGHT NOW"            → incident-response/
+"Should we build this? Is this feasible?"    → spike/
+```
 
-| File | Purpose |
-|------|---------|
-| [00-philosophy.md](00-philosophy.md) | Core principles and lessons learned |
-| [01-process-overview.md](01-process-overview.md) | End-to-end development workflow |
-| [02-project-kickoff-checklist.md](02-project-kickoff-checklist.md) | Bootstrap a new project from zero |
-| [03-spec-writing-guide.md](03-spec-writing-guide.md) | How to write specs that agents can execute |
-| [04-phased-implementation-guide.md](04-phased-implementation-guide.md) | Phased build with acceptance gates |
-| [05-operational-cadence.md](05-operational-cadence.md) | Weekly review and continuous improvement |
-| [06-agents-md-guide.md](06-agents-md-guide.md) | How to write an effective AGENTS.md |
-| [07-evidence-and-quality.md](07-evidence-and-quality.md) | Evidence templates and quality tracking |
-| [templates/](templates/) | Copy-paste starter templates |
+## How they relate
+
+```
+spike/ ──────────→ greenfield/          "Should we?" → "Let's build it"
+spike/ ──────────→ feature-addition/    "Should we?" → "Let's add it"
+spike/ ──────────→ migration/           "Should we?" → "Let's move"
+
+repo-documentation/ → refactoring/      "What is this?" → "Let's improve it"
+refactoring/ ←────── testing-retrofit/  Tests first, then refactor safely
+
+feature-addition/ ──→ bug-investigation/ Feature shipped, bug found
+bug-investigation/ ──→ testing-retrofit/ Bug found, need more tests
+
+incident-response/ ──→ bug-investigation/ Mitigated, now fix properly
+incident-response/ ──→ testing-retrofit/  Post-mortem: need test coverage
+```
+
+## Shared principles
+
+All scaffolds share the same core values:
+
+- **Repository as system of record** — everything the agent needs lives in the repo
+- **AGENTS.md as navigation entry point** — agents know where to start
+- **Progressive disclosure over front-loading** — layer in detail as needed
+- **Objective quality gates over subjective judgment** — evidence, not opinions
+- **Human steers, agent executes** — humans define intent, agents write code
 
 ## Origin
 
-This scaffold is distilled from the `coc_agent_process` project — a Postgres-backed multi-agent engineering support system built entirely through human-agent collaboration between February 2026 and onwards. The project went from an empty repository to a working system with API, worker, database, UI, and live GitHub/OpenAI integrations across three implementation phases.
+These scaffolds are distilled from the `coc_agent_process` project — a Postgres-backed multi-agent engineering support system built entirely through human-agent collaboration between February 2026 and onwards.

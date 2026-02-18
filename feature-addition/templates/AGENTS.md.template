@@ -1,0 +1,48 @@
+# AGENTS.md — {project_name}
+
+## Mission
+{One-sentence description of the project.}
+
+## Current Feature Work
+
+**Feature**: {feature name}
+**Spec**: `feature/feature-spec.md`
+**Impact**: `feature/impact-analysis.md`
+**Checklist**: `feature/feature-checklist.md`
+**Current stage**: Stage {N} — {stage name}
+
+## Source of Truth (read in this order)
+1. This file (project orientation)
+2. `feature/feature-spec.md` (what to build)
+3. `feature/impact-analysis.md` (what it touches)
+4. `feature/feature-checklist.md` (build stages)
+5. `AGENTS.md` or `spec/PROCESS_INDEX.md` (project-level rules)
+
+## Non-Negotiable Constraints
+- Do NOT modify existing tests unless the feature spec explicitly requires it
+- Do NOT refactor while implementing features — one purpose per change
+- Run the full test suite after each stage
+- Follow existing code patterns in the modules you're touching
+- Every database migration must be reversible
+
+## Build Order
+1. Database layer (schema + migration)
+2. Service layer (business logic)
+3. API layer (endpoints + validation)
+4. UI layer (if applicable)
+5. Background jobs (if applicable)
+6. Integration verification
+
+## Required Deliverables Per Stage
+- Code changes (committed)
+- Tests for new behavior
+- Gate evidence (test results, verification output)
+- Deviation log (any differences from spec)
+
+## Safety
+- Use `.env.local` for secrets, never commit credentials
+- New environment variables must have defaults or be optional
+- If unsure about backward compatibility, stop and ask
+
+## Done Criteria
+All acceptance criteria in the feature spec are met. Zero regressions. Rollout plan documented.

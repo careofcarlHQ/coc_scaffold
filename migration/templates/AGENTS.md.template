@@ -1,0 +1,35 @@
+# AGENTS.md — Migration: {Migration Name}
+
+## What we're migrating
+{From what state to what state — one sentence.}
+
+## Current stage
+Stage {N} — {stage name}
+
+## Read these files (in order)
+1. `AGENTS.md` (project-level rules)
+2. `migration/current-state-snapshot.md` (where we started)
+3. `migration/target-state-definition.md` (where we're going)
+4. `migration/compatibility-gap-map.md` (what breaks)
+5. `migration/migration-checklist.md` (all stages + current progress)
+6. `migration/rollback-plan.md` (how to undo each stage)
+
+## Non-negotiable constraints
+- ALWAYS take a backup before any data-touching stage
+- ALWAYS verify rollback works before marking a stage complete
+- NEVER combine two migration stages into one operation
+- NEVER delete old data/config/code until cleanup phase
+- Run the full test suite after every stage
+- If ANY verification fails, STOP and report — do NOT proceed
+
+## Stage instructions
+{Copy the specific stage instructions from the migration checklist.}
+
+## Rollback for this stage
+{Copy the rollback steps for the current stage.}
+
+## Abort criteria
+Stop the entire migration if:
+- {condition 1}
+- {condition 2}
+- {condition 3}

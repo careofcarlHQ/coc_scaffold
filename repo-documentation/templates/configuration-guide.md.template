@@ -1,0 +1,155 @@
+# Configuration Guide — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{config file path, e.g., app/core/config.py}`, `{.env.example}`
+
+## Overview
+
+<!-- How configuration works in this project: env vars, config files, defaults, etc. -->
+
+Configuration is managed via <!-- environment variables / config file / etc. -->.  
+Template: `{.env.example path}`  
+Config module: `{config source file}`
+
+## Environment Variables
+
+### Core / Application
+
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `APP_ENV` | string | No | `development` | Environment name |
+| `LOG_LEVEL` | string | No | `INFO` | Logging level |
+| | | | | |
+
+### Database
+
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `DATABASE_URL` | string | Yes | — | PostgreSQL connection string |
+| | | | | |
+
+### Cache / Queue
+
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `REDIS_URL` | string | Yes | — | Redis connection string |
+| | | | | |
+
+### Security
+
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| | | | | |
+
+### External Services
+
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| | | | | |
+
+### Worker / Background Processing
+
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| | | | | |
+
+<!-- Add more categories as needed -->
+
+## Configuration Patterns
+
+### Required vs optional
+
+<!-- How to tell if a variable is required.
+     e.g., "Required vars raise an error on startup if missing."
+     e.g., "In Pydantic Settings, fields without defaults are required." -->
+
+<details>
+<summary>🤖 Extraction commands</summary>
+
+```bash
+# Python / Pydantic Settings — fields without default are required
+grep -n ":[^=]*$" app/core/config.py | grep -v "#\|Optional\|None"
+
+# Node.js — env vars read without fallback
+grep -rn "process.env\." src/ --include="*.ts" | grep -v "||\|??"
+```
+</details>
+
+### Secret management
+
+<!-- How secrets differ between environments.
+     e.g., "In local dev, use .env file. In production, secrets are set
+     in the deployment platform (Render dashboard)." -->
+
+| Environment | Secret source | Rotation method |
+|-------------|---------------|----------------|
+| Local | `.env` file | Manual |
+| Production | <!-- e.g., Render dashboard / AWS SSM / Vault --> | <!-- e.g., Rotate in dashboard, redeploy --> |
+
+### Feature flags
+
+<!-- If the system uses feature flags via env vars, document them here.
+     Also check for database-backed feature flags. -->
+
+| Flag | Default | Description | Type |
+|------|---------|-------------|------|
+| | | | env var / DB |
+
+## Dynamic Settings (Runtime-Configurable)
+
+<!-- If the system stores settings in the database or another runtime store
+     (not just env vars), document them here. -->
+
+| Setting key | Default | Description | Stored in |
+|-------------|---------|-------------|----------|
+| | | | <!-- e.g., settings table, Redis --> |
+
+<!-- If no dynamic settings exist, replace this section with:
+     "All configuration is static via environment variables. No runtime settings." -->
+
+## Example .env for local development
+
+```env
+# Copy this to .env and fill in values
+
+# Core
+APP_ENV=development
+LOG_LEVEL=DEBUG
+
+# Database (local Docker)
+DATABASE_URL=postgresql://user:pass@localhost:5432/dbname
+
+# Redis (local Docker)
+REDIS_URL=redis://localhost:6379
+
+# Security
+# Generate with: python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+FERNET_KEY=
+
+# Admin
+ADMIN_TOKEN=local-dev-token
+
+# External APIs (optional for local dev)
+# SERVICE_API_KEY=
+```
+
+## Validation  ⚡ Requires execution
+
+<!-- How to verify configuration is correct -->
+
+```bash
+# Command to check config / start with validation
+{validation_command}
+
+# Verify all required vars are set (quick script)
+# python -c "from app.core.config import Settings; Settings()"
+```
+
+## Related Documents (REQUIRED)
+
+<!-- List at least 3 related documents. Agents and humans use this for navigation. -->
+
+- [Codebase Onboarding](codebase-onboarding.md) — uses these vars during setup
+- [Deployment & Infrastructure](deployment-and-infra.md) — where vars are set in production
+- [Architecture Overview](architecture-overview.md) — what components use which config
+- [Security & Compliance](security-compliance.md) — secret handling policies

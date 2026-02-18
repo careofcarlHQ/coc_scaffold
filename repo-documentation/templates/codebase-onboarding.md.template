@@ -1,0 +1,166 @@
+# Codebase Onboarding — {project_name}
+
+> Last verified: YYYY-MM-DD
+
+## Goal
+
+Get from `git clone` to a running system in under 15 minutes.
+
+## What This System Does (30-second version)
+
+<!-- 2–3 sentences max. What does this system do, for whom, and what is the primary data flow?
+     e.g., "This is a server-to-server event sync that receives e-commerce order events
+     via webhook and dispatches them to 6 ad-platform conversion APIs." -->
+
+## Prerequisites
+
+| Requirement | Version | Check command |
+|-------------|---------|--------------|
+| {language runtime} | {version} | `{check_command}` |
+| {package manager} | {version} | `{check_command}` |
+| Docker | 20+ | `docker --version` |
+| Docker Compose | 2+ | `docker compose version` |
+| Git | 2+ | `git --version` |
+<!-- Add other prerequisites -->
+
+## Step 1 — Clone and enter the repository
+
+```bash
+git clone {repo_url}
+cd {repo_name}
+```
+
+## Step 2 — Install dependencies
+
+```bash
+{install_command}
+```
+
+<!-- If there are multiple components (e.g., backend + frontend), list them -->
+
+## Step 3 — Configure environment
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and set required values:
+
+| Variable | What to set | Where to get it |
+|----------|-------------|-----------------|
+| `DATABASE_URL` | | Auto-configured by Docker Compose |
+| `REDIS_URL` | | Auto-configured by Docker Compose |
+| `{SECRET}` | | Generate with `{command}` |
+<!-- Add other required variables -->
+
+## Step 4 — Start the system
+
+```bash
+{start_command}
+```
+
+This starts:
+- <!-- Component 1 at http://localhost:XXXX -->
+- <!-- Component 2 -->
+- <!-- Database at localhost:5432 -->
+- <!-- Redis at localhost:6379 -->
+
+## Step 5 — Verify it works
+
+```bash
+# Check health
+curl http://localhost:{port}/healthz
+# Expected: {"status": "ok"}
+
+# Check API
+curl http://localhost:{port}/{api_endpoint}
+```
+
+## Step 6 — Run tests
+
+```bash
+{test_command}
+```
+
+Expected: all tests pass (approximately {count} tests).
+
+---
+
+## Development Workflow
+
+### Making changes
+
+1. Create a branch: `git checkout -b feature/description`
+2. Make changes
+3. Run tests: `{test_command}`
+4. Run linting: `{lint_command}`
+5. Commit and push
+
+### Code style
+
+- Formatter: `{formatter}` — run with `{format_command}`
+- Linter: `{linter}` — run with `{lint_command}`
+- Type checker: `{type_checker}` — run with `{type_check_command}`
+
+### Useful commands
+
+| Task | Command |
+|------|---------|
+| Start all services | `{command}` |
+| Stop all services | `{command}` |
+| Run migrations | `{command}` |
+| Open database shell | `{command}` |
+| View logs | `{command}` |
+| Run single test | `{command}` |
+
+---
+
+## Troubleshooting First-Run Issues (REQUIRED)
+
+<!-- This section catches 80% of onboarding friction. Include at least 3 scenarios. -->
+
+### Port already in use
+
+```bash
+# Find what's using the port
+{find_port_command}
+# Kill it or change the port in .env
+```
+
+### Database connection refused
+
+<!-- Common cause: Docker isn't running or DB hasn't started yet -->
+```bash
+# Check Docker is running
+docker ps
+# Wait for DB to be ready
+{db_wait_command}
+```
+
+### Missing environment variable
+
+<!-- Common cause: .env file not copied or variable not set -->
+```bash
+# Check what's missing — the error message will say which variable
+# Ensure .env exists and all required variables are set
+```
+
+## Architecture Quick Reference
+
+For the full picture, see [Architecture Overview](architecture-overview.md).
+
+<!-- 3-5 line summary of system architecture for quick orientation -->
+
+## Key Gotchas
+
+<!-- Things that aren't obvious and trip people up. At least 2 items. -->
+
+- <!-- e.g., "The system requires Redis even for local dev — it's not optional." -->
+- <!-- e.g., "Migrations auto-run on startup in dev mode but NOT in production." -->
+- <!-- e.g., "The .env.example has dummy values that work, but {SECRET} must be real." -->
+
+## Related Documents (REQUIRED)
+
+- [Architecture Overview](architecture-overview.md) — full system design
+- [Configuration Guide](configuration-guide.md) — all env vars explained
+- [Service Map](service-map.md) — where to find code for each feature

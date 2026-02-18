@@ -1,0 +1,121 @@
+# Migration Checklist — {Migration Name}
+
+## Migration: {from} → {to}
+## Plan date: {date}
+## Target completion: {date}
+
+---
+
+### Stage 1 — {Name}
+
+- Status: not-started / in-progress / done / rolled-back
+- Layer: {infrastructure / data / dependencies / code / config / consumers}
+- Risk: {low / medium / high}
+- Started:
+- Completed:
+- Gaps addressed: {gap IDs from gap map}
+
+**Changes**:
+- [ ] {Change 1}
+- [ ] {Change 2}
+
+**Verification**:
+- [ ] {Verification check 1}
+- [ ] {Verification check 2}
+- [ ] Full test suite passes
+
+**Test results**:
+- Before: {N} passed, {F} failed
+- After: {N} passed, {F} failed
+
+**Rollback**:
+- Steps: {reference rollback-plan.md or inline}
+- Tested: yes / no
+
+**Gate**: pass / fail
+**Evidence**: {links}
+**Deviations**: {none or description}
+
+---
+
+### Stage 2 — {Name}
+
+- Status: not-started / in-progress / done / rolled-back
+- Layer: {layer}
+- Risk: {risk}
+- Started:
+- Completed:
+- Gaps addressed: {gap IDs}
+
+**Changes**:
+- [ ] {Change 1}
+- [ ] {Change 2}
+
+**Verification**:
+- [ ] {Check 1}
+- [ ] {Check 2}
+- [ ] Full test suite passes
+
+**Test results**:
+- Before: {N} passed, {F} failed
+- After: {N} passed, {F} failed
+
+**Rollback**:
+- Steps: {steps}
+- Tested: yes / no
+
+**Gate**: pass / fail
+
+---
+
+### Stage N — Cutover
+
+- Status: not-started / in-progress / done
+- Risk: high
+- Started:
+- Completed:
+
+**Pre-cutover checklist**:
+- [ ] All previous stages complete with passing gates
+- [ ] Full test suite passes on migrated state
+- [ ] Rollback plans tested for critical stages
+- [ ] Monitoring in place
+- [ ] Old system on standby
+
+**Cutover steps**:
+- [ ] {Step 1}
+- [ ] {Step 2}
+
+**Post-cutover verification**:
+- [ ] Health check passes
+- [ ] Error rates normal
+- [ ] Performance acceptable
+- [ ] 24-hour monitoring period started
+
+**Gate**: pass / fail
+
+---
+
+### Stage N+1 — Cleanup
+
+- Status: not-started / in-progress / done
+- Started:
+- Completed:
+
+**Cleanup tasks**:
+- [ ] Remove compatibility shims
+- [ ] Remove old configuration
+- [ ] Decommission old system
+- [ ] Update documentation
+- [ ] Archive migration artifacts
+- [ ] Update AGENTS.md
+
+**Gate**: No references to old state remain. Docs updated.
+
+---
+
+## Summary
+- Total stages: {N}
+- Stages complete: {M}
+- Rollbacks: {K}
+- Status: planning / executing / cutover / cleanup / complete

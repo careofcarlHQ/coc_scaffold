@@ -1,0 +1,228 @@
+# Operational Runbook — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: operational experience + code inspection
+
+## Quick Reference
+
+| Action | Command / Steps |
+|--------|----------------|
+| Check system health | `{command}` |
+| View logs | `{command}` |
+| Restart web service | `{command}` |
+| Restart worker | `{command}` |
+| Run migrations | `{command}` |
+| Rollback last deploy | `{steps}` |
+
+---
+
+## Routine Operations
+
+### Check System Health
+
+```bash
+# Health check
+curl {health_endpoint}
+
+# Expected response
+{"status": "ok"}
+```
+
+### View Logs
+
+```bash
+# Web service logs
+{log_command_web}
+
+# Worker logs
+{log_command_worker}
+
+# Filter for errors
+{log_command_errors}
+```
+
+### Restart Services
+
+```bash
+# Restart web
+{restart_web_command}
+
+# Restart worker
+{restart_worker_command}
+```
+
+---
+
+## Common Scenarios
+
+### Scenario: {e.g., Dead letters accumulating}
+
+**Symptoms**: <!-- What you observe -->  
+**Cause**: <!-- Common causes -->  
+**Resolution**:
+1. <!-- Step 1 -->
+2. <!-- Step 2 -->
+3. <!-- Step 3 -->
+
+**Prevention**: <!-- How to prevent recurrence -->
+
+### Scenario: {e.g., Destination API returning errors}
+
+**Symptoms**: <!-- What you observe -->  
+**Cause**: <!-- Common causes -->  
+**Resolution**:
+1. <!-- Step 1 -->
+2. <!-- Step 2 -->
+
+### Scenario: {e.g., Database migration failure}
+
+**Symptoms**: <!-- What you observe -->  
+**Resolution**:
+1. Check migration status: `{command}`
+2. <!-- Step 2 -->
+3. <!-- Step 3 -->
+
+<!-- Add more scenarios as needed -->
+
+---
+
+## Emergency Procedures
+
+### Complete system outage
+
+1. <!-- Step 1: Check infrastructure status -->
+2. <!-- Step 2: Check database connectivity -->
+3. <!-- Step 3: Check recent deployments -->
+4. <!-- Step 4: Rollback if recent deploy is suspect -->
+5. <!-- Step 5: Escalate if not resolved -->
+
+### Data integrity issue
+
+1. <!-- Step 1: Stop affected processing -->
+2. <!-- Step 2: Assess scope of issue -->
+3. <!-- Step 3: Take database backup before any fixes -->
+4. <!-- Step 4: Apply fix -->
+5. <!-- Step 5: Verify data -->
+
+### Security incident
+
+1. <!-- Step 1: Rotate affected credentials immediately -->
+2. <!-- Step 2: Check access logs -->
+3. <!-- Step 3: Assess scope -->
+4. <!-- Step 4: Notify stakeholders -->
+
+---
+
+## Database Operations
+
+### Run a migration
+
+```bash
+{migration_command}
+```
+
+### Rollback a migration
+
+```bash
+{rollback_command}
+```
+
+### Check migration status
+
+```bash
+{migration_status_command}
+```
+
+### Manual data fix
+
+<!-- Template for safely running data fixes -->
+```sql
+-- Always run in a transaction
+BEGIN;
+
+-- Verify current state
+SELECT count(*) FROM {table} WHERE {condition};
+
+-- Apply fix
+UPDATE {table} SET {column} = {value} WHERE {condition};
+
+-- Verify fix
+SELECT count(*) FROM {table} WHERE {condition};
+
+-- Only commit if counts match expectations
+COMMIT;
+-- or ROLLBACK;
+```
+
+---
+
+## Monitoring Alerts (REQUIRED if monitoring exists)
+
+<!-- If no alerting is configured, write: "No monitoring alerts configured. [TODO]" -->
+
+| Alert | Condition | Severity | Action |
+|-------|-----------|----------|--------|
+| | <!-- e.g., error_rate > 5% for 5m --> | P0/P1/P2 | <!-- link to scenario above or steps --> |
+| | | | |
+| | | | |
+
+---
+
+## Escalation
+
+| Severity | Definition | Escalation |
+|----------|-----------|------------|
+| P0 — Critical | System down, data loss risk | Immediate: <!-- who to contact --> |
+| P1 — High | Major feature broken | Within 1 hour: <!-- who to contact --> |
+| P2 — Medium | Degraded performance | Within 1 day: <!-- who to contact --> |
+| P3 — Low | Minor issue, workaround exists | Next sprint: <!-- track in issue --> |
+
+---
+
+## Useful SQL Queries
+
+<!-- Operational queries that are frequently needed.
+     These save time during incidents and routine checks. -->
+
+### System status
+```sql
+-- Check queue depth
+{query}
+
+-- Recent errors
+{query}
+```
+
+### Data investigation
+```sql
+-- Find records by {identifier}
+{query}
+
+-- Check processing status for {entity}
+{query}
+```
+
+### Cleanup / maintenance
+```sql
+-- Purge old records (use with caution)
+{query}
+```
+
+---
+
+## Data Retention
+
+<!-- How long is data kept? What gets cleaned up automatically? -->
+
+| Data type | Retention | Cleanup method | Notes |
+|-----------|-----------|---------------|-------|
+| <!-- e.g., audit_log --> | <!-- e.g., 90 days --> | <!-- e.g., cron job / manual --> | |
+| <!-- e.g., dead_letters --> | <!-- e.g., 30 days --> | | |
+| <!-- e.g., database backups --> | <!-- e.g., 7 daily + 4 weekly --> | <!-- e.g., Render automatic --> | |
+
+## Related Documents (REQUIRED)
+
+- [Deployment & Infrastructure](deployment-and-infra.md) — where the system runs
+- [Architecture Overview](architecture-overview.md) — what components exist
+- [Configuration Guide](configuration-guide.md) — env vars and settings
+- [Observability & Monitoring](observability-monitoring.md) — metrics, logs, dashboards

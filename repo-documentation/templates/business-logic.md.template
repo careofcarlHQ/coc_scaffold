@@ -1,0 +1,170 @@
+# Business Logic & Domain Rules — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{primary business logic directories}`
+>
+> **Section markers**:
+> - Sections marked `🤖 Agent-extractable` can be filled from code inspection alone
+> - Sections marked `👤 Requires human input [ASK]` need domain expert confirmation
+> - Sections marked `⚡ Requires execution` need running commands to fill
+
+## Overview
+
+<!-- One paragraph: what domain does this system operate in?
+     What are the core business activities it supports? -->
+
+## Domain Glossary  👤 Requires human input [ASK]
+
+<!-- Define the key terms used throughout the codebase.
+     This prevents agents from guessing wrong meaning.
+     If unsure of a definition, write your best inference from code
+     and mark it [ASK — verify with domain expert]. -->
+
+| Term | Definition | Where used | Confidence |
+|------|-----------|------------|------------|
+| | | | High / [ASK] |
+| | | | High / [ASK] |
+| | | | High / [ASK] |
+
+## Core Business Rules  🤖 Agent-extractable
+
+<!-- These are the rules that govern what the system does.
+     Not how it's built (API, data model), but WHAT it enforces.
+     Extract rules from validation logic, guard clauses, and business service code. -->
+
+### Rule 1: {name}
+
+- **What**: <!-- What the rule enforces -->
+- **Why**: <!-- Business reason. If unknown from code, mark: --> [ASK — business reason not found in code]
+- **Where enforced**: `{file path and function}`
+- **Edge cases**: <!-- Known exceptions or special handling -->
+
+### Rule 2: {name}
+
+- **What**: 
+- **Why**: 
+- **Where enforced**: 
+- **Edge cases**: 
+
+<!-- Add more rules as discovered -->
+
+## Business Workflows  🤖 Agent-extractable
+
+<!-- End-to-end workflows from business perspective, not technical.
+     Each workflow should map to user/business actions. -->
+
+### Workflow: {name, e.g., "Order event processing"}
+
+**Trigger**: <!-- What initiates this workflow -->  
+**Outcome**: <!-- What should happen when complete -->  
+**Happy path**:
+1. <!-- Business step 1 (cite code path) -->
+2. <!-- Business step 2 (cite code path) -->
+3. <!-- Business step 3 (cite code path) -->
+
+**Failure scenarios**:
+| Scenario | Business impact | System behavior | Recovery |
+|----------|----------------|-----------------|----------|
+| | | | |
+| | | | |
+
+### Workflow: {name}
+
+**Trigger**:  
+**Outcome**:  
+**Happy path**:
+1. 
+2. 
+3. 
+
+## Data Transformations  🤖 Agent-extractable
+
+<!-- Document how data changes as it flows through the system.
+     This is often where the most complex business logic lives. -->
+
+### {Transformation name, e.g., "Event normalization"}
+
+- **Input**: <!-- What data arrives (schema/shape) -->
+- **Output**: <!-- What data is produced (schema/shape) -->
+- **Rules applied**:
+  - <!-- Transformation rule 1 -->
+  - <!-- Transformation rule 2 -->
+- **Source**: `{file path}`
+
+## Validation Rules  🤖 Agent-extractable
+
+<!-- What validation is applied to incoming data?
+     This is business logic, not just schema validation. -->
+
+| Field/Entity | Rule | Failure behavior | Source |
+|-------------|------|------------------|--------|
+| | | | |
+| | | | |
+
+## Feature Flags & Rollout Rules  🤖 Agent-extractable
+
+<!-- How are features controlled? Include env-var toggles, database-backed
+     switches, canary percentages, A/B test configs, rollout_status fields. -->
+
+| Feature | Flag / Mechanism | Current state | Business rule |
+|---------|-----------------|---------------|---------------|
+| | | | |
+| | | | |
+
+## External Integration Rules
+
+<!-- Business rules governing how external services are used -->
+
+### {Integration name, e.g., "Meta Conversions API"}
+
+- **Purpose**: <!-- Business reason for this integration -->
+- **Data sent**: <!-- What data and in what format -->
+- **Timing**: <!-- When data is sent (real-time, batched, scheduled) -->
+- **Business constraints**: <!-- e.g., "Must send within 72 hours of purchase" -->
+- **Failure policy**: <!-- What happens if the integration fails -->
+
+## Seasonality / Time-Based Rules  👤 Optional [ASK]
+
+<!-- Any business rules that depend on time, dates, seasons,
+     or business cycles. Skip if none found. -->
+
+| Rule | Timing | Impact | Source |
+|------|--------|--------|--------|
+| | | | |
+
+## Undocumented / Discovered Logic  🤖 Agent-extractable
+
+<!-- Business logic found in code that isn't explained anywhere.
+     These are particularly important to capture.
+     If no undocumented logic is found, state that explicitly. -->
+
+| Location | Logic | Best guess at purpose | Confidence |
+|----------|-------|----------------------|------------|
+| `{file:line}` | | | High / Medium / Low |
+| | | | |
+
+## Questions for Domain Experts  👤 Requires human input [ASK]
+
+<!-- Things discovered during documentation that need human explanation.
+     Always include at least 2 questions — if nothing is unclear, look harder. -->
+
+- [ ] Why does {thing work this way}? (found in `{file}`) [ASK]
+- [ ] Is {rule} still current or legacy? (found in `{file}`) [ASK]
+- [ ] What's the business reason for {constraint}? (found in `{file}`) [ASK]
+
+## Invariants & State Machines  🤖 Agent-extractable
+
+<!-- System invariants — rules the code enforces that must always hold true.
+     Include state machines, idempotency guarantees, locking strategies. -->
+
+| Invariant | Implementation | Source |
+|-----------|----------------|--------|
+| <!-- e.g., Never store raw PII --> | <!-- How it's enforced --> | `{file}` |
+| | | |
+
+## Related Documents (REQUIRED)
+
+- [Architecture Overview](architecture-overview.md)
+- [Data Model](data-model.md)
+- [API Surface](api-surface.md)
+- [Configuration Guide](configuration-guide.md)

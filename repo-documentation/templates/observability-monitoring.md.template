@@ -1,0 +1,168 @@
+# Observability & Monitoring — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{path to observability config, e.g., observability/, prometheus.yml, logging.py}`
+
+## Overview
+
+<!-- One paragraph: what observability tools are in place, what's the philosophy  
+     (structured logging? metrics-first? distributed tracing?) -->
+
+## Metrics  🤖 Agent-extractable
+
+### Custom Metrics
+
+<!-- Search: grep -rn "Counter\|Gauge\|Histogram\|Summary\|metric" app/ --include="*.py" -->
+
+| Metric name | Type | Labels | Description | Source |
+|-------------|------|--------|-------------|--------|
+| | Counter / Gauge / Histogram | | | `{file}:{line}` |
+| | | | | |
+| | | | | |
+
+### Key Business Metrics
+
+<!-- Metrics that reflect business health, not just infrastructure -->
+
+| Metric | What it measures | Alert threshold | Dashboard |
+|--------|-----------------|-----------------|-----------|
+| | <!-- e.g., events processed per minute --> | | |
+| | <!-- e.g., dispatch success rate --> | | |
+
+### Infrastructure Metrics
+
+| Metric | Source | Normal range | Alert threshold |
+|--------|--------|-------------|-----------------|
+| CPU usage | <!-- e.g., Render dashboard --> | | |
+| Memory usage | | | |
+| Response time (p50/p95/p99) | | | |
+| Error rate (5xx) | | | |
+| Database connections | | | |
+
+## Logging  🤖 Agent-extractable
+
+### Log Format
+
+<!-- Search: grep -rn "logging\|structlog\|logger" app/ --include="*.py" | head -20 -->
+
+| Setting | Value |
+|---------|-------|
+| Format | <!-- e.g., JSON structured, plain text --> |
+| Library | <!-- e.g., structlog, logging, winston --> |
+| Config file | `{path}` |
+| Output | <!-- e.g., stdout → collected by platform --> |
+
+### Log Levels
+
+| Level | When used | Example |
+|-------|-----------|---------|
+| ERROR | Unrecoverable failures | `{example}` |
+| WARNING | Recoverable issues, degraded state | `{example}` |
+| INFO | Business events, request lifecycle | `{example}` |
+| DEBUG | Developer troubleshooting | `{example}` |
+
+### Standard Log Fields
+
+<!-- If using structured logging, document the standard fields -->
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `timestamp` | ISO 8601 | When the event occurred |
+| `level` | string | Log level |
+| `message` | string | Human-readable description |
+| `request_id` | string | Correlation ID for request tracing |
+| | | |
+
+### Where to Find Logs
+
+| Component | Where | Access |
+|-----------|-------|--------|
+| Web API | <!-- e.g., Render dashboard → Logs --> | |
+| Worker | | |
+| Cron jobs | | |
+
+## Alerting  👤 [ASK] — alert rules may not be in code
+
+### Configured Alerts
+
+<!-- If no alerting exists, write: "No alerting configured. [TODO]" -->
+
+| Alert name | Condition | Severity | Channel | Action |
+|------------|-----------|----------|---------|--------|
+| | <!-- e.g., error_rate > 5% for 5m --> | P0/P1/P2 | <!-- e.g., Slack, PagerDuty --> | <!-- link to runbook --> |
+| | | | | |
+
+### Alert Escalation
+
+| Severity | Response time | Who | Channel |
+|----------|--------------|-----|---------|
+| P0 | Immediate | | |
+| P1 | Within 1 hour | | |
+| P2 | Within 1 day | | |
+
+## Health Checks  🤖 Agent-extractable
+
+<!-- Search: grep -rn "health\|readiness\|liveness" app/ --include="*.py" -->
+
+| Endpoint | Purpose | Expected response | Checks |
+|----------|---------|-------------------|--------|
+| `GET /healthz` | Liveness | `{"status": "ok"}` | <!-- what it checks --> |
+| `GET /readyz` | Readiness | | <!-- e.g., DB connection, Redis --> |
+
+## Dashboards  👤 [ASK]
+
+<!-- If dashboards exist, document them. If not: "No dashboards configured. [TODO]" -->
+
+| Dashboard | URL | Purpose | Owner |
+|-----------|-----|---------|-------|
+| | | | |
+
+## Tracing
+
+<!-- If distributed tracing is configured (OpenTelemetry, Jaeger, etc.) -->
+
+| Setting | Value |
+|---------|-------|
+| Tracing library | <!-- e.g., OpenTelemetry, none --> |
+| Sampling rate | <!-- e.g., 100%, 10% --> |
+| Backend | <!-- e.g., Jaeger, Honeycomb, none --> |
+
+<!-- If no tracing: "No distributed tracing configured." -->
+
+## Error Tracking
+
+<!-- If a dedicated error tracker is used (Sentry, Bugsnag, etc.) -->
+
+| Setting | Value |
+|---------|-------|
+| Service | <!-- e.g., Sentry, none --> |
+| Config | `{env var or file}` |
+| DSN var | `{e.g., SENTRY_DSN}` |
+
+<!-- If no error tracker: "No dedicated error tracking service. Errors are captured in logs." -->
+
+## Extraction Commands
+
+```bash
+# Find all custom metrics
+grep -rn "Counter\|Gauge\|Histogram\|Summary\|metrics\." app/ --include="*.py"
+
+# Find logging configuration
+grep -rn "logging\|structlog\|getLogger\|logger" app/ --include="*.py" | head -20
+
+# Find health check endpoints
+grep -rn "health\|readiness\|liveness" app/ --include="*.py"
+
+# Find error tracking setup
+grep -rn "sentry\|bugsnag\|rollbar\|SENTRY_DSN" app/ --include="*.py"
+
+# Find tracing setup
+grep -rn "opentelemetry\|jaeger\|trace\|span" app/ --include="*.py"
+```
+
+## Related Documents (REQUIRED)
+
+- [Operational Runbook](operational-runbook.md) — actions to take when alerts fire
+- [Deployment & Infrastructure](deployment-and-infra.md) — where logs and metrics are collected
+- [Configuration Guide](configuration-guide.md) — env vars for observability services
+- [Architecture Overview](architecture-overview.md) — what components produce metrics/logs

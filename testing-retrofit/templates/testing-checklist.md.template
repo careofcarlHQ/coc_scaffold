@@ -1,0 +1,119 @@
+# Testing Checklist — {Project Name}
+
+## Retrofit started: {date}
+## Target: {coverage goal}% coverage on critical modules
+
+---
+
+## Phase 1 — Test Infrastructure
+
+- Status: not-started / in-progress / done
+- Started: {date}
+- Completed: {date}
+
+### Tasks
+- [ ] Test framework installed and configured
+- [ ] Coverage tool working
+- [ ] Test directory structure created
+- [ ] Root conftest.py with basic fixtures
+- [ ] Test database strategy decided
+- [ ] Smoke test passes: `pytest tests/test_smoke.py`
+
+**Gate**: `pytest` runs cleanly with coverage reporting.
+
+---
+
+## Phase 2 — Characterization Tests
+
+- Status: not-started / in-progress / done
+- Started: {date}
+- Completed: {date}
+
+### Modules characterized
+
+| Module | Tests | Coverage | Surprises | Status |
+|--------|-------|----------|-----------|--------|
+| {module 1} | {N} | {N}% | {description} | {done/not} |
+| {module 2} | {N} | {N}% | {description} | {done/not} |
+
+### Totals
+- Tests added: {N}
+- Coverage: {baseline}% → {current}%
+- Surprises documented: {N}
+
+**Gate**: Top 5 critical modules characterized. All tests pass.
+
+---
+
+## Phase 3 — Unit Tests
+
+- Status: not-started / in-progress / done
+- Started: {date}
+- Completed: {date}
+
+### Modules tested
+
+| Module | Tests | Coverage | Status |
+|--------|-------|----------|--------|
+| {module 1} | {N} | {N}% | {done/not} |
+| {module 2} | {N} | {N}% | {done/not} |
+
+### Totals
+- Tests added: {N}
+- Coverage: {prev}% → {current}%
+- Unit suite duration: {seconds}
+
+**Gate**: Business-critical functions tested. Suite runs in < 30s.
+
+---
+
+## Phase 4 — Integration Tests
+
+- Status: not-started / in-progress / done
+- Started: {date}
+- Completed: {date}
+
+### Critical paths tested
+
+| Path | Tests | Status |
+|------|-------|--------|
+| {critical path 1} | {N} | {done/not} |
+| {critical path 2} | {N} | {done/not} |
+
+### Totals
+- Tests added: {N}
+- Coverage: {prev}% → {current}%
+- Full suite duration: {minutes}
+
+**Gate**: Critical paths covered. Full suite < 5 minutes.
+
+---
+
+## Phase 5 — CI Gates
+
+- Status: not-started / in-progress / done
+- Started: {date}
+- Completed: {date}
+
+### Configuration
+- [ ] CI runs tests on push/PR
+- [ ] Coverage floor set: {N}%
+- [ ] Merges blocked on test failure
+- [ ] Coverage reported in PRs
+
+**Gate**: CI enforcing. Coverage floor active.
+
+---
+
+## Summary
+
+| Metric | Baseline | Current | Target |
+|--------|----------|---------|--------|
+| Total tests | {N} | {N} | — |
+| Passing tests | {N} | {N} | 100% |
+| Coverage | {N}% | {N}% | {N}% |
+| Coverage floor | — | {N}% | {N}% |
+| Suite duration | {N}s | {N}s | < 300s |
+| Flaky tests | {N} | {N} | 0 |
+
+## Status: {planning / in-progress / complete}

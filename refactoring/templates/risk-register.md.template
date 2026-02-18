@@ -1,0 +1,109 @@
+# Risk Register — {PROJECT_NAME} Refactoring
+
+Purpose: track known risks and mitigation strategies for the refactoring effort.
+
+Last updated: {date}
+
+---
+
+## Active Risks
+
+### RISK-001: {title}
+
+| Field | Value |
+|-------|-------|
+| Category | {test coverage / coupling / behavior change / team coordination / timeline} |
+| Likelihood | {Low / Medium / High} |
+| Impact | {Low / Medium / High} |
+| Priority | {Likelihood × Impact} |
+| Affected targets | {which refactoring targets} |
+
+**Description**: {What could go wrong?}
+
+**Mitigation**: {What are we doing to prevent it?}
+
+**Contingency**: {What do we do if it happens?}
+
+**Status**: open / mitigated / occurred / closed
+
+---
+
+### RISK-002: {title}
+
+| Field | Value |
+|-------|-------|
+| Category | {category} |
+| Likelihood | {level} |
+| Impact | {level} |
+| Priority | {score} |
+| Affected targets | {targets} |
+
+**Description**: {description}
+
+**Mitigation**: {mitigation}
+
+**Contingency**: {contingency}
+
+**Status**: {status}
+
+---
+
+## Common Refactoring Risks (pre-populated)
+
+### RISK-T01: Characterization tests miss edge cases
+
+| Field | Value |
+|-------|-------|
+| Category | Test coverage |
+| Likelihood | Medium |
+| Impact | High |
+
+**Mitigation**: Test against production-like data. Compare I/O pairs before/after refactoring. Prioritize coverage on high-complexity functions.
+
+### RISK-T02: Refactoring introduces subtle behavior change
+
+| Field | Value |
+|-------|-------|
+| Category | Behavior change |
+| Likelihood | Medium |
+| Impact | High |
+
+**Mitigation**: One pattern per PR. Full test suite after each change. Code review focused on behavioral equivalence.
+
+### RISK-T03: Merge conflicts during refactoring
+
+| Field | Value |
+|-------|-------|
+| Category | Team coordination |
+| Likelihood | High |
+| Impact | Medium |
+
+**Mitigation**: Coordinate refactoring timing. Keep PRs small. Merge frequently. Work on isolated areas simultaneously rather than shared code.
+
+### RISK-T04: Scope creep — discovering more to fix
+
+| Field | Value |
+|-------|-------|
+| Category | Timeline |
+| Likelihood | High |
+| Impact | Medium |
+
+**Mitigation**: Log discoveries in refactoring log. Don't act until planned. Re-assess priorities after each phase.
+
+### RISK-T05: Loss of institutional knowledge during restructuring
+
+| Field | Value |
+|-------|-------|
+| Category | Knowledge |
+| Likelihood | Medium |
+| Impact | Medium |
+
+**Mitigation**: Document characterization notes. Preserve all comments and docstrings during moves. Update architecture docs after each target.
+
+---
+
+## Risk Log (events that occurred)
+
+| Date | Risk ID | What happened | Action taken | Outcome |
+|------|---------|---------------|------------- |---------|
+| {date} | {RISK-NNN} | {description} | {action} | {outcome} |

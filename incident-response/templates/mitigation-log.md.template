@@ -1,0 +1,44 @@
+# Mitigation Log — {Incident ID}
+
+## Incident: SEV{N} — {description}
+## Started: {timestamp}
+
+---
+
+## Attempt 1
+
+**Time**: {timestamp}
+**Action**: {what you did — e.g., "Rolled back deploy from abc123 to def456"}
+**Reasoning**: {why — e.g., "Deploy correlates with first error timestamp"}
+**Result**: {success / failure / partial}
+**Verification**:
+- Endpoint check: {pass / fail}
+- Error rate: {dropped / unchanged / increased}
+- User impact: {resolved / ongoing}
+
+**Next**: {if failed: what to try next}
+
+---
+
+## Attempt 2
+
+**Time**: {timestamp}
+**Action**: {what you did}
+**Reasoning**: {why}
+**Result**: {success / failure / partial}
+**Verification**:
+- Endpoint check: {pass / fail}
+- Error rate: {dropped / unchanged / increased}
+- User impact: {resolved / ongoing}
+
+**Next**: {if failed: what to try next}
+
+---
+
+## Mitigation Summary
+
+- Total attempts: {N}
+- Successful mitigation: Attempt {N} — {description}
+- Time to mitigate: {minutes from first attempt to user impact resolved}
+- System state after mitigation: {description — e.g., "Running on previous deploy abc123, feature X disabled"}
+- Is this a permanent fix? **No** — a proper fix is still needed

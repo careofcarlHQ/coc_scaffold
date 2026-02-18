@@ -1,0 +1,142 @@
+# Data Model — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{path to model definitions}`, `{path to migrations}`
+
+## Overview
+
+<!-- Brief description: what data the system stores, what ORM/migration tool is used -->
+
+ORM: `{e.g., SQLAlchemy}`  
+Migrations: `{e.g., Alembic}`  
+Database: `{e.g., PostgreSQL 15}`
+
+## Entity Relationship Diagram
+
+```
+<!-- Text-based ER diagram showing tables and relationships.
+     
+     Example:
+     ┌──────────┐     ┌──────────────┐     ┌──────────────┐
+     │  events  │────▶│ dispatch_queue│────▶│  audit_log   │
+     │          │     │              │     │              │
+     └──────────┘     └──────────────┘     └──────────────┘
+           │
+           ▼
+     ┌──────────────┐
+     │ destinations │
+     └──────────────┘
+-->
+```
+
+## Tables
+
+<!-- Group tables by domain area if the system has more than ~5 tables.
+     e.g., "### Core Entities", "### Event Processing", "### Audit & Logging" -->
+
+### `{table_name}`
+
+**Purpose**: <!-- What this table stores -->  
+**Source**: `{path to model file}`  
+**Approximate row count**: <!-- Optional — helpful for understanding scale. Use ⚡ `SELECT count(*) FROM {table}` -->
+
+| Column | Type | Constraints | Default | Notes |
+|--------|------|-------------|---------|-------|
+| id | uuid | PK | gen_random_uuid() | |
+| | | | | |
+| | | | | |
+| created_at | timestamptz | NOT NULL | now() | |
+| updated_at | timestamptz | | | |
+
+**Indexes**:
+- `{index_name}` on `({columns})` — purpose
+
+<!-- Repeat for each table -->
+
+### `{table_name_2}`
+
+**Purpose**: <!-- What this table stores -->  
+**Source**: `{path to model file}`
+
+| Column | Type | Constraints | Default | Notes |
+|--------|------|-------------|---------|-------|
+| | | | | |
+
+## State Machines (REQUIRED if any status/state columns exist)
+
+<!-- If NO state columns exist in any table, write:
+     "No state machines — no status/state columns found in any table." -->
+
+### `{entity}` states
+
+<!-- Document state values and allowed transitions -->
+
+**States**:
+| State | Meaning |
+|-------|---------|
+| | |
+| | |
+| | |
+
+**Allowed transitions**:
+```
+state_a → state_b    (trigger: what causes this)
+state_b → state_c    (trigger: what causes this)
+state_c → state_d    (trigger: what causes this)
+state_b → state_a    (trigger: what causes this — e.g., retry/rollback)
+```
+
+**Transition enforcement**: <!-- Where in code are transitions validated? -->
+
+## Enums / Constants  🤖 Agent-extractable
+
+<!-- Search: grep -rn "class.*Enum\|= Literal\|CHOICES" app/ --include="*.py" -->
+
+### `{enum_name}`
+
+| Value | Meaning |
+|-------|---------|
+| | |
+| | |
+
+## Relationships (REQUIRED)
+
+<!-- List ALL foreign key and join-table relationships.
+     Extract: grep -rn "ForeignKey\|relationship(\|ManyToMany\|joinedload" app/ --include="*.py" -->
+
+| From | To | Type | Via | Notes |
+|------|----|------|-----|-------|
+| | | 1:N / N:M / 1:1 | FK / join table | |
+| | | | | |
+
+## Migration Notes
+
+- Migration tool: `{tool}`
+- Run migrations: `{command}`
+- Create migration: `{command}`
+- Current migration count: `{count}` [UNVERIFIED]
+
+### Notable migrations
+<!-- List any migrations that are important to know about,
+     e.g., data backfills, breaking changes, manual steps -->
+
+| Migration | Date | Description | Notes |
+|-----------|------|-------------|-------|
+| | | | |
+
+## Database Connection
+
+<!-- How the app connects to the database -->
+
+| Setting | Source | Example |
+|---------|--------|--------|
+| Connection string | `{env var}` | `postgresql://...` |
+| Pool size | `{env var or config}` | `{default}` |
+| Timeout | `{env var or config}` | `{default}` |
+
+## Related Documents (REQUIRED)
+
+- [Architecture Overview](architecture-overview.md) — how the data layer fits into the system
+- [API Surface](api-surface.md) — which endpoints read/write which tables
+- [Configuration Guide](configuration-guide.md) — database connection config
+- [Business Logic](business-logic.md) — rules that govern data transformations

@@ -1,0 +1,98 @@
+# Post-Mortem — {Incident ID}
+
+## Date: {date}
+## Author: {who}
+## Severity: SEV{N}
+
+---
+
+## Summary
+
+On {date} at {time UTC}, {service} experienced {symptom} for approximately {duration}, affecting {scope — e.g., "all users trying to create orders"}. The root cause was {root cause — one sentence}. The incident was mitigated by {mitigation — e.g., "rolling back to the previous deployment"} at {time} and permanently fixed by {fix — e.g., "adding null check for discount_code field"} deployed at {time}.
+
+---
+
+## Timeline
+
+| Time (UTC) | Event |
+|-----------|-------|
+| {HH:MM} | {Change/trigger that caused the incident} |
+| {HH:MM} | {First error occurrence} |
+| {HH:MM} | {Incident detected — how?} |
+| {HH:MM} | {Triage complete — classified as SEVN} |
+| {HH:MM} | {Mitigation action taken} |
+| {HH:MM} | {User impact resolved} |
+| {HH:MM} | {Root cause confirmed} |
+| {HH:MM} | {Fix deployed} |
+| {HH:MM} | {Incident closed} |
+
+### Key timing
+
+| Metric | Duration |
+|--------|----------|
+| Time to detect | {minutes from start to detection} |
+| Time to mitigate | {minutes from detection to user impact resolved} |
+| Time to fix | {hours from detection to permanent fix deployed} |
+| Total user impact | {minutes/hours of degraded service} |
+
+---
+
+## Root Cause
+
+### What happened
+{Technical description of the root cause.}
+
+### 5 Whys
+1. Why? {direct cause}
+2. Why? {underlying cause}
+3. Why? {deeper cause}
+4. Why? {systemic cause}
+5. Why? {root cause}
+
+### Contributing factors
+- {Factor 1: e.g., "No test coverage for this code path"}
+- {Factor 2: e.g., "No post-deploy health check"}
+- {Factor 3: e.g., "No monitoring for this error type"}
+
+---
+
+## Impact
+
+| Dimension | Impact |
+|-----------|--------|
+| Duration | {total user-facing impact time} |
+| Users affected | {count or percentage} |
+| Failed requests | {count, if measurable} |
+| Data impact | {none / description} |
+| Revenue impact | {estimate / none / unknown} |
+
+---
+
+## What Went Well
+
+- {e.g., "Error detected within 5 minutes via log monitoring"}
+- {e.g., "Rollback executed in under 3 minutes"}
+- {e.g., "Incident report was maintained in real time"}
+
+## What Went Poorly
+
+- {e.g., "No test existed for the affected endpoint"}
+- {e.g., "Took 15 minutes to identify which deploy to roll back to"}
+- {e.g., "No automatic post-deploy health check"}
+
+---
+
+## Action Items
+
+| # | Action | Category | Priority | Owner | Due | Status |
+|---|--------|----------|----------|-------|-----|--------|
+| 1 | {specific action} | Test | P1 | {who} | {date} | {todo} |
+| 2 | {specific action} | Monitor | P2 | {who} | {date} | {todo} |
+| 3 | {specific action} | Code | P1 | {who} | {date} | {todo} |
+| 4 | {specific action} | Process | P3 | {who} | {date} | {todo} |
+
+---
+
+## Lessons Learned
+
+{1-2 paragraphs: what did this incident teach you about the system, the process, or the monitoring? What would you tell past-you to prevent this?}

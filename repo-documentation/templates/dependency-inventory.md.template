@@ -1,0 +1,101 @@
+# Dependency Inventory — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{package manifest, e.g., pyproject.toml, package.json}`
+
+## Overview
+
+Package manager: `{e.g., Poetry, npm, pip}`  
+Lock file: `{e.g., poetry.lock, package-lock.json}`  
+Language version: `{e.g., Python 3.11}`
+
+## Runtime Dependencies
+
+### Core Framework
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| | | |
+| | | |
+
+### Database
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| | | |
+
+### External Communication
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| | | |
+
+### Security / Auth
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| | | |
+
+### Observability
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| | | |
+
+### Other
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| | | |
+
+## Dev Dependencies
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| | | |
+| | | |
+
+## External Service Integrations
+
+<!-- These are not package dependencies — they're APIs and services
+     the system communicates with at runtime -->
+
+| Service | Purpose | Auth method | Config vars | Docs |
+|---------|---------|-------------|-------------|------|
+| | | | | |
+| | | | | |
+
+## Infrastructure Dependencies
+
+<!-- Services required to run the system (databases, caches, etc.) -->
+
+| Service | Version | Required for | Local setup |
+|---------|---------|-------------|-------------|
+| PostgreSQL | | | Docker Compose |
+| Redis | | | Docker Compose |
+| | | | |
+
+## Dependency Risks
+
+<!-- Note any dependencies with known risks -->
+
+| Dependency | Risk | Mitigation |
+|-----------|------|------------|
+| | Unmaintained / low download count / etc. | |
+| | License concern | |
+| | Security advisory | |
+
+## Update Policy
+
+<!-- How are dependencies updated? -->
+
+- Security patches: <!-- e.g., "Applied immediately" -->
+- Minor versions: <!-- e.g., "Updated monthly" -->
+- Major versions: <!-- e.g., "Evaluated and tested before upgrading" -->
+
+## Related Documents (REQUIRED)
+
+- [Architecture Overview](architecture-overview.md) — what components use which dependencies
+- [Configuration Guide](configuration-guide.md) — which env vars each dependency needs
+- [Codebase Onboarding](codebase-onboarding.md) — install steps reference these deps
+- [Security & Compliance](security-compliance.md) — license and vulnerability policies

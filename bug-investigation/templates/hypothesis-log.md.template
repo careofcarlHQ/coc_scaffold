@@ -1,0 +1,52 @@
+# Hypothesis Log — {Bug Title}
+
+## Investigation started: {date}
+## Current status: investigating / root cause found / fix applied
+
+---
+
+## H1: {Hypothesis statement}
+- **Claim**: {X is true}
+- **Because**: {Y evidence/reasoning}
+- **Test**: {How to confirm or reject}
+- **Result**: ✅ confirmed / ❌ rejected / ❓ inconclusive
+- **Evidence**: {What you observed}
+- **Time spent**: {minutes}
+- **Next**: {What to investigate next, based on this result}
+
+---
+
+## H2: {Hypothesis statement}
+- **Claim**: {X is true}
+- **Because**: {Y evidence/reasoning}
+- **Test**: {How to confirm or reject}
+- **Result**: ✅ confirmed / ❌ rejected / ❓ inconclusive
+- **Evidence**: {What you observed}
+- **Time spent**: {minutes}
+- **Next**: {What to investigate next}
+
+---
+
+## H3: {Hypothesis statement}
+- **Claim**: {X is true}
+- **Because**: {Y evidence/reasoning}
+- **Test**: {How to confirm or reject}
+- **Result**: ✅ confirmed / ❌ rejected / ❓ inconclusive
+- **Evidence**: {What you observed}
+- **Time spent**: {minutes}
+- **Next**: {What to investigate next}
+
+---
+
+## Summary
+
+### Confirmed chain
+{Root cause} → {intermediate cause} → {visible symptom}
+
+### Dead ends
+| Hypothesis | Why rejected | Time spent |
+|------------|-------------|------------|
+| {H_rejected} | {reason} | {minutes} |
+
+### Total investigation time: {minutes}
+### Root cause: {brief statement or "still investigating"}

@@ -1,0 +1,177 @@
+# Test Pattern Catalog — {Project Name}
+
+## Date: {date}
+## Last updated: {date}
+
+> Reusable test patterns for this codebase. Follow these patterns for consistency.
+
+---
+
+## Naming Convention
+
+```python
+# File: test_{module_name}.py
+# Class: Test{Component}{Behavior}  (optional grouping)
+# Function: test_{action}_{condition}_{expected_result}
+
+# Examples:
+def test_calculate_total_with_valid_items_returns_sum():
+def test_calculate_total_with_empty_list_returns_zero():
+def test_create_order_when_unauthenticated_raises_401():
+```
+
+---
+
+## Fixture Patterns
+
+### Database session
+```python
+@pytest.fixture
+def db_session():
+    """Provide a clean database session, rolled back after test."""
+    # {project-specific implementation}
+    ...
+```
+
+### Test client
+```python
+@pytest.fixture
+def client():
+    """HTTP test client for API endpoint tests."""
+    # {project-specific implementation}
+    ...
+```
+
+### Authenticated user
+```python
+@pytest.fixture
+def auth_headers(sample_user):
+    """Authorization headers for authenticated API calls."""
+    # {project-specific implementation}
+    ...
+```
+
+### Sample data factories
+```python
+def make_{entity}(**overrides):
+    """Create a {entity} with sensible defaults, overridable fields."""
+    defaults = {
+        # {field}: {default value},
+    }
+    defaults.update(overrides)
+    return {Entity}(**defaults)
+```
+
+---
+
+## Unit Test Patterns
+
+### Testing a pure function
+```python
+def test_{function}_with_{condition}_returns_{result}():
+    result = {function}({input})
+    assert result == {expected}
+```
+
+### Testing validation
+```python
+def test_{function}_with_invalid_{field}_raises_{error}():
+    with pytest.raises({ErrorType}) as exc_info:
+        {function}({invalid_input})
+    assert "{message}" in str(exc_info.value)
+```
+
+### Testing with mocked dependency
+```python
+def test_{function}_calls_{dependency}(mocker):
+    mock_dep = mocker.patch("{path.to.dependency}")
+    mock_dep.return_value = {value}
+    
+    result = {function}({input})
+    
+    assert result == {expected}
+    mock_dep.assert_called_once_with({args})
+```
+
+---
+
+## Integration Test Patterns
+
+### API endpoint test
+```python
+def test_{endpoint}_{method}_returns_{status}(client, auth_headers):
+    response = client.{method}(
+        "{url}",
+        json={payload},
+        headers=auth_headers,
+    )
+    assert response.status_code == {status}
+    data = response.json()
+    assert data["{field}"] == {expected}
+```
+
+### Database operation test
+```python
+def test_{operation}_persists_{entity}(db_session):
+    entity = make_{entity}()
+    repo = {Repository}(db_session)
+    
+    created = repo.create(entity)
+    db_session.flush()
+    
+    retrieved = repo.get_by_id(created.id)
+    assert retrieved.{field} == entity.{field}
+```
+
+---
+
+## Characterization Test Patterns
+
+```python
+class TestCharacterize{Module}:
+    """Characterization: locks current behavior of {module}.
+    
+    WARNING: Documents ACTUAL behavior, not necessarily CORRECT behavior.
+    """
+    
+    def test_{function}_actual_behavior(self):
+        # NOTE: {observation about the behavior}
+        result = {function}({input})
+        assert result == {actual_observed_output}
+```
+
+---
+
+## Markers
+
+```python
+@pytest.mark.unit          # Fast, no IO
+@pytest.mark.integration   # Database or API
+@pytest.mark.characterization  # Behavior locking
+@pytest.mark.slow          # > 5 seconds
+@pytest.mark.flaky         # Known intermittent (quarantine)
+```
+
+---
+
+## Anti-patterns (do NOT do this)
+
+```python
+# ❌ No assertion
+def test_something():
+    result = do_thing()  # Implicitly asserts "doesn't crash"
+
+# ❌ Testing the mock
+def test_something(mocker):
+    mock = mocker.patch("module.function")
+    mock.return_value = 42
+    assert mock() == 42  # This tests mocker, not your code
+
+# ❌ Order-dependent tests  
+def test_create():
+    global created_id
+    created_id = create_thing()
+
+def test_read():
+    thing = read_thing(created_id)  # Fails if test_create didn't run first
+```

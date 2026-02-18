@@ -1,0 +1,28 @@
+# AGENTS.md — Incident: {Incident ID}
+
+## Incident
+SEV{N} — {one-line description}
+
+## Current phase
+{Triage / Mitigation / Diagnosis / Fix}
+
+## Symptoms
+- {Symptom 1}
+- {Symptom 2}
+- {Symptom 3}
+
+## Read these files
+1. `AGENTS.md` (project-level rules)
+2. `incidents/{incident-id}.md` (live incident report)
+3. `incidents/{incident-id}-mitigation.md` (mitigation log, if in diagnosis/fix phase)
+
+## Constraints
+- Do NOT refactor code
+- Do NOT change code outside the broken path
+- Do NOT run database migrations
+- Do NOT "improve" anything — find and fix the one problem
+- Log every action in the incident report
+- Verify after every change
+
+## Phase instructions
+{Copy the phase-specific instructions from 06-agents-md-for-incidents.md}

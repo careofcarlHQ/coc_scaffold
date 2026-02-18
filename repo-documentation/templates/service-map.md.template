@@ -1,0 +1,80 @@
+# Service Map — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Source: `{root source directory}`
+
+## Overview
+
+<!-- One paragraph: how the codebase is organized, what the major boundaries are.
+     e.g., "The codebase follows a layered architecture: api/ handles HTTP,
+     services/ contains business logic, db/ manages persistence, and dispatch/
+     handles outbound integrations." -->
+
+**Codebase size**: <!-- Optional: e.g., "~8,500 lines across 45 Python files" — helps calibrate expectations.
+     Generate with: find app/ -name '*.py' | xargs wc -l | tail -1 -->
+
+## Module Inventory
+
+<!-- List every top-level module/package with a one-line purpose.
+     Include the key files within each module. -->
+
+### `{module_path}/` — {purpose}
+
+| File | Purpose |
+|------|---------|
+| `{file}` | |
+| `{file}` | |
+
+### `{module_path}/` — {purpose}
+
+| File | Purpose |
+|------|---------|
+| `{file}` | |
+| `{file}` | |
+
+<!-- Repeat for each module -->
+
+## Cross-Cutting Concerns
+
+<!-- Document where shared functionality lives -->
+
+| Concern | Module | Key files |
+|---------|--------|-----------|
+| Configuration | | |
+| Logging | | |
+| Error handling | | |
+| Authentication | | |
+| Database access | | |
+| External HTTP calls | | |
+
+## Dependency Graph
+
+<!-- Which modules depend on which? 
+     This helps agents understand impact of changes. -->
+
+```
+<!-- Example:
+     api/ ──▶ services/ ──▶ db/
+      │                      ▲
+      ▼                      │
+     schemas/             core/
+     
+     Key: A ──▶ B means A imports from B
+-->
+```
+
+## Module Ownership / Conventions
+
+<!-- If different modules follow different patterns or have different
+     maintainers, note that here -->
+
+| Module | Pattern | Notes |
+|--------|---------|-------|
+| | | |
+| | | |
+
+## Related Documents (REQUIRED)
+
+- [Architecture Overview](architecture-overview.md) — high-level system design
+- [API Surface](api-surface.md) — endpoints exposed by each module
+- [Data Model](data-model.md) — what data each module operates on

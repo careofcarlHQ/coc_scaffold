@@ -1,0 +1,44 @@
+# Target State Definition — {Migration Name}
+
+## Date: {date}
+
+---
+
+## Target State
+| Layer | Current | Target |
+|-------|---------|--------|
+| Language | {current version} | {target version} |
+| Framework | {current version} | {target version} |
+| Database | {current version} | {target version} |
+| Platform | {current} | {target} |
+| {other} | {current} | {target} |
+
+## Motivation
+{Why this migration, why now? What triggers it?}
+
+## Success Criteria
+- [ ] {Criterion 1: e.g., All tests pass on target versions}
+- [ ] {Criterion 2: e.g., Performance within 10% of baseline}
+- [ ] {Criterion 3: e.g., Zero downtime during cutover}
+- [ ] {Criterion 4: e.g., All consumers working without changes}
+
+## Non-Negotiable Requirements
+- {e.g., Zero data loss}
+- {e.g., Maximum 5 minutes downtime}
+- {e.g., Rollback possible within 15 minutes}
+
+## Out of Scope
+- {What we're NOT migrating in this effort}
+
+## Timeline
+- Planning: {start} — {end}
+- Execution: {start} — {end}
+- Cutover: {date}
+- Cleanup: {date}
+- **Maximum duration**: {weeks}
+
+## Abort Criteria
+Abandon migration if:
+- {condition 1}
+- {condition 2}
+- {condition 3}

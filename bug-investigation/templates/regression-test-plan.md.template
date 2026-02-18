@@ -1,0 +1,75 @@
+# Regression Test Plan — {Bug Title}
+
+## Date: {date}
+## Bug reference: `bugfix/root-cause-analysis.md`
+
+---
+
+## Primary Regression Test
+
+### Purpose
+Prevent the exact bug from recurring.
+
+### Test case
+```python
+def test_{descriptive_name}():
+    """Regression: {brief description of bug}.
+    
+    Root cause: {one sentence root cause}.
+    Fix: {one sentence fix description}.
+    See: bugfix/root-cause-analysis.md
+    """
+    # Setup: {create conditions that trigger the bug}
+    
+    # Action: {trigger the code path}
+    
+    # Assert: {verify correct behavior}
+```
+
+### Verification
+- [ ] Test FAILS before the fix is applied
+- [ ] Test PASSES after the fix is applied
+- [ ] Test is independent of other tests
+- [ ] Test has descriptive name and docstring
+
+---
+
+## Sibling Regression Tests
+
+### Purpose
+Prevent the same class of bug in related code paths.
+
+| Test | Protects | Priority |
+|------|----------|----------|
+| `test_{sibling_1}` | {code path} | {P0/P1} |
+| `test_{sibling_2}` | {code path} | {P0/P1} |
+
+---
+
+## Broader Prevention Tests
+
+### Purpose
+Strengthen coverage beyond the immediate bug.
+
+| Test category | Description | Priority | Status |
+|---------------|-------------|----------|--------|
+| {Category} | {What it tests} | {P0/P1/P2} | {written / to-do / deferred} |
+
+---
+
+## Test Results
+
+### Before fix
+```
+{test output showing failure}
+```
+
+### After fix
+```
+{test output showing pass}
+```
+
+### Full suite after fix
+```
+{summary: N passed, 0 failed, S skipped}
+```

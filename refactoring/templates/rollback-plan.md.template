@@ -1,0 +1,100 @@
+# Rollback Plan — {PROJECT_NAME} Refactoring
+
+Purpose: document how to undo each refactoring step safely.
+
+Last updated: {date}
+
+---
+
+## General Rollback Procedure
+
+1. Identify the problematic refactoring PR
+2. Revert the PR: `git revert -m 1 <merge-commit-sha>`
+3. Run full test suite to verify revert is clean
+4. Log the rollback in `refactor/refactoring-log.md`
+5. Analyze root cause before re-attempting
+
+---
+
+## Per-Target Rollback Plans
+
+### Target: {target_name}
+
+**Pattern applied**: {refactoring pattern}
+**PR(s)**: #{n}
+
+#### When to rollback
+
+- [ ] Tests fail and cause isn't identified within 30 minutes
+- [ ] Coverage decreased by more than 2%
+- [ ] Unintended behavior change detected
+- [ ] Execution taking 3x longer than estimated
+
+#### How to rollback
+
+```bash
+# Revert the refactoring PR
+git revert -m 1 {merge_commit_sha}
+
+# Verify tests pass after revert
+pytest --tb=short
+
+# Verify coverage restored
+pytest --cov=app --cov-report=term
+```
+
+#### Post-rollback checklist
+
+- [ ] Tests pass after revert
+- [ ] Coverage matches pre-refactoring baseline
+- [ ] Rollback logged in refactoring log
+- [ ] Root cause analyzed
+- [ ] Migration map updated if needed
+- [ ] Plan adjusted before re-attempt
+
+#### Partial rollback (if only some stages completed)
+
+If the target is mid-migration (strangler fig state):
+1. Old code still exists as pass-through — it's still functional
+2. Revert only the caller-redirect PRs: `git revert {redirect_commit_sha}`
+3. Old callers restored; new module exists but is unused
+4. Clean up by deleting the unused new module
+5. Run tests to verify
+
+---
+
+### Target: {next_target_name}
+
+{Repeat the structure for each target}
+
+---
+
+## Emergency Rollback
+
+If multiple targets are in flight and the codebase is unstable:
+
+```bash
+# Find the last known-good state
+git log --oneline | head -20
+
+# Reset to last known-good commit (creates a new commit, preserving history)
+git revert --no-commit HEAD~{N}..HEAD
+git commit -m "emergency: rollback refactoring to last stable state"
+
+# Verify
+pytest --tb=short
+```
+
+After emergency rollback:
+- [ ] Stop all refactoring work
+- [ ] Assess what went wrong
+- [ ] Revise the refactoring plan
+- [ ] Resume only after root cause is addressed
+
+---
+
+## Rollback Log
+
+| Date | Target | PR reverted | Reason | Root cause | Re-attempted? |
+|------|--------|-------------|--------|-----------|---------------|
+| {date} | {target} | #{n} | {reason} | {cause} | yes / no / pending |

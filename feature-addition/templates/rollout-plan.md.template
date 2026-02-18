@@ -1,0 +1,104 @@
+# Rollout Plan — {Feature Name}
+
+## Feature spec: `feature/feature-spec.md`
+## Date: {date}
+
+---
+
+## Pre-Deployment Checklist
+
+- [ ] All acceptance criteria met
+- [ ] Zero test regressions
+- [ ] Compatibility check passed
+- [ ] Migration tested (up and down)
+- [ ] Rollback steps documented (below)
+- [ ] Feature flag in place (if applicable)
+
+## Deployment Steps
+
+### 1. Database Migration
+```bash
+# Run migration
+alembic upgrade head
+
+# Verify
+# Check that new tables/columns exist
+# Check that existing data is intact
+```
+
+**Verify**: {describe how to confirm migration succeeded}
+**Rollback**: `alembic downgrade -1`
+
+### 2. Backend Deployment
+```bash
+# Deploy backend
+{deployment command or process}
+```
+
+**Verify**: 
+- Health check: `GET /healthz` returns 200
+- Existing endpoint: `GET /api/v1/{existing_resource}` returns expected data
+
+**Rollback**: Redeploy previous version
+
+### 3. Frontend Deployment (if applicable)
+```bash
+# Deploy frontend
+{deployment command or process}
+```
+
+**Verify**:
+- App loads without errors
+- Existing flows work
+- New feature accessible
+
+**Rollback**: Redeploy previous version
+
+### 4. Feature Verification
+- [ ] New feature works with production data
+- [ ] Error paths handled correctly
+- [ ] Performance acceptable
+
+### 5. Monitor (24 hours)
+- [ ] No error rate increase
+- [ ] No performance degradation
+- [ ] No unexpected log entries
+
+## Feature Flag (if applicable)
+
+```
+Flag name: {FEATURE_NAME_ENABLED}
+Default: {false}
+
+Enable: set FEATURE_NAME_ENABLED=true and restart
+Disable: set FEATURE_NAME_ENABLED=false and restart
+```
+
+## Rollback Plan
+
+### Trigger conditions
+Roll back if any of these occur within 24 hours:
+- Error rate increases by > 2x baseline
+- New endpoint returns 500 errors
+- Existing endpoints affected
+- Data integrity concerns
+
+### Rollback steps
+1. {Disable feature flag / revert deployment}
+2. {Run migration down if needed}: `alembic downgrade -1`
+3. {Verify existing functionality restored}
+4. {Investigate and fix before re-attempting}
+
+### Data considerations
+- {New rows created: will be orphaned / needs cleanup / no concern}
+- {Modified rows: reversible / irreversible — plan}
+- {External side effects: API calls / emails / webhooks — can't undo}
+
+## Post-Deployment
+
+- [ ] Feature working in production
+- [ ] Monitoring confirms no issues
+- [ ] Feature flag set to production state
+- [ ] Clean up feature branch
+- [ ] Clean up feature brief / temporary AGENTS.md section
+- [ ] Update documentation if needed

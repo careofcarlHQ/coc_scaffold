@@ -1,0 +1,86 @@
+# Documentation Index — {project_name}
+
+> Last updated: YYYY-MM-DD
+
+## Recommended Reading Order
+
+<!-- For new team members or agents encountering this codebase for the first time -->
+
+1. **[Codebase Onboarding](codebase-onboarding.md)** — get the system running locally
+2. **[Architecture Overview](architecture-overview.md)** — understand the big picture
+3. **[Service Map](service-map.md)** — find where code lives
+4. **[API Surface](api-surface.md)** — understand the interfaces
+5. **[Business Logic](business-logic.md)** — learn the domain rules
+6. Browse remaining docs as needed
+
+## Quick Links
+
+| Need to... | Go to... |
+|------------|----------|
+| Understand the system | [Architecture Overview](architecture-overview.md) |
+| Find a module | [Service Map](service-map.md) |
+| Look up an endpoint | [API Surface](api-surface.md) |
+| Check a table schema | [Data Model](data-model.md) |
+| Configure the system | [Configuration Guide](configuration-guide.md) |
+| Set up local dev | [Codebase Onboarding](codebase-onboarding.md) |
+| Deploy changes | [Deployment & Infrastructure](deployment-and-infra.md) |
+| Handle an incident | [Operational Runbook](operational-runbook.md) |
+| Check dependencies | [Dependency Inventory](dependency-inventory.md) |
+| Understand business rules | [Business Logic](business-logic.md) |
+| See why decisions were made | [Decision Log](decision-log.md) |
+| Review observability | [Observability & Monitoring](observability-monitoring.md) |
+| Check security posture | [Security & Compliance](security-compliance.md) |
+| See what's missing | [Gap Analysis](documentation-gap-analysis.md) |
+
+## All Documents
+
+### Layer 1 — Architecture & Design
+- [Architecture Overview](architecture-overview.md) — System shape, components, data flow
+- [Service Map](service-map.md) — Module inventory and responsibilities
+
+### Layer 2 — Interfaces & Data
+- [API Surface](api-surface.md) — All endpoints, CLI commands, scripts
+- [Data Model](data-model.md) — Database tables, schemas, state machines
+
+### Layer 3 — Configuration & Dependencies
+- [Configuration Guide](configuration-guide.md) — Environment variables and settings
+- [Dependency Inventory](dependency-inventory.md) — Packages and external services
+
+### Layer 4 — Operations & Quality
+- [Codebase Onboarding](codebase-onboarding.md) — Getting started for new developers
+- [Deployment & Infrastructure](deployment-and-infra.md) — Where and how the system runs
+- [Operational Runbook](operational-runbook.md) — Common operations and troubleshooting
+- [Testing & Quality](testing-and-quality.md) — Test strategy, coverage, conventions
+- [Observability & Monitoring](observability-monitoring.md) — Metrics, logs, alerts, dashboards
+- [Security & Compliance](security-compliance.md) — PII, GDPR, auth, encryption
+
+### Layer 5 — Domain Knowledge
+- [Business Logic](business-logic.md) — Domain rules, workflows, invariants
+- [Decision Log](decision-log.md) — Why things are the way they are
+
+### Meta
+- [Documentation Gap Analysis](documentation-gap-analysis.md) — What's missing and priorities (REQUIRED capstone)
+- [AGENTS.md](AGENTS.md) — Instructions for AI coding agents
+
+## Documentation Standards (REQUIRED)
+
+<!-- These standards ensure consistency across all documentation. -->
+
+- All docs include `Last verified: YYYY-MM-DD` header
+- Source files are cited for factual claims
+- Unknown information is marked `[UNVERIFIED]` or `[TODO]`
+- Human-input-needed sections are marked `[ASK]`
+- Execution-required sections are marked `⚡ Requires execution`
+- Each doc covers one topic and is under 300 lines
+- Every doc has a `Related Documents (REQUIRED)` section at the bottom
+- See the [documentation writing guide](../../repo-documentation/03-documentation-writing-guide.md) for conventions
+
+## Contributing (REQUIRED)
+
+When adding or updating documentation:
+
+1. Place the file in the appropriate section above
+2. Update this index
+3. Set `Last verified` date
+4. Cite source files for factual claims
+5. Update `AGENTS.md` if adding a new major document

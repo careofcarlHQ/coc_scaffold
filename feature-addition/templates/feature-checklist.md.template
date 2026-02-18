@@ -1,0 +1,121 @@
+# Feature Checklist — {Feature Name}
+
+## Feature spec: `feature/feature-spec.md`
+## Impact analysis: `feature/impact-analysis.md`
+
+---
+
+### Stage 1 — Database Layer
+
+- Status: not-started / in-progress / done / blocked
+- Started:
+- Completed:
+- Work:
+  - [ ] Create migration file
+  - [ ] Add new tables/columns/constraints
+  - [ ] Verify migration up
+  - [ ] Verify migration down
+  - [ ] Verify existing data preserved
+- Tests added:
+- Deviations from spec:
+- **Gate**: Migration up/down clean. Existing tests pass.
+- Gate result: pass / fail
+
+---
+
+### Stage 2 — Service Layer
+
+- Status: not-started / in-progress / done / blocked
+- Started:
+- Completed:
+- Work:
+  - [ ] Implement business logic functions
+  - [ ] Write unit tests (happy path)
+  - [ ] Write unit tests (error paths)
+  - [ ] Write unit tests (edge cases)
+- Tests added:
+- Deviations from spec:
+- **Gate**: All new tests pass. All existing tests pass.
+- Gate result: pass / fail
+
+---
+
+### Stage 3 — API Layer
+
+- Status: not-started / in-progress / done / blocked
+- Started:
+- Completed:
+- Work:
+  - [ ] Add new routes
+  - [ ] Wire to service layer
+  - [ ] Add request validation
+  - [ ] Add response serialization
+  - [ ] Write endpoint tests (all response codes)
+- Tests added:
+- Deviations from spec:
+- **Gate**: Endpoint tests pass. Existing endpoint tests pass.
+- Gate result: pass / fail
+
+---
+
+### Stage 4 — UI Layer
+
+- Status: not-started / in-progress / done / blocked / N/A
+- Started:
+- Completed:
+- Work:
+  - [ ] Add new pages/components
+  - [ ] Wire to API endpoints
+  - [ ] Handle loading/error/empty states
+  - [ ] Add navigation links
+- Tests added:
+- Deviations from spec:
+- **Gate**: UI renders. User flow works. Existing pages unaffected.
+- Gate result: pass / fail / N/A
+
+---
+
+### Stage 5 — Background Jobs
+
+- Status: not-started / in-progress / done / blocked / N/A
+- Started:
+- Completed:
+- Work:
+  - [ ] Add/modify job handlers
+  - [ ] Wire job dispatch
+  - [ ] Handle failure/retry
+  - [ ] Write job tests
+- Tests added:
+- Deviations from spec:
+- **Gate**: Job executes correctly. Failure handling works. Existing jobs unaffected.
+- Gate result: pass / fail / N/A
+
+---
+
+### Stage 6 — Integration Verification
+
+- Status: not-started / in-progress / done / blocked
+- Started:
+- Completed:
+- Work:
+  - [ ] Run complete feature flow end-to-end
+  - [ ] Run full existing test suite
+  - [ ] Verify backward compatibility
+  - [ ] Review all acceptance criteria
+- Regression check:
+  - Existing tests before: {N} passed, 0 failed
+  - Existing tests after: {N} passed, 0 failed
+  - New tests: {M} passed
+- **Gate**: End-to-end works. Zero regressions. All acceptance criteria met.
+- Gate result: pass / fail
+
+---
+
+## Summary
+
+- Total stages: {N}
+- Stages complete: {M}
+- Tests added: {total}
+- Regressions: 0
+- Deviations from spec: {list or "none"}
+- Follow-up items: {list or "none"}

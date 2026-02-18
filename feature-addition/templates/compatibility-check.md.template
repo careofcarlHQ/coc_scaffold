@@ -1,0 +1,85 @@
+# Compatibility Check — {Feature Name}
+
+## Date: {date}
+## Checked by: {human/agent}
+
+---
+
+## API Compatibility
+
+### Existing endpoints (must be unchanged)
+| Method | Path | Before | After | Status |
+|--------|------|--------|-------|--------|
+| {GET} | {/api/v1/resource} | {response shape} | {response shape} | ✅ unchanged / ⚠️ changed |
+
+### New fields added (additive, backward-compatible)
+| Endpoint | New field | Type | Nullable |
+|----------|-----------|------|----------|
+| {endpoint} | {field_name} | {type} | {yes/no} |
+
+### Breaking changes (if any)
+| Endpoint | Change | Migration plan |
+|----------|--------|---------------|
+| {none or list} | | |
+
+## Data Compatibility
+
+### Existing queries (must still work)
+| Query pattern | Table(s) | Status |
+|---------------|----------|--------|
+| {description} | {tables} | ✅ works / ⚠️ affected |
+
+### New nullable columns
+| Table | Column | Default | Existing rows |
+|-------|--------|---------|---------------|
+| {table} | {column} | {NULL / default} | {unaffected / need backfill} |
+
+### Foreign key integrity
+| New FK | References | Existing data valid? |
+|--------|-----------|---------------------|
+| {FK name} | {table.column} | {yes / no — action needed} |
+
+## UI Compatibility
+
+### Existing pages (must render correctly)
+| Page | Status |
+|------|--------|
+| {page} | ✅ renders / ⚠️ affected |
+
+### Navigation changes
+| Change | Type |
+|--------|------|
+| {new menu item / route change / none} | {additive / breaking} |
+
+## Configuration Compatibility
+
+### New environment variables
+| Variable | Required | Default | Impact if missing |
+|----------|----------|---------|-------------------|
+| {VAR} | {yes/no} | {default} | {behavior without it} |
+
+### Existing config (must work unchanged)
+- [ ] Application starts without new env vars (defaults work)
+- [ ] Existing `.env` files don't need manual changes
+
+## Test Compatibility
+
+### Existing test results
+- Tests before: {N} passed, 0 failed, {S} skipped
+- Tests after: {N} passed, 0 failed, {S} skipped
+- New tests: {M} passed
+
+### Modified tests (if any)
+| Test file | Change | Reason |
+|-----------|--------|--------|
+| {none or list} | | |
+
+## Overall Verdict
+
+- [ ] API backward compatibility: **preserved** / **breaking** (with migration plan)
+- [ ] Data backward compatibility: **preserved** / **breaking** (with migration plan)
+- [ ] UI backward compatibility: **preserved** / **N/A**
+- [ ] Configuration backward compatibility: **preserved**
+- [ ] Test backward compatibility: **preserved** (zero regressions)
+
+**Compatibility status**: ✅ PASS / ⚠️ PASS WITH NOTES / ❌ FAIL

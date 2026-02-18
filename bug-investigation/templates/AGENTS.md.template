@@ -1,0 +1,39 @@
+# AGENTS.md — Bug Investigation: {Bug Title}
+
+## Symptom
+{One-paragraph description of the bug.}
+
+## Expected behavior
+{What should happen instead.}
+
+## Read these files (in order)
+1. `AGENTS.md` (project-level rules)
+2. `bugfix/symptom-capture.md` (detailed symptom)
+3. `bugfix/hypothesis-log.md` (what's been tried)
+
+## Key constraints
+- Write a regression test BEFORE applying any fix
+- Do NOT refactor while fixing — one purpose per change
+- Do NOT modify existing tests to make them pass
+- Run the full test suite after applying any fix
+- Document every hypothesis in the hypothesis log
+- Log other bugs found separately — do NOT fix them in this branch
+
+## Investigation status
+- [ ] Symptom captured
+- [ ] Bug reproduced
+- [ ] Problem isolated  
+- [ ] Root cause identified
+- [ ] Fix specified
+- [ ] Fix implemented
+- [ ] Fix verified
+- [ ] Prevention items logged
+
+## Current phase
+{Phase name — capture / reproduce / isolate / diagnose / fix / verify}
+
+## Dead ends (do not re-investigate)
+{List hypotheses that were already tested and rejected, or "None yet"}
+
+## Time box
+{Maximum time for this investigation phase. Stop and report if exceeded.}

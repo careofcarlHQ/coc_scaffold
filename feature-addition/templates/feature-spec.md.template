@@ -1,0 +1,112 @@
+# Feature Spec — {Feature Name}
+
+## Summary
+{One paragraph: what is being added and why.}
+
+## Motivation
+{Why this feature, why now. Link to user need or technical requirement.}
+
+## Scope
+
+### In scope
+- {capability 1}
+- {capability 2}
+
+### Not in scope
+- {future work 1}
+- {future work 2}
+
+## Database Changes
+
+{If "No database changes", state that explicitly.}
+
+### New tables
+| Table | Column | Type | Nullable | Default | Constraints | Purpose |
+|-------|--------|------|----------|---------|-------------|---------|
+| {table} | {col} | {type} | {yes/no} | {default} | {FK, unique, etc.} | {description} |
+
+### Modified tables
+| Table | Change | Migration notes |
+|-------|--------|----------------|
+| {table} | {add column / modify constraint / etc.} | {nullable, no backfill / etc.} |
+
+## API Changes
+
+### New endpoints
+
+#### {METHOD} {/api/v1/path}
+
+**Authentication**: {required / optional / none}
+
+**Path parameters**:
+| Param | Type | Description |
+|-------|------|-------------|
+| {name} | {type} | {description} |
+
+**Query parameters**:
+| Param | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| {name} | {type} | {yes/no} | {default} | {description} |
+
+**Request body**:
+```json
+{
+  "field": "value"
+}
+```
+
+**Response {200}**:
+```json
+{
+  "field": "value"
+}
+```
+
+**Error responses**:
+| Status | Condition | Response body |
+|--------|-----------|---------------|
+| {400} | {condition} | {body or description} |
+| {404} | {condition} | {body or description} |
+
+### Modified endpoints
+| Method | Path | Change | Backward compatible? |
+|--------|------|--------|---------------------|
+| {method} | {path} | {description} | {yes/no} |
+
+## Business Logic
+
+1. {Rule 1: be specific about conditions and outcomes}
+2. {Rule 2}
+3. {Rule 3}
+
+### Edge cases
+| Scenario | Expected behavior |
+|----------|------------------|
+| {scenario} | {behavior} |
+
+## Compatibility
+
+- {Existing endpoint X: unchanged}
+- {Existing data shape: backward compatible because...}
+- {Existing UI flow: unaffected}
+
+## Test Requirements
+
+### Unit tests
+- {Test case 1}
+- {Test case 2}
+
+### Integration tests
+- {Test case 1}
+- {Test case 2}
+
+### Edge case tests
+- {Test case 1}
+- {Test case 2}
+
+## Acceptance Criteria
+
+- [ ] {Criterion 1: objective and testable}
+- [ ] {Criterion 2}
+- [ ] {Criterion 3}
+- [ ] All existing tests continue to pass

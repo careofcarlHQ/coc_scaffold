@@ -1,0 +1,66 @@
+# Findings — {Spike Name}
+
+## Date: {date}
+## Time spent: {hours} of {budgeted hours}
+
+---
+
+## Question
+{Restate the question from the charter}
+
+## Answer
+{One sentence: Go / No-go / Inconclusive — with the key reason}
+
+---
+
+## Summary
+{2-3 paragraphs: what you explored, what you found, what it means}
+
+---
+
+## What Worked
+- {Finding 1: concrete observation with evidence}
+- {Finding 2: concrete observation}
+
+## What Didn't Work
+- {Finding 1: concrete observation with evidence}
+- {Finding 2: concrete observation}
+
+## Trade-offs Discovered
+| Trade-off | Upside | Downside |
+|-----------|--------|----------|
+| {trade-off 1} | {pro} | {con} |
+| {trade-off 2} | {pro} | {con} |
+
+---
+
+## Effort Estimate (if "go")
+
+| Stage | Description | Effort | Confidence |
+|-------|------------|--------|------------|
+| 1 | {setup / foundation} | {hours/days} | {high/med/low} |
+| 2 | {core implementation} | {hours/days} | {confidence} |
+| 3 | {integration} | {hours/days} | {confidence} |
+| 4 | {testing} | {hours/days} | {confidence} |
+| 5 | {deployment / rollout} | {hours/days} | {confidence} |
+| **Total** | | **{total}** | |
+
+---
+
+## Remaining Unknowns
+- {Unknown 1: what you still don't know and why it might matter}
+- {Unknown 2}
+
+## Comparison Matrix (if applicable)
+
+| Criterion | Weight | Approach A | Approach B |
+|-----------|--------|-----------|-----------|
+| {criterion} | {1-5} | {score} | {score} |
+| **Weighted total** | | **{total}** | **{total}** |
+
+---
+
+## References
+- {Link to documentation that was useful}
+- {Link to example that was helpful}
+- {Link to relevant GitHub issue}

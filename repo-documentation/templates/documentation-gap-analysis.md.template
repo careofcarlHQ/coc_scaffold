@@ -1,0 +1,141 @@
+# Documentation Gap Analysis — {project_name}
+
+> Last verified: YYYY-MM-DD  
+> Generated after completing documentation layers 1–5
+>
+> **This is the mandatory capstone document.** It should be the LAST document
+> created, after all other docs are written. Its purpose is to identify what
+> remains incomplete, unverified, or missing.
+
+## Summary
+
+| Metric | Value |
+|--------|-------|
+| Total modules | |
+| Modules documented | |
+| Coverage | % |
+| Open `[TODO]` markers | |
+| Open `[UNVERIFIED]` markers | |
+| Open `[ASK]` markers | |
+| Open `[OUTDATED]` markers | |
+| P0 gaps | |
+| P1 gaps | |
+
+## Documentation Coverage
+
+### Completed Documents
+
+| Document | Status | Last verified |
+|----------|--------|---------------|
+| docs/architecture-overview.md | ✅ Complete | YYYY-MM-DD |
+| docs/service-map.md | ✅ Complete | YYYY-MM-DD |
+| docs/api-surface.md | ✅ Complete | YYYY-MM-DD |
+| docs/data-model.md | ✅ Complete | YYYY-MM-DD |
+| docs/configuration-guide.md | ✅ Complete | YYYY-MM-DD |
+| docs/dependency-inventory.md | ✅ Complete | YYYY-MM-DD |
+| docs/codebase-onboarding.md | ✅ Complete | YYYY-MM-DD |
+| docs/deployment-and-infra.md | ✅ Complete | YYYY-MM-DD |
+| docs/operational-runbook.md | ✅ Complete | YYYY-MM-DD |
+| docs/testing-and-quality.md | ✅ Complete | YYYY-MM-DD |
+| docs/business-logic.md | ✅ Complete | YYYY-MM-DD |
+| docs/decision-log.md | ✅ Complete | YYYY-MM-DD |
+| docs/observability-monitoring.md | ✅ Complete | YYYY-MM-DD |
+| docs/security-compliance.md | ✅ Complete | YYYY-MM-DD |
+| AGENTS.md | ✅ Complete | YYYY-MM-DD |
+
+### Module Coverage
+
+| Module | Documented in | Coverage | Notes |
+|--------|---------------|----------|-------|
+| | service-map.md | Full / Partial / None | |
+| | service-map.md | Full / Partial / None | |
+| | service-map.md | Full / Partial / None | |
+
+## P0 Gaps — Block Developer / Agent Effectiveness
+
+<!-- These must be addressed to make the repo usable -->
+
+### Gap 1: {description}
+
+- **What's missing**: <!-- Specific information that's absent -->
+- **Impact**: <!-- What breaks or is hard without this -->
+- **Source to investigate**: `{file or directory}` 
+- **Estimated effort**: <!-- hours -->
+- **Action**: <!-- Create doc / Update doc / Investigate -->
+
+### Gap 2: {description}
+
+- **What's missing**: 
+- **Impact**: 
+- **Source to investigate**: 
+- **Estimated effort**: 
+- **Action**: 
+
+<!-- Add more P0 gaps -->
+
+## P1 Gaps — Nice to Have
+
+<!-- These improve documentation quality but don't block work -->
+
+### Gap 1: {description}
+
+- **What's missing**: 
+- **Impact**: 
+- **Estimated effort**: 
+- **Action**: 
+
+<!-- Add more P1 gaps -->
+
+## Unverified Claims
+
+<!-- Gather all [UNVERIFIED] markers from across all docs -->
+
+| Document | Claim | What to check |
+|----------|-------|--------------|
+| | | |
+| | | |
+
+## Open TODOs
+
+<!-- Gather all [TODO] markers from across all docs -->
+
+| Document | TODO | Priority |
+|----------|------|----------|
+| | | P0 / P1 |
+| | | P0 / P1 |
+
+## Open [ASK] Items
+
+<!-- Gather all [ASK] markers from across all docs — these need human input -->
+
+| Document | Question | Who to ask |
+|----------|----------|------------|
+| | | |
+| | | |
+
+## Outdated Content
+
+<!-- Gather all [OUTDATED] markers or suspected stale docs -->
+
+| Document | Issue | Last verified |
+|----------|-------|---------------|
+| | | |
+
+## Recommendations
+
+### Immediate (this week)
+1. <!-- Most critical gap to address -->
+2. <!-- Second most critical -->
+
+### Short-term (this month)
+1. <!-- Important but not blocking -->
+2. <!-- Important but not blocking -->
+
+### Ongoing
+1. <!-- Maintenance tasks to establish -->
+2. <!-- Review cadence to set up -->
+
+## Related Documents (REQUIRED)
+
+- [Documentation Index](documentation-index.md) — master list of all docs
+- [Maintenance Cadence](../05-maintenance-cadence.md) — when to re-run this analysis (in scaffold)

@@ -1,0 +1,110 @@
+# Characterization Test Plan — {PROJECT_NAME}
+
+Purpose: Define and track characterization tests needed before refactoring can begin safely.
+
+Date: {date}
+Refactoring targets: {list of modules/files targeted for refactoring}
+
+---
+
+## Overall Coverage Status
+
+| Target module | Current coverage | Required coverage | Gap | Status |
+|--------------|-----------------|-------------------|-----|--------|
+| {module} | {n}% | 80% | {n}% | not-started / in-progress / done |
+
+---
+
+## Target: {module_name}
+
+### Public API inventory
+
+| Function / Method | Signature | Tested? | Coverage | Difficulty |
+|------------------|-----------|---------|----------|------------|
+| {name} | {params → return} | yes / partial / no | {n}% | easy / medium / hard |
+
+**Difficulty tiers:**
+- **Easy** — Pure logic: no DB, no I/O, no external calls. Write I/O pair tests.
+- **Medium** — DB access but no external APIs. Needs fixtures/factories. Use snapshot or contract tests.
+- **Hard** — External API calls, file I/O, async state, concurrency. Needs mocking/patching. Use side-effect verification. Consider whether characterization is cost-effective vs. manual review.
+
+Start with easy functions to build coverage quickly. Escalate to medium/hard only for code directly in the refactoring path.
+
+### Tests to write
+
+#### {function_name} — happy path
+
+```
+Input: {representative valid input}
+Expected output: {what the function currently returns}
+Side effects: {what DB/API/file effects occur}
+```
+
+- [ ] Test written
+- [ ] Test passes
+- [ ] Asserts on actual behavior (not ideal behavior)
+
+#### {function_name} — error cases
+
+```
+Input: {invalid input or error trigger}
+Expected behavior: {what currently happens — exception type, error code, etc.}
+```
+
+- [ ] Test written
+- [ ] Test passes
+
+#### {function_name} — edge cases
+
+```
+Input: {boundary value, empty input, None, etc.}
+Expected behavior: {what currently happens}
+```
+
+- [ ] Test written
+- [ ] Test passes
+
+### Cross-module interactions
+
+| Caller | Callee | Interaction | Test exists? |
+|--------|--------|-------------|-------------|
+| {caller_module} | {this_module.function} | {what happens} | yes / no |
+
+Tests needed for cross-module boundaries:
+- [ ] {description of interaction test}
+- [ ] {description of interaction test}
+
+### Notes on discovered behavior
+
+- {Any surprising behavior found during characterization}
+- {Any suspected bugs — mark with [POSSIBLE BUG] tag}
+- {Any undocumented features or side effects}
+
+---
+
+## Target: {next_module_name}
+
+{Repeat the above structure for each refactoring target}
+
+---
+
+## Stability Verification
+
+- [ ] Full test suite run 1: {pass/fail, date}
+- [ ] Full test suite run 2: {pass/fail, date}
+- [ ] Full test suite run 3: {pass/fail, date}
+- [ ] No flaky tests detected
+
+## Baseline Snapshot
+
+| Metric | Value | Date |
+|--------|-------|------|
+| Total tests | {n} | {date} |
+| Tests passing | {n} | {date} |
+| Overall coverage | {n}% | {date} |
+| Test suite runtime | {n}s | {date} |
+
+Phase 1 (Safety Net) is complete when:
+- [ ] All targets have ≥ 80% coverage
+- [ ] 3 consecutive green test runs
+- [ ] Baseline snapshot recorded

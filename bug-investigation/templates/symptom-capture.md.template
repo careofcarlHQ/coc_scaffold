@@ -1,0 +1,45 @@
+# Symptom Capture — {Bug Title}
+
+## Date: {date}
+## Severity: critical / high / medium / low
+## Reporter: {who found it}
+
+---
+
+## What is happening?
+{Exact error message, status code, or observed behavior.}
+
+```
+{Paste traceback, error output, or screenshot description}
+```
+
+## What should be happening?
+{Expected behavior with specifics.}
+
+## When did it start?
+- First observed: {date/time}
+- Pattern: always / intermittent / single occurrence
+- Recent changes: {list deployments, migrations, config changes}
+
+## Who/what is affected?
+- Affected users: all / specific users / specific data
+- Affected endpoints: {list}
+- Affected environments: production / staging / local / all
+
+## Reproduction (if known)
+1. {Step 1}
+2. {Step 2}
+3. {Observe: ...}
+
+## Environment
+- Python version: {version}
+- Framework version: {version}
+- Database: {version}
+- OS: {version}
+- Config notes: {any relevant environment details}
+
+## Related context
+- Recent deploys: {list or "none in last 48h"}
+- Recent migrations: {list or "none"}
+- Related issues: {links or "none known"}
+- Similar past bugs: {links or "none known"}
