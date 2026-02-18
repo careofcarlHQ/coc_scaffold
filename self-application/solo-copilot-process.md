@@ -15,6 +15,19 @@ Keep safety gates from the framework, but remove day-to-day friction when no sec
 
 ## Two merge modes
 
+## One-click solo merge
+
+When you need a fully automated solo merge flow, run one command:
+
+- `./scripts/solo-merge-pr.ps1 -PullNumber <PR_NUMBER>`
+
+This command will:
+
+1. Enable temporary solo mode (`0` approvals)
+2. Merge the PR (default method: `squash`)
+3. Restore team mode (`1` approval)
+4. Verify team mode protection
+
 ### 1) Team mode (preferred)
 
 Use when an external reviewer is available.

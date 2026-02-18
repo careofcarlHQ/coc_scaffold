@@ -20,6 +20,9 @@
 
 ## Solo mode evidence (only if Solo mode is selected)
 
+- [ ] Optional one-click automation used:
+  - `./scripts/solo-merge-pr.ps1 -PullNumber <PR_NUMBER>`
+
 - [ ] Enabled temporary solo mode:
   - `./scripts/set-branch-protection.ps1 -Mode solo`
 - [ ] Merged PR after green checks
