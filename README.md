@@ -77,6 +77,7 @@ The framework is being applied to itself with durable tracking artifacts in:
 - [meta/self-application/README.md](meta/self-application/README.md)
 - [meta/self-application/testing-retrofit/testing-checklist.md](meta/self-application/testing-retrofit/testing-checklist.md)
 - [meta/self-application/solo-copilot-process.md](meta/self-application/solo-copilot-process.md)
+- [meta/self-application/gold-standard/README.md](meta/self-application/gold-standard/README.md)
 
 ## Solo + Copilot merge automation
 

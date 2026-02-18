@@ -1,0 +1,59 @@
+# Scaffold Effectiveness Review — {scaffold-name}
+
+## Scope
+
+- Scaffold: `{scaffold-name}`
+- Review date: `{yyyy-mm-dd}`
+- Reviewer: `{name}`
+
+## Scenario
+
+Describe the realistic scenario used to evaluate this scaffold.
+
+## Inputs used
+
+- Guides:
+  - `{path}`
+- Templates:
+  - `{path}`
+- AGENTS entry points:
+  - `{path}`
+
+## Execution summary
+
+- What was executed?
+- What completed successfully?
+- What failed or was ambiguous?
+
+## Safety outcomes
+
+- Abort criteria triggered? `{yes/no}`
+- Rollback path verified? `{yes/no}`
+- Unsafe workaround needed? `{yes/no}`
+
+## Reproducibility check
+
+- Repeat run performed? `{yes/no}`
+- Equivalent result achieved? `{yes/no}`
+
+## Criterion scoring (0-2)
+
+- Structural integrity: `{0|1|2}`
+- Operator clarity: `{0|1|2}`
+- Execution effectiveness: `{0|1|2}`
+- Safety resilience: `{0|1|2}`
+- Reproducibility: `{0|1|2}`
+
+Total: `{x}/10`
+
+## Evidence links
+
+- `{artifact path}`
+- `{artifact path}`
+
+## Decision
+
+- Status: `{Not started | In progress | Silver validated | Gold validated}`
+- Required follow-up actions:
+  - `{action}`
+  - `{action}`

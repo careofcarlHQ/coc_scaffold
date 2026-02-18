@@ -18,3 +18,8 @@ Keep process state durable across sessions so the framework can evolve through i
 
 - Solo + Copilot workflow:
   - [solo-copilot-process.md](solo-copilot-process.md)
+
+## Gold standard program
+
+- Scaffold-by-scaffold effectiveness and quality progression:
+  - [gold-standard/README.md](gold-standard/README.md)
