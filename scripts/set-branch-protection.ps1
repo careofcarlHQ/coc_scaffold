@@ -21,6 +21,7 @@ $headers = @{
 }
 
 $uri = "https://api.github.com/repos/$Owner/$Repo/branches/$Branch/protection"
+$requiredCheckContext = "validate-scaffolds"
 
 $effectiveApprovals = if ($null -ne $RequiredApprovals) {
     [int]$RequiredApprovals
@@ -36,7 +37,7 @@ if (-not $VerifyOnly) {
     $body = @{
         required_status_checks = @{
             strict   = $true
-            contexts = @("Scaffold Validation")
+            contexts = @($requiredCheckContext)
         }
         enforce_admins = $true
         required_pull_request_reviews = @{
@@ -67,20 +68,21 @@ if ($result.required_status_checks -and $result.required_status_checks.contexts)
     $contexts = @($result.required_status_checks.contexts)
 }
 
-$hasScaffoldValidation = $contexts -contains "Scaffold Validation"
+$hasRequiredCheck = $contexts -contains $requiredCheckContext
 $enforceAdmins = [bool]$result.enforce_admins.enabled
 $requiredReviews = [int]$result.required_pull_request_reviews.required_approving_review_count
 $conversationResolution = [bool]$result.required_conversation_resolution.enabled
 
-Write-Output "VERIFY_HAS_SCAFFOLD_VALIDATION=$hasScaffoldValidation"
+Write-Output "VERIFY_REQUIRED_CHECK_CONTEXT=$requiredCheckContext"
+Write-Output "VERIFY_HAS_REQUIRED_CHECK=$hasRequiredCheck"
 Write-Output "VERIFY_ENFORCE_ADMINS=$enforceAdmins"
 Write-Output "VERIFY_MODE=$Mode"
 Write-Output "VERIFY_EFFECTIVE_REQUIRED_REVIEWS=$effectiveApprovals"
 Write-Output "VERIFY_REQUIRED_REVIEWS=$requiredReviews"
 Write-Output "VERIFY_CONVERSATION_RESOLUTION=$conversationResolution"
 
-if (-not $hasScaffoldValidation) {
-    Write-Error "Verification failed: required status check 'Scaffold Validation' is not configured."
+if (-not $hasRequiredCheck) {
+    Write-Error "Verification failed: required status check '$requiredCheckContext' is not configured."
     exit 2
 }
 

@@ -13,7 +13,7 @@
 ## Self-review checklist
 
 - [ ] I worked from a feature branch (no direct push to `main`)
-- [ ] CI check `Scaffold Validation` is green
+- [ ] CI check `validate-scaffolds` is green
 - [ ] I reviewed changed files and links/templates/process contracts
 - [ ] I ran local validation:
   - `python -m unittest discover -s tests -p "test_*.py" -v`

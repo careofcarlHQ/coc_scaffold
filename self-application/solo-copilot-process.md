@@ -10,7 +10,7 @@ Keep safety gates from the framework, but remove day-to-day friction when no sec
 
 - Always work in a feature branch
 - Always open a PR to `main`
-- Always require green CI (`Scaffold Validation`)
+- Always require green CI (`validate-scaffolds`)
 - Always leave a self-review comment on the PR with checklist evidence
 
 ## Two merge modes
