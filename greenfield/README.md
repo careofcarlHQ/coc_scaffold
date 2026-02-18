@@ -30,6 +30,7 @@ Any solo developer or small team that wants to:
 5. Use [03-spec-writing-guide.md](03-spec-writing-guide.md) to write your specs
 6. Build using [04-phased-implementation-guide.md](04-phased-implementation-guide.md)
 7. Operate using [05-operational-cadence.md](05-operational-cadence.md)
+8. Track delivery health using [08-progress-and-quality.md](08-progress-and-quality.md)
 
 ## Document Index
 
@@ -43,6 +44,7 @@ Any solo developer or small team that wants to:
 | [05-operational-cadence.md](05-operational-cadence.md) | Weekly review and continuous improvement |
 | [06-agents-md-guide.md](06-agents-md-guide.md) | How to write an effective AGENTS.md |
 | [07-evidence-and-quality.md](07-evidence-and-quality.md) | Evidence templates and quality tracking |
+| [08-progress-and-quality.md](08-progress-and-quality.md) | Progress tracking and quality gate discipline |
 | [templates/](templates/) | Copy-paste starter templates |
 
 ## Origin

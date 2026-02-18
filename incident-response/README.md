@@ -14,6 +14,18 @@ The **incident-response** scaffold is a structured methodology for handling prod
 - You want to prevent the same incident from recurring
 - You need to write a post-mortem and extract action items
 
+## How to use this scaffold
+
+1. Read [00-philosophy.md](00-philosophy.md) before touching production
+2. Follow [01-process-overview.md](01-process-overview.md) for phase order
+3. Triage with [02-triage-and-severity.md](02-triage-and-severity.md)
+4. Mitigate quickly using [03-mitigation-playbook.md](03-mitigation-playbook.md)
+5. Diagnose and fix with [04-diagnosis-and-fix.md](04-diagnosis-and-fix.md)
+6. Write the post-mortem using [05-post-mortem-guide.md](05-post-mortem-guide.md)
+7. Set agent behavior via [06-agents-md-for-incidents.md](06-agents-md-for-incidents.md)
+8. Execute with [07-agent-prompts.md](07-agent-prompts.md)
+9. Drive follow-up in [08-prevention-and-improvement.md](08-prevention-and-improvement.md)
+
 ## Core lifecycle
 
 | Phase | Question answered | Key output |

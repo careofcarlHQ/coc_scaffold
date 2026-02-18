@@ -59,6 +59,14 @@ incident-response/ ──→ bug-investigation/ Mitigated, now fix properly
 incident-response/ ──→ testing-retrofit/  Post-mortem: need test coverage
 ```
 
+## Self-application
+
+The framework is being applied to itself with durable tracking artifacts in:
+
+- [self-application/README.md](self-application/README.md)
+- [self-application/testing-retrofit/testing-checklist.md](self-application/testing-retrofit/testing-checklist.md)
+- [self-application/solo-copilot-process.md](self-application/solo-copilot-process.md)
+
 ## Shared principles
 
 All scaffolds share the same core values:

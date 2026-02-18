@@ -15,6 +15,18 @@ The **spike** scaffold is a structured methodology for time-boxed technical expl
 - You want to prototype an idea without risk to the main codebase
 - You're investigating whether an integration is possible
 
+## How to use this scaffold
+
+1. Read [00-philosophy.md](00-philosophy.md) to align on spike discipline
+2. Use [01-process-overview.md](01-process-overview.md) for lifecycle and time-boxing
+3. Define the question with [02-spike-charter-guide.md](02-spike-charter-guide.md)
+4. Execute exploration using [03-exploration-protocol.md](03-exploration-protocol.md)
+5. Capture outcomes via [04-findings-and-decisions.md](04-findings-and-decisions.md)
+6. Archive correctly with [05-cleanup-and-archival.md](05-cleanup-and-archival.md)
+7. Set agent context via [06-agents-md-for-spikes.md](06-agents-md-for-spikes.md)
+8. Use [07-agent-prompts.md](07-agent-prompts.md) for repeatable execution
+9. Reuse results with [08-quality-and-reuse.md](08-quality-and-reuse.md)
+
 ## Core lifecycle
 
 | Phase | Question answered | Key output |

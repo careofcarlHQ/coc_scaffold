@@ -14,6 +14,18 @@ The **testing-retrofit** scaffold is a structured methodology for systematically
 - You keep regressing on things that should have been caught
 - You're adding features to untested code and want confidence
 
+## How to use this scaffold
+
+1. Read [00-philosophy.md](00-philosophy.md) to align on testing principles
+2. Use [01-process-overview.md](01-process-overview.md) to understand the lifecycle
+3. Run [02-coverage-baseline-checklist.md](02-coverage-baseline-checklist.md) to capture reality
+4. Prioritize using [03-test-strategy-guide.md](03-test-strategy-guide.md)
+5. Implement by phase using [04-phased-testing-guide.md](04-phased-testing-guide.md)
+6. Configure CI gates with [05-ci-integration-and-gates.md](05-ci-integration-and-gates.md)
+7. Prepare agent context via [06-agents-md-for-testing.md](06-agents-md-for-testing.md)
+8. Use [07-agent-prompts.md](07-agent-prompts.md) to execute the work
+9. Track progress with [08-progress-and-quality.md](08-progress-and-quality.md)
+
 ## Core lifecycle
 
 | Phase | Question answered | Key output |

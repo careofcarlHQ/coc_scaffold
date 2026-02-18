@@ -1,0 +1,27 @@
+name: Scaffold Validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-scaffolds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install validation tooling
+        run: python -m pip install --upgrade pip coverage
+
+      - name: Run scaffold validation tests with coverage
+        run: python -m coverage run --rcfile=.coveragerc -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Enforce coverage floor
+        run: python -m coverage report --rcfile=.coveragerc --fail-under=80
