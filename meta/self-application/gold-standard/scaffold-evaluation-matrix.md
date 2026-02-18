@@ -18,7 +18,7 @@ Effectiveness evidence is strongest for PR merge automation and still incomplete
 | repo-documentation | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
 | refactoring | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
 | feature-addition | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
-| bug-investigation | 2 | 2 | 2 | 2 | 1 | 9 | In progress | [bug-investigation review](reviews/bug-investigation-effectiveness-review.md), [run-001](executions/bug-investigation/run-001/run-summary.md) |
+| bug-investigation | 2 | 2 | 2 | 2 | 2 | 10 | Gold validated | [bug-investigation review](reviews/bug-investigation-effectiveness-review.md), [run-001](executions/bug-investigation/run-001/run-summary.md), [run-002](executions/bug-investigation/run-002/run-summary.md) |
 | testing-retrofit | 2 | 2 | 1 | 2 | 1 | 8 | In progress | self-application run artifacts |
 | migration | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
 | incident-response | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |

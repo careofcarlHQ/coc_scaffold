@@ -37,8 +37,8 @@ Full live simulation using a real operational defect: merge automation blocked b
 
 ## Reproducibility check
 
-- Repeat run performed? `partially`
-- Equivalent result achieved? `yes` (same flow remained stable across later PR merges)
+- Repeat run performed? `yes` (run-002)
+- Equivalent result achieved? `yes` (same scaffold flow succeeded on a different bug class)
 
 ## Criterion scoring (0-2)
 
@@ -46,9 +46,9 @@ Full live simulation using a real operational defect: merge automation blocked b
 - Operator clarity: `2`
 - Execution effectiveness: `2`
 - Safety resilience: `2`
-- Reproducibility: `1`
+- Reproducibility: `2`
 
-Total: `9/10`
+Total: `10/10`
 
 ## Evidence links
 
@@ -62,9 +62,15 @@ Total: `9/10`
 - `meta/self-application/gold-standard/executions/bug-investigation/run-001/fix-spec.md`
 - `meta/self-application/gold-standard/executions/bug-investigation/run-001/regression-test-plan.md`
 - `meta/self-application/gold-standard/executions/bug-investigation/run-001/run-summary.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-002/symptom-capture.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-002/hypothesis-log.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-002/root-cause-analysis.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-002/fix-spec.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-002/regression-test-plan.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-002/run-summary.md`
 
 ## Decision
 
-- Status: `In progress`
+- Status: `Gold validated`
 - Required follow-up actions:
-  - Execute one additional independent run with a different bug class to move reproducibility from `1` to `2`.
+  - Maintain this score by re-running effectiveness checks when bug-investigation templates or process guides materially change.
