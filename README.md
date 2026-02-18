@@ -65,6 +65,7 @@ The framework is being applied to itself with durable tracking artifacts in:
 
 - [self-application/README.md](self-application/README.md)
 - [self-application/testing-retrofit/testing-checklist.md](self-application/testing-retrofit/testing-checklist.md)
+- [self-application/solo-copilot-process.md](self-application/solo-copilot-process.md)
 
 ## Shared principles
 

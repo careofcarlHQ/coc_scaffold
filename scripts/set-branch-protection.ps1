@@ -2,7 +2,9 @@ param(
     [string]$Owner = "careofcarlHQ",
     [string]$Repo = "coc_scaffold",
     [string]$Branch = "main",
-    [int]$RequiredApprovals = 1,
+    [ValidateSet("team", "solo")]
+    [string]$Mode = "team",
+    [Nullable[int]]$RequiredApprovals = $null,
     [switch]$VerifyOnly
 )
 
@@ -20,6 +22,16 @@ $headers = @{
 
 $uri = "https://api.github.com/repos/$Owner/$Repo/branches/$Branch/protection"
 
+$effectiveApprovals = if ($null -ne $RequiredApprovals) {
+    [int]$RequiredApprovals
+}
+elseif ($Mode -eq "solo") {
+    0
+}
+else {
+    1
+}
+
 if (-not $VerifyOnly) {
     $body = @{
         required_status_checks = @{
@@ -31,7 +43,7 @@ if (-not $VerifyOnly) {
             dismissal_restrictions = @{}
             dismiss_stale_reviews  = $true
             require_code_owner_reviews = $false
-            required_approving_review_count = $RequiredApprovals
+            required_approving_review_count = $effectiveApprovals
             require_last_push_approval = $false
         }
         restrictions = $null
@@ -62,12 +74,19 @@ $conversationResolution = [bool]$result.required_conversation_resolution.enabled
 
 Write-Output "VERIFY_HAS_SCAFFOLD_VALIDATION=$hasScaffoldValidation"
 Write-Output "VERIFY_ENFORCE_ADMINS=$enforceAdmins"
+Write-Output "VERIFY_MODE=$Mode"
+Write-Output "VERIFY_EFFECTIVE_REQUIRED_REVIEWS=$effectiveApprovals"
 Write-Output "VERIFY_REQUIRED_REVIEWS=$requiredReviews"
 Write-Output "VERIFY_CONVERSATION_RESOLUTION=$conversationResolution"
 
 if (-not $hasScaffoldValidation) {
     Write-Error "Verification failed: required status check 'Scaffold Validation' is not configured."
     exit 2
+}
+
+if ($requiredReviews -ne $effectiveApprovals) {
+    Write-Error "Verification failed: expected required approvals $effectiveApprovals but found $requiredReviews."
+    exit 3
 }
 
 Write-Output "Branch protection verification passed."

@@ -13,3 +13,8 @@ This directory tracks scaffold-on-itself execution in `coc_scaffold`.
 ## Intent
 
 Keep process state durable across sessions so the framework can evolve through its own methodology instead of ad-hoc updates.
+
+## Operating modes
+
+- Solo + Copilot workflow:
+  - [solo-copilot-process.md](solo-copilot-process.md)
