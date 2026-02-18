@@ -7,10 +7,10 @@ The scaffold framework itself: markdown structure, links, templates, and operato
 Phase 5 — CI Gates (in progress)
 
 ## Read these files (in order)
-1. `self-application/testing-retrofit/testing-checklist.md`
-2. `self-application/testing-retrofit/coverage-baseline.md`
-3. `self-application/testing-retrofit/risk-priority-map.md`
-4. `self-application/testing-retrofit/coverage-report.md`
+1. `meta/self-application/testing-retrofit/testing-checklist.md`
+2. `meta/self-application/testing-retrofit/coverage-baseline.md`
+3. `meta/self-application/testing-retrofit/risk-priority-map.md`
+4. `meta/self-application/testing-retrofit/coverage-report.md`
 5. `tests/test_*.py`
 
 ## Scope for this session
