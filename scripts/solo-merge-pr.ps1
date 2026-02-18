@@ -4,7 +4,8 @@ param(
     [int]$PullNumber,
     [string]$Branch = "main",
     [ValidateSet("merge", "squash", "rebase")]
-    [string]$MergeMethod = "squash"
+    [string]$MergeMethod = "squash",
+    [switch]$SkipLocalCleanup
 )
 
 if (-not $PullNumber) {
@@ -51,8 +52,13 @@ if (-not (Test-Path $protectionScript)) {
 }
 
 $soloEnabled = $false
+$merged = $false
+$featureBranch = $null
 
 try {
+    $prUri = "https://api.github.com/repos/$Owner/$Repo/pulls/$PullNumber"
+    $pr = Invoke-RestMethod -Method Get -Uri $prUri -Headers $headers
+    $featureBranch = $pr.head.ref
     Write-Output "STEP=enable_solo_mode"
     & $protectionScript -Owner $Owner -Repo $Repo -Branch $Branch -Mode solo
     if ($LASTEXITCODE -ne 0) {
@@ -74,6 +80,8 @@ try {
     if (-not $mergeResult.merged) {
         throw "Merge was not completed: $($mergeResult.message)"
     }
+
+    $merged = $true
 }
 catch {
     Write-Error $_
@@ -97,4 +105,44 @@ finally {
     }
 }
 
+if ($merged -and -not $SkipLocalCleanup) {
+    Write-Output "STEP=sync_main_and_cleanup"
+
+    $gitCommand = Get-Command git -ErrorAction SilentlyContinue
+    if (-not $gitCommand) {
+        Write-Warning "git is not available in PATH; skipping local cleanup"
+    }
+    else {
+        $workingTree = git status --porcelain
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Unable to inspect git working tree; skipping local cleanup"
+        }
+        elseif ($workingTree) {
+            Write-Warning "Working tree is not clean; skipping local cleanup"
+        }
+        else {
+            git fetch origin | Out-Null
+
+            git switch $Branch | Out-Null
+            if ($LASTEXITCODE -ne 0) {
+                Write-Warning "Failed to switch to '$Branch'; skipping cleanup"
+            }
+            else {
+                git pull --ff-only origin $Branch | Out-Null
+                if ($LASTEXITCODE -ne 0) {
+                    Write-Warning "Failed to fast-forward '$Branch'; local branch cleanup skipped"
+                }
+                elseif ($featureBranch -and $featureBranch -ne $Branch) {
+                    $localFeatureBranch = (git branch --list $featureBranch).Trim()
+                    if ($localFeatureBranch) {
+                        git branch -D $featureBranch | Out-Null
+                        if ($LASTEXITCODE -eq 0) {
+                            Write-Output "CLEANUP_DELETED_LOCAL_BRANCH=$featureBranch"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 Write-Output "DONE=solo_merge_flow_completed"
