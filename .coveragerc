@@ -1,0 +1,9 @@
+[run]
+source = tests
+omit =
+    */__pycache__/*
+
+[report]
+show_missing = True
+precision = 2
+skip_covered = False

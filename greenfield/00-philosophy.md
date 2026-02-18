@@ -114,7 +114,7 @@ Small weekly improvements compound into a reliable system.
 
 ### The OpenAI Codex team's parallel learnings
 
-Our approach independently mirrors several patterns described by the OpenAI Codex team in their [agent-first engineering post](spec/open-ai%20process%20description.md):
+Our approach independently mirrors several patterns described by the OpenAI Codex team in their public agent-first engineering writeup:
 
 - Repository knowledge as system of record
 - AGENTS.md as map, not manual
