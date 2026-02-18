@@ -59,7 +59,6 @@ try {
     $prUri = "https://api.github.com/repos/$Owner/$Repo/pulls/$PullNumber"
     $pr = Invoke-RestMethod -Method Get -Uri $prUri -Headers $headers
     $featureBranch = $pr.head.ref
-
     Write-Output "STEP=enable_solo_mode"
     & $protectionScript -Owner $Owner -Repo $Repo -Branch $Branch -Mode solo
     if ($LASTEXITCODE -ne 0) {
@@ -146,5 +145,4 @@ if ($merged -and -not $SkipLocalCleanup) {
         }
     }
 }
-
 Write-Output "DONE=solo_merge_flow_completed"
