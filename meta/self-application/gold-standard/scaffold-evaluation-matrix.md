@@ -18,7 +18,7 @@ Effectiveness evidence is strongest for PR merge automation and still incomplete
 | repo-documentation | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
 | refactoring | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
 | feature-addition | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
-| bug-investigation | 2 | 1 | 0 | 1 | 0 | 4 | In progress | [bug-investigation review](reviews/bug-investigation-effectiveness-review.md) |
+| bug-investigation | 2 | 2 | 2 | 2 | 1 | 9 | In progress | [bug-investigation review](reviews/bug-investigation-effectiveness-review.md), [run-001](executions/bug-investigation/run-001/run-summary.md) |
 | testing-retrofit | 2 | 2 | 1 | 2 | 1 | 8 | In progress | self-application run artifacts |
 | migration | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
 | incident-response | 2 | 1 | 0 | 1 | 0 | 4 | Silver validated | tests + docs only |
@@ -26,12 +26,11 @@ Effectiveness evidence is strongest for PR merge automation and still incomplete
 
 ## Next recommended order
 
-1. bug-investigation
-2. feature-addition
-3. incident-response
-4. migration
-5. refactoring
-6. greenfield
-7. repo-documentation
-8. spike
-9. testing-retrofit (finalize from 8 to 9+)
+1. feature-addition
+2. incident-response
+3. migration
+4. refactoring
+5. greenfield
+6. repo-documentation
+7. spike
+8. testing-retrofit (finalize from 8 to 9+)

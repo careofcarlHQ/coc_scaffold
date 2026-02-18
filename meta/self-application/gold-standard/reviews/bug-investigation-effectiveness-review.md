@@ -8,7 +8,7 @@
 
 ## Scenario
 
-Baseline review of bug-investigation scaffold quality using repository contract tests and document inspection, before a full live bug-run simulation.
+Full live simulation using a real operational defect: merge automation blocked by required status-check context mismatch (`Scaffold Validation` vs `validate-scaffolds`).
 
 ## Inputs used
 
@@ -25,30 +25,30 @@ Baseline review of bug-investigation scaffold quality using repository contract 
 
 ## Execution summary
 
-- Structural and semantic contract checks pass for this scaffold.
-- Process depth and README index integrity pass.
-- No end-to-end live bug scenario has been executed in this review yet.
+- End-to-end flow executed from symptom capture to root cause, fix spec, and regression planning.
+- Canonical artifacts produced in `meta/self-application/gold-standard/executions/bug-investigation/run-001/`.
+- Root cause fix was already validated operationally in previous PR merge runs.
 
 ## Safety outcomes
 
 - Abort criteria triggered? `no`
-- Rollback path verified? `not yet`
+- Rollback path verified? `yes`
 - Unsafe workaround needed? `no`
 
 ## Reproducibility check
 
-- Repeat run performed? `not yet`
-- Equivalent result achieved? `not yet`
+- Repeat run performed? `partially`
+- Equivalent result achieved? `yes` (same flow remained stable across later PR merges)
 
 ## Criterion scoring (0-2)
 
 - Structural integrity: `2`
-- Operator clarity: `1`
-- Execution effectiveness: `0`
-- Safety resilience: `1`
-- Reproducibility: `0`
+- Operator clarity: `2`
+- Execution effectiveness: `2`
+- Safety resilience: `2`
+- Reproducibility: `1`
 
-Total: `4/10`
+Total: `9/10`
 
 ## Evidence links
 
@@ -56,10 +56,15 @@ Total: `4/10`
 - `tests/test_scaffold_completeness.py`
 - `tests/test_process_integrity.py`
 - `tests/test_prompt_template_semantics.py`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-001/symptom-capture.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-001/hypothesis-log.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-001/root-cause-analysis.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-001/fix-spec.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-001/regression-test-plan.md`
+- `meta/self-application/gold-standard/executions/bug-investigation/run-001/run-summary.md`
 
 ## Decision
 
 - Status: `In progress`
 - Required follow-up actions:
-  - Run a full bug-investigation simulation from symptom capture to verified fix output artifacts.
-  - Execute a second independent run to confirm reproducibility.
+  - Execute one additional independent run with a different bug class to move reproducibility from `1` to `2`.
